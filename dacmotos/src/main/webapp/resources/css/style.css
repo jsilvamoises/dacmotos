@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/02/2015, 15:13:00
+    Author     : Moises
+*/
+@import "../../resources/css/icon.css";
+*{padding: 0; margin: 0; font-size: 12px}
+
+input[type="text"]{
+    color: red!important;
+    font-weight: bold!important;
+    text-transform: uppercase!important;
+    background-color: khaki!important;
+}
+#container{margin: 150px auto; height: 400px; width:256px }
+#cracha{height: 340px;border: 2px solid #ff7e27; margin-top: 60px; box-shadow: 5px 5px 5px #ff7e27; border-radius: 12px; position: relative}
+#furo{width: 60px;background-color: transparent; height: 15px; margin: 15px auto; border: 2px solid #ff7e27; border-radius: 5px; box-shadow: -1px -1px 2px #ff7e27; }
+#texto-inferior-cracha{position: absolute;font-size: 10px; bottom: 20px; color: #ff7e27; text-align: center; width: 100%; font-weight: bolder}
+#foto-chacha{width: 92px; height: 100px; border: 1px solid #ffffff; margin: 20px ; }
+#home{background-image: url(../..//resources/images/moto-ducati.jpg);width: 1920px;min-height: 795px; opacity: 0.2; position: relative}
+.icon-logo{background-image: url(../..//resources/images/logodacMotos50px.png)!important; background-repeat: no-repeat; width: 100px; height: 22px}
+.color-orange{background: #ff7e27!important;height: 5px}
+.frm-pequeno{
+    height: 550px!important;
+    width: 800px!important;
+}

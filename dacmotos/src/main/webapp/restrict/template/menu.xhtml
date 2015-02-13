@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>#{benMessages.TITULO}</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:menubar>
+                <p:menuitem icon="icon-home" outcome="/restrict/template/template.xhtml"/>
+                <p:submenu label="Controle" icon="icon-control">
+                    <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto"/>
+                    <p:menuitem value=" .: Veículo" icon="icon-motorcycle" outcome="/restrict/veiculo"/>
+                    <p:menuitem value=" .: Entrada" icon="icon-motorcycle"/>
+                </p:submenu>
+
+                <p:submenu label="Cadastro" icon="icon-new">
+                    <p:submenu label=" .: Veículos" icon="icon-motorcycle">
+                        <p:menuitem value=" .: Veículo" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Montadora" icon="icon-motorcycle"/>
+                    </p:submenu>
+
+                    <p:submenu label=".: Produto" icon="icon-motorcycle">
+                        <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto.xhtml"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Unidade" icon="icon-motorcycle"/>
+                    </p:submenu>
+
+                    <p:menuitem value=".: Pessoas" icon="icon-motorcycle"/>
+                </p:submenu>
+                
+                <p:submenu label="Venda">
+                    <p:menuitem value=".: Orçamento Serviço" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Venda de Peças" icon="icon-motorcycle"/>
+                    
+                </p:submenu>
+
+
+                <f:facet name="options">
+                    <p:outputLabel value="Usuário.: MOISES.SILVA" style="margin-right:10px" />
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+
+            </p:menubar>
+            
+            <p:separator class="color-orange"/>
+        </h:form>
+    </h:body>
+</html>
+

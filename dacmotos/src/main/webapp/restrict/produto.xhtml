@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template/template.xhtml">
+            <!--<ui:define name="top"/>-->
+             <!--<ui:define name="bottom"/>-->
+            <ui:define name="content">
+                <div id="home"></div>
+                <p:dialog header="Cadastro de Produto" width="900" height="700" visible="true" closeOnEscape="true" footer="#{benMessages.MENSAGEM_RODAPE}" modal="true">
+                    <p:tabView >
+                        <p:tab title="Produto" >
+
+                            <!--FORNECEDOR-->
+                            <p:fieldset legend="Fornecedor">
+                                <h:panelGrid columns="2">
+                                    <p:autoComplete placeholder="Nome / CNPJ" size="80"/>
+                                    <p:button value="+" outcome="fornecedor.xhtml"  target="_blank"/>
+                                </h:panelGrid>                                
+                            </p:fieldset>
+                            <!--DADOS DO PRODUTO-->
+                            <p:fieldset legend="Dados do Produto">
+                                <h:panelGrid columns="1">
+                                    <p:outputLabel for="id" value="Código"/>
+                                    <p:inputText id="id" disabled="true"/>
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="3">
+                                    <p:outputLabel for="codigo-interno" value="Cod. Interno"/>
+                                    <p:outputLabel for="descricao" value="Descrição"/>
+                                    <p:outputLabel for="unidade" value="Unidade"/>
+
+                                    <p:inputText id="codigo-interno" size="10"/>
+                                    <p:inputText id="descricao" size="50"/>
+
+                                    <h:panelGrid columns="2">
+                                        <p:selectOneMenu id="unidade" >
+                                            <f:selectItem itemLabel="Selecione"/>
+                                        </p:selectOneMenu>
+                                        <p:commandButton value="+" style="margin-top: 0"/>
+                                    </h:panelGrid> 
+                                </h:panelGrid>
+                                <!--linha3-->
+                                <h:panelGrid columns="3">
+                                    <p:outputLabel for="marca" value="Marca"/>
+                                    <p:outputLabel for="cod-marca" value="Cod. Marca" />
+                                    <p:outputLabel for="cod-original" value="Cod. Original"/>
+
+                                    <h:panelGrid columns="2" id="marca">
+                                        <p:autoComplete/>
+                                        <p:commandButton value="+"/>
+                                    </h:panelGrid>
+                                    <p:inputText id="cod-marca"/>
+                                    <p:inputText id="cod-original"/>
+                                </h:panelGrid>
+                                <!--linha 4-->
+                                <h:panelGrid columns="5">
+                                    <p:outputLabel for="estoque-min" value="Est. Min"/>
+                                    <p:outputLabel for="estoque-max" value="Est. Max"/>
+                                    <p:outputLabel for="forma-lucro" value="Forma Lucro"/>
+                                    <p:outputLabel for="lucro" value="Lucro"/>
+                                    <p:outputLabel for="valor-venda" value="Vlr venda"/>
+
+
+                                    <p:inputText id="estoque-min"/>
+                                    <p:inputText id="estoque-max"/>
+                                    <p:selectOneMenu id="forma-lucro">
+                                        <f:selectItem itemLabel="% Percentual" itemValue="%"/>
+                                        <f:selectItem itemLabel="R$" itemValue="R$"/>
+                                    </p:selectOneMenu>
+                                    <p:inputText id="lucro"/>
+                                    <p:inputText id="valor-venda"/>
+
+                                </h:panelGrid>
+                            </p:fieldset>
+                            <!--aplicação-->
+
+
+
+                            <!--TOOLBAR-->
+                            <p:toolbar>
+
+                                <f:facet name="left">
+                                    <p:commandButton value="Novo" icon="ui-icon-plusthick"/>
+                                    <p:commandButton value="Salvar" icon="ui-icon-disk"/>
+                                    <p:commandButton value="Excluir" icon="ui-icon-circlesmall-close"/>
+                                    <p:commandButton value="Limpar" icon="ui-icon-refresh"/>                                  
+                                </f:facet>
+                            </p:toolbar>
+                        </p:tab>
+
+                        <p:tab title="Aplicação">
+                            <p:fieldset legend="Aplicação">
+                                <h:panelGrid columns="6" width="100%">
+                                    <h:panelGrid columns="1" width="100%">
+                                        <!--montadora-->
+                                        <p:outputLabel for="montadora" value="Montadora"/>
+                                        <p:selectOneListbox id="montadora" value="#{beanTeste.valorSelecionado}" var="s" filter="true" scrollHeight="150" style="width: 100%">                                            
+                                            <f:selectItems value="#{beanTeste.lista}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                                            <p:column>
+                                                <h:outputText styleClass="icon-new" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="#{s}" />
+                                            </p:column>
+                                        </p:selectOneListbox>
+
+                                        <p:commandButton value="+" actionListener="#{dFView.viewForm820_400('veiculo.xhtml')}"/>
+                                    </h:panelGrid>
+
+                                    <!--modelo-->
+                                    <h:panelGrid columns="1" width="100%">
+
+                                        <p:outputLabel for="modelo" value="Modelo"/>
+                                        <p:selectOneListbox id="modelo" value="#{beanTeste.valorSelecionado}" var="s" filter="true" scrollHeight="150" style="width: 100%">                                            
+                                            <f:selectItems value="#{beanTeste.lista}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                                            <p:column>
+                                                <h:outputText styleClass="icon-new" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="#{s}" />
+                                            </p:column>
+                                        </p:selectOneListbox>
+                                        <p:commandButton value="+"/>
+                                    </h:panelGrid>
+
+
+                                    <h:panelGrid columns="1" width="100%">
+                                        <!--ano aplicacao-->
+
+                                        <p:outputLabel for="ano-aplicacao" value="Ano Aplicação"/>
+                                        <p:selectOneListbox id="ano-aplicacao" value="#{beanTeste.valorSelecionado}" var="s" filter="true" scrollHeight="150" style="width: 100%">                                            
+                                            <f:selectItems value="#{beanTeste.lista}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                                            <p:column>
+                                                <h:outputText styleClass="icon-new" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="#{s}" />
+                                            </p:column>
+                                        </p:selectOneListbox>
+
+                                        <p:commandButton value="+"/>
+                                    </h:panelGrid>
+
+                                    <h:panelGrid columns="1" width="100%">
+                                        <p:outputLabel for="aplicacao" value="Aplicação"/>
+                                        <p:toolbar>
+                                            <f:facet name="left">
+                                                <p:commandButton value="Incluir"/>
+
+                                            </f:facet>
+                                        </p:toolbar>
+
+                                        <p:selectOneListbox id="aplicacao" value="#{beanTeste.valorSelecionado}" var="s" filter="true" scrollHeight="120" style="width: 100%">                                            
+                                            <f:selectItems value="#{beanTeste.lista}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                                            <p:column>
+                                                <h:outputText styleClass="icon-new" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <h:outputText value="#{s}" />
+                                            </p:column>
+                                        </p:selectOneListbox>
+                                        <p:commandButton value="Remover" style="width: 100%"/>
+                                    </h:panelGrid>
+
+                                </h:panelGrid>
+                            </p:fieldset>
+
+                        </p:tab>
+
+                        <p:tab title="Pesquisa">
+                            <h:form>
+                                <p:fieldset legend="Pesquisa">
+                                    <h:panelGrid columns="2">
+                                        <p:selectOneRadio>
+                                            <f:selectItem itemLabel="Descricao" />
+                                            <f:selectItem itemLabel="Marca"/>
+                                            <f:selectItem itemLabel="Cod. Interno"/>
+                                            <f:selectItem itemLabel="Cod. Marca"/>
+                                            <f:selectItem itemLabel="Cod. Origem"/>
+                                        </p:selectOneRadio>
+                                    </h:panelGrid>                                
+                                    <p:inputText size="80" />
+                                </p:fieldset>
+
+                                <p:dataTable id="produtos" var="prod" value="#{beanTeste.lista}" scrollHeight="200" scrollable="true">
+<!--                                    <f:facet name="header">
+                                        
+                                        <p:commandButton id="toggler" type="button" value="Colunas" style="float:right" icon="ui-icon-calculator" />
+                                        <p:columnToggler datasource="produtos" trigger="toggler"  />  
+                                    </f:facet>-->
+
+                                    <p:column headerText="ID" toggleable="true" width="50">
+                                        <h:outputText value="#{prod}"/>
+                                    </p:column>
+
+                                    <p:column headerText="DESCRIÇÃO">
+                                        <h:outputText value="#{prod}"/>
+                                    </p:column>
+
+                                    <p:column headerText="COD. INTERNO">
+                                        <h:outputText value="#{prod}"/>
+                                    </p:column>
+
+                                    <p:column headerText="UNID.">
+                                        <h:outputText value="#{prod}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:tab>
+
+                    </p:tabView>
+                </p:dialog>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
