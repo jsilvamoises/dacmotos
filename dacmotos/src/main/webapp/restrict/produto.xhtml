@@ -13,15 +13,15 @@
              <!--<ui:define name="bottom"/>-->
             <ui:define name="content">
                 <div id="home"></div>
-                <p:dialog header="Cadastro de Produto" width="900" height="700" visible="true" closeOnEscape="true" footer="#{benMessages.MENSAGEM_RODAPE}" modal="true">
+                <p:dialog class="frm-medio" header="Cadastro de Produto" visible="true" closeOnEscape="true" footer="#{benMessages.MENSAGEM_RODAPE}" modal="true" resizable="false">
                     <p:tabView >
                         <p:tab title="Produto" >
 
                             <!--FORNECEDOR-->
-                            <p:fieldset legend="Fornecedor">
+                            <p:fieldset legend="Pessoa">
                                 <h:panelGrid columns="2">
                                     <p:autoComplete placeholder="Nome / CNPJ" size="80"/>
-                                    <p:button value="+" outcome="fornecedor.xhtml"  target="_blank"/>
+                                    <p:button value="+" outcome="pessoaconsulta.xhtml"  target="_blank"/>
                                 </h:panelGrid>                                
                             </p:fieldset>
                             <!--DADOS DO PRODUTO-->

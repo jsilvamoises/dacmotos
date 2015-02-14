@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="top">
+
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:dialog  header="Fornecedores" class="frm-big" visible="true" modal="true">
+                <p:graphicImage library="images/icons" name="Business-Leave-icon.png"/><br></br>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <p:button value="Novo"/>
+                    </f:facet>   
+                </p:toolbar>
+
+
+                <p:fieldset legend="Pesquisar">
+
+                </p:fieldset>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="bottom">
+
+    </ui:define>
+
+</ui:composition>

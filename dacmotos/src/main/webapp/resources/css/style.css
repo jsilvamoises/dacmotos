@@ -28,3 +28,11 @@ input[type="text"]{
     height: 550px!important;
     width: 800px!important;
 }
+.frm-medio{
+    height: 600px!important;
+    width: 950px!important;
+}
+.frm-big{
+    height: 100%!important;
+    width: 100%!important;
+}
