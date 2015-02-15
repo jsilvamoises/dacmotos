@@ -1,4 +1,7 @@
-.icon-home{background-image: url(../..//resources/images/icons/home-icon.png)!important}
-.icon-control{background-image: url(../..//resources/images/icons/Control-Panel-icon.png)!important}
-.icon-new{background-image: url(../..//resources/images/icons/Files-New-File-icon.png)!important}
-.icon-motorcycle{background-image: url(../..//resources/images/icons/Motorcycle-icon.png)!important; }
+.icon-home{background-image: url(../..//resources/images/icons/home-icon.png)!important;margin-right: 5px!important}
+.icon-control{background-image: url(../..//resources/images/icons/Control-Panel-icon.png)!important;margin-right: 5px!important}
+.icon-new{background-image: url(../..//resources/images/icons/Files-New-File-icon.png)!important;margin-right: 5px!important}
+.icon-motorcycle{background-image: url(../..//resources/images/icons/Motorcycle-icon.png)!important;margin-right: 5px!important }
+.icon-gear{background-image: url(../..//resources/images/icons/Gear-icon.png)!important;margin-right: 5px!important}
+.icon-money{background-image: url(../..//resources/images/icons/Money-2-icon.png)!important;margin-right: 5px!important}
+.icon-sale{background-image: url(../..//resources/images/icons/Ecommerce-Sale-icon.png)!important;margin-right: 5px!important}

@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:menubar>
+            <p:menubar id="menu-bar">
                 <p:menuitem icon="icon-home" outcome="/restrict/template/template.xhtml"/>
                 <p:submenu label="Controle" icon="icon-control">
                     <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto"/>
@@ -21,7 +21,9 @@
                 <p:submenu label="Cadastro" icon="icon-new">
                     <p:submenu label=" .: Veículos" icon="icon-motorcycle">
                         <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%"/>
-                        <p:menuitem value=" .: Montadora" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Modelo" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Cor" icon="icon-motorcycle"/>
                     </p:submenu>
 
                     <p:submenu label=".: Produto" icon="icon-motorcycle">
@@ -29,15 +31,26 @@
                         <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Unidade" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Aplicação" icon="icon-motorcycle"/>
                     </p:submenu>
 
                     <p:menuitem value=".: Pessoas" icon="icon-motorcycle"/>
                 </p:submenu>
                 
-                <p:submenu label="Venda">
+                <p:submenu label="Venda" icon="icon-sale">
                     <p:menuitem value=".: Orçamento Serviço" icon="icon-motorcycle"/>
                     <p:menuitem value=".: Venda de Peças" icon="icon-motorcycle"/>
                     
+                </p:submenu>
+                
+                <p:submenu label="Financeiro" icon="icon-money">
+                    <p:menuitem value=".: Bancos" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Caixa" icon="icon-motorcycle"/>
+                    
+                </p:submenu>
+                
+                <p:submenu label="Utilitário" icon="icon-gear">
+                    <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle"/> 
                 </p:submenu>
 
 
