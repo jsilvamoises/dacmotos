@@ -6,6 +6,7 @@
 package com.jms.dacmotos.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,6 +43,57 @@ public class Aplicacao implements Serializable {
     private AnoAplicacao anoAplicacao;
 
     public Aplicacao() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public AnoAplicacao getAnoAplicacao() {
+        return anoAplicacao;
+    }
+
+    public void setAnoAplicacao(AnoAplicacao anoAplicacao) {
+        this.anoAplicacao = anoAplicacao;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aplicacao other = (Aplicacao) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return id.toString();
     }
     
     
