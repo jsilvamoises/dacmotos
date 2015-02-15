@@ -7,6 +7,7 @@ package com.jms.dacmotos.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,6 +51,73 @@ public class HistoricoVeiculoCliente implements Serializable{
     private String descricaoServico;
 
     public HistoricoVeiculoCliente() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDataHistorico() {
+        return dataHistorico;
+    }
+
+    public void setDataHistorico(Date dataHistorico) {
+        this.dataHistorico = dataHistorico;
+    }
+
+    public Pessoa getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public String getDescricaoServico() {
+        return descricaoServico;
+    }
+
+    public void setDescricaoServico(String descricaoServico) {
+        this.descricaoServico = descricaoServico;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HistoricoVeiculoCliente other = (HistoricoVeiculoCliente) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return id.toString();
     }
     
     
