@@ -48,6 +48,11 @@ public class HistoricoVeiculoCliente implements Serializable{
     
     @Column(name="hvc_descricao_servico")
     private String descricaoServico;
+
+    public HistoricoVeiculoCliente() {
+    }
+    
+    
     
     
     
