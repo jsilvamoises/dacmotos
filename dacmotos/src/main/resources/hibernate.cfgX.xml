@@ -7,7 +7,7 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1982</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <mapping class="com.jms.dacmotos.model.AnoAplicacao"/>
   </session-factory>

@@ -24,7 +24,7 @@ public class TesteEntityManager {
          q2.getResultList();
          manager.getTransaction().commit();
          manager.close();
-         
+         System.gc();
          System.exit(0);
          
         

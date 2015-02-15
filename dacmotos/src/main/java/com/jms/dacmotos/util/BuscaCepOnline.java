@@ -101,7 +101,7 @@ public class BuscaCepOnline {
 
     public static void main(String args[]) {
         BuscaCepOnline bc = new BuscaCepOnline();
-        bc.buscarEndereco("69901000");
+        bc.buscarEndereco("69.901-000".replace(".", "").replace("-", ""));
         System.err.println(bc.getEndereco());// imprime o endereco
         System.err.println(bc.getBairro());// imprime o bairro
         System.err.println(bc.getCidade());// imprime a cidade
