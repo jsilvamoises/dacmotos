@@ -8,15 +8,15 @@ and open the template in the editor.
     Author     : Moises
 */
 @import "../../resources/css/icon.css";
-*{padding: 0; margin: 0; font-size: 16px}
+*{padding: 0; margin: 0; font-size: 14px}
 
-input[type="text2"]{
+input[type="text"]{
     color: red!important;
     font-weight: bold!important;
     text-transform: uppercase!important;
     background-color: lightgoldenrodyellow!important;
     font-size: 14px!important;
-    height: 20px;
+    height: 30px;
 }
 #container{margin: 150px auto; height: 400px; width:256px }
 #cracha{height: 340px;border: 2px solid #ff7e27; margin-top: 60px; box-shadow: 5px 5px 5px #ff7e27; border-radius: 12px; position: relative}

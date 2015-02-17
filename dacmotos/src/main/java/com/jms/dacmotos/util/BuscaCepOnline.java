@@ -42,7 +42,7 @@ public class BuscaCepOnline {
     public String getEndereco() {
         Elements urlPesquisa = doc.select("span[itemprop=streetAddress]");
         endereco = urlPesquisa.text();
-        return endereco;
+        return endereco.toUpperCase();
     }
 
     /**
@@ -54,7 +54,7 @@ public class BuscaCepOnline {
         Elements urlPesquisa = doc.select("td:gt(1)");
         bairro = urlPesquisa.text().replace(getCidade(), "");//remove o nome da cidade da variavel 
         bairro = bairro.replace(getUf(), "");//remove o estado da variavel bairro
-        return bairro;
+        return bairro.toUpperCase();
     }
 
     /**
@@ -65,7 +65,7 @@ public class BuscaCepOnline {
     public String getUf() {
         Elements urlPesquisa = doc.select("span[itemprop=addressRegion]");
         uf = urlPesquisa.text();
-        return uf;
+        return uf.toUpperCase();
     }
 
     /**
@@ -76,7 +76,7 @@ public class BuscaCepOnline {
     public String getCidade() {
         Elements urlPesquisa = doc.select("span[itemprop=addressLocality]");
         cidade = urlPesquisa.text();
-        return cidade;
+        return cidade.toUpperCase();
     }
 
     /**
@@ -87,7 +87,7 @@ public class BuscaCepOnline {
     public String getCep() {
         Elements urlPesquisa = doc.select("span[itemprop=postalCode]");
         cep = urlPesquisa.text();
-        return cep;
+        return cep.toUpperCase();
     }
 
     /**

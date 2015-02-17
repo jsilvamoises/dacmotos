@@ -5,7 +5,7 @@
  */
 package com.jms.dacmotos.teste;
 
-import com.jms.dacmotos.util.HibernateUtil;
+import javax.inject.Inject;
 import org.hibernate.Session;
 
 /**
@@ -13,10 +13,16 @@ import org.hibernate.Session;
  * @author Moises
  */
 public class TestaConexaoHibernate {
-    public static void main(String[] args) {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    @Inject
+    Session session;
+    
+    private void Teste(){
         session.getTransaction().begin();
         session.getTransaction().commit();
+    }
+    public static void main(String[] args) {
+        //Session session;// = HibernateUtil.getSessionFactory().getCurrentSession();
+        new TestaConexaoHibernate().Teste();
     }
     
 }

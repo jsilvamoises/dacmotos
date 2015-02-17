@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{benMessages.TITULO}</title>
+        <title>Dac Motos</title>
         <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
     <h:body>
@@ -19,36 +19,57 @@
                 </p:submenu>
 
                 <p:submenu label="Cadastro" icon="icon-new">
-                    <p:submenu label=" .: Veículos" icon="icon-motorcycle">
+                    <p:submenu label=" .: Veículos" icon="ui-icon-plus">
                         <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%"/>
                         <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Modelo" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Cor" icon="icon-motorcycle"/>
                     </p:submenu>
 
-                    <p:submenu label=".: Produto" icon="icon-motorcycle">
+                    <p:submenu label=".: Produto" icon="ui-icon-plus">
                         <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto.xhtml"/>
                         <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle"/>
-                        <p:menuitem value=" .: Unidade" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Unidade" icon="icon-motorcycle" outcome="/restrict/unidade.xhtml"/>
                         <p:menuitem value=" .: Aplicação" icon="icon-motorcycle"/>
                     </p:submenu>
 
                     <p:menuitem value=".: Pessoas" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Empresa" icon="icon-motorcycle"/>
                 </p:submenu>
-                
+
                 <p:submenu label="Venda" icon="icon-sale">
                     <p:menuitem value=".: Orçamento Serviço" icon="icon-motorcycle"/>
                     <p:menuitem value=".: Venda de Peças" icon="icon-motorcycle"/>
-                    
+                    <p:menuitem value=".: Endereço" icon="icon-motorcycle"/>
                 </p:submenu>
-                
+
                 <p:submenu label="Financeiro" icon="icon-money">
                     <p:menuitem value=".: Bancos" icon="icon-motorcycle"/>
                     <p:menuitem value=".: Caixa" icon="icon-motorcycle"/>
-                    
+                    <p:menuitem value=".: Contas a Pagar" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Contas a Receber" icon="icon-motorcycle"/>
+
                 </p:submenu>
-                
+
+                <p:submenu label="Estoque" icon="icon-clipboard">
+                    <p:menuitem value=".: Entrada" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Inventário" icon="icon-motorcycle"/>
+                </p:submenu>
+
+                <p:submenu label="Consulta" icon="icon-search">
+                    <p:menuitem value=".: Consulta Mapa" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Preço" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Produto" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Historico de Veículo" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Pedido" icon="icon-motorcycle"/>
+                    
+                    <p:submenu label="Movimentações" icon="ui-icon-plus">
+                        <p:menuitem value=".: Estoque" icon="icon-motorcycle"/>
+                        <p:menuitem value=".: Caixa" icon="icon-motorcycle"/>
+                    </p:submenu>
+                </p:submenu>
+
                 <p:submenu label="Utilitário" icon="icon-gear">
                     <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle"/> 
                 </p:submenu>
@@ -60,7 +81,7 @@
                 </f:facet>
 
             </p:menubar>
-            
+
             <p:separator class="color-orange"/>
         </h:form>
     </h:body>

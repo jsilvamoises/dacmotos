@@ -1,7 +1,9 @@
-.icon-home{background-image: url(../..//resources/images/icons/home-icon.png)!important;margin-right: 5px!important}
-.icon-control{background-image: url(../..//resources/images/icons/Control-Panel-icon.png)!important;margin-right: 5px!important}
-.icon-new{background-image: url(../..//resources/images/icons/Files-New-File-icon.png)!important;margin-right: 5px!important}
-.icon-motorcycle{background-image: url(../..//resources/images/icons/Motorcycle-icon.png)!important;margin-right: 5px!important }
-.icon-gear{background-image: url(../..//resources/images/icons/Gear-icon.png)!important;margin-right: 5px!important}
-.icon-money{background-image: url(../..//resources/images/icons/Money-2-icon.png)!important;margin-right: 5px!important}
-.icon-sale{background-image: url(../..//resources/images/icons/Ecommerce-Sale-icon.png)!important;margin-right: 5px!important}
+.icon-home{background-image: url(../..//resources/images/icons/home-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-control{background-image: url(../..//resources/images/icons/Control-Panel-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-new{background-image: url(../..//resources/images/icons/Files-New-File-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-motorcycle{background-image: url(../..//resources/images/icons/Motorcycle-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important; }
+.icon-gear{background-image: url(../..//resources/images/icons/Gear-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-money{background-image: url(../..//resources/images/icons/Money-2-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-sale{background-image: url(../..//resources/images/icons/Ecommerce-Sale-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-search{background-image: url(../..//resources/images/icons/search-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}
+.icon-clipboard{background-image: url(../..//resources/images/icons/File-Clipboard-icon.png)!important;margin-right: 5px!important; background-repeat: no-repeat!important;}

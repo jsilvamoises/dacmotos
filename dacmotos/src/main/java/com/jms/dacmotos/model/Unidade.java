@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -26,9 +28,12 @@ public class Unidade implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(name = "uni_sigle", nullable = false, unique = true, length = 5)
+    @NotBlank
+    @Length(max = 5, min = 2)
+    @Column(name = "uni_sigla", nullable = false, unique = true, length = 5)
     private String sigla;
     
+    @NotBlank
     @Column(name = "uni_descricao", nullable = false, unique = true, length = 20)
     private String descricao;
 
@@ -50,7 +55,7 @@ public class Unidade implements Serializable{
     }
 
     public void setSigla(String sigla) {
-        this.sigla = sigla;
+        this.sigla = sigla.toUpperCase();
     }
 
     public String getDescricao() {
@@ -58,7 +63,7 @@ public class Unidade implements Serializable{
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.toUpperCase();
     }
 
     @Override

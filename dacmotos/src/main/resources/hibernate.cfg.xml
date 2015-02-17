@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dacmotos?createDatabaseIfNotExixt=true</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1982</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping class="com.jms.dacmotos.model.AnoAplicacao"/>
+    <mapping class="com.jms.dacmotos.model.Aplicacao"/>
+    <mapping class="com.jms.dacmotos.model.Banco"/>
+    <mapping class="com.jms.dacmotos.model.Caixa"/>
+    <mapping class="com.jms.dacmotos.model.CaixaMovimento"/>
+    <mapping class="com.jms.dacmotos.model.ContaPagar"/>
+    <mapping class="com.jms.dacmotos.model.ContaReceber"/>
+    <mapping class="com.jms.dacmotos.model.Empresa"/>
+    <mapping class="com.jms.dacmotos.model.Endereco"/>
+    <mapping class="com.jms.dacmotos.model.Entrada"/>
+    <mapping class="com.jms.dacmotos.model.EntradaItens"/>
+    <mapping class="com.jms.dacmotos.model.HistoricoVeiculoCliente"/>
+    <mapping class="com.jms.dacmotos.model.MapaEnderecamentoProduto"/>
+    <mapping class="com.jms.dacmotos.model.Marca"/>
+    <mapping class="com.jms.dacmotos.model.Modelo"/>
+    <mapping class="com.jms.dacmotos.model.MovimentacaoEstoque"/>
+    <mapping class="com.jms.dacmotos.model.OrdemServico"/>
+    <mapping class="com.jms.dacmotos.model.Pedido"/>
+    <mapping class="com.jms.dacmotos.model.Pessoa"/>
+    <mapping class="com.jms.dacmotos.model.Produto"/>
+    <mapping class="com.jms.dacmotos.model.ProdutoMarca"/>
+    <mapping class="com.jms.dacmotos.model.Servico"/>
+    <mapping class="com.jms.dacmotos.model.Unidade"/>
+    <mapping class="com.jms.dacmotos.model.Usuario"/>
+    <mapping class="com.jms.dacmotos.model.UsuarioAcesso"/>
+    <mapping class="com.jms.dacmotos.model.Veiculo"/>
+    <mapping class="com.jms.dacmotos.model.VeiculoCor"/>
+  </session-factory>
+</hibernate-configuration>
