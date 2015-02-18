@@ -3,24 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jms.dacmotos.util;
+package com.jms.dacmotos.bean;
 
+import com.jms.dacmotos.model.Endereco;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.SocketTimeoutException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class BuscaCepOnline {
-
-    private String bairro;
-    private String uf;
-    private String cidade;
-    private String cep;
-    private String endereco;
-    private Document doc;
-
+/**
+ *
+ * @author Moises
+ */
+@ManagedBean
+@ViewScoped
+public class BeanCep implements Serializable{
+    private static final Long serialVersionUID=1L;
+    private String valor;
+    private Endereco endereco;
+     private Document doc;
+    public BeanCep() {
+        endereco = new Endereco();
+    }
+    
+    public Endereco getObjetoEndereco(){
+        return endereco;
+    }
+    
     public void buscarEndereco(String cep) {
 
         //***************************************************
@@ -33,6 +47,16 @@ public class BuscaCepOnline {
         }
 
     }
+    
+    
+    public void pesquisar(){
+        buscarEndereco(valor);
+        endereco.setLogradouro(getEndereco());
+        endereco.setBairro(getBairro());
+        endereco.setCidade(getCidade());
+        endereco.setUf(getUf());
+        System.err.println("Pesquisa de cep finalizada!");
+    }
 
     /**
      * Retorna o endereço da pesquisa
@@ -41,8 +65,8 @@ public class BuscaCepOnline {
      */
     public String getEndereco() {
         Elements urlPesquisa = doc.select("span[itemprop=streetAddress]");
-        endereco = urlPesquisa.text();
-        return endereco.toUpperCase();
+        endereco.setLogradouro(urlPesquisa.text());
+        return endereco.getLogradouro().toUpperCase();
     }
 
     /**
@@ -52,9 +76,9 @@ public class BuscaCepOnline {
      */
     public String getBairro() {
         Elements urlPesquisa = doc.select("td:gt(1)");
-        bairro = urlPesquisa.text().replace(getCidade(), "");//remove o nome da cidade da variavel 
-        bairro = bairro.replace(getUf(), "");//remove o estado da variavel bairro
-        return bairro.toUpperCase();
+        endereco.setBairro(urlPesquisa.text().replace(getCidade(), ""));//remove o nome da cidade da variavel 
+        endereco.setBairro(endereco.getBairro().replace(getUf(), ""));//remove o estado da variavel bairro
+        return endereco.getBairro().toUpperCase();
     }
 
     /**
@@ -64,8 +88,8 @@ public class BuscaCepOnline {
      */
     public String getUf() {
         Elements urlPesquisa = doc.select("span[itemprop=addressRegion]");
-        uf = urlPesquisa.text();
-        return uf.toUpperCase();
+        endereco.setUf(urlPesquisa.text());
+        return endereco.getUf().toUpperCase();
     }
 
     /**
@@ -75,8 +99,8 @@ public class BuscaCepOnline {
      */
     public String getCidade() {
         Elements urlPesquisa = doc.select("span[itemprop=addressLocality]");
-        cidade = urlPesquisa.text();
-        return cidade.toUpperCase();
+        endereco.setCidade(urlPesquisa.text());
+        return endereco.getCidade().toUpperCase();
     }
 
     /**
@@ -86,8 +110,8 @@ public class BuscaCepOnline {
      */
     public String getCep() {
         Elements urlPesquisa = doc.select("span[itemprop=postalCode]");
-        cep = urlPesquisa.text();
-        return cep.toUpperCase();
+        endereco.setCep(urlPesquisa.text());
+        return endereco.getCep().toUpperCase();
     }
 
     /**
@@ -95,19 +119,24 @@ public class BuscaCepOnline {
      *
      * @return
      */
-    public Document getDoc() {
-        return doc;
+//    public Document getDoc() {
+//        return doc;
+//    }I
+
+   
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    public static void main(String args[]) {
-        BuscaCepOnline bc = new BuscaCepOnline();
-        bc.buscarEndereco("69.901-000".replace(".", "").replace("-", ""));
-        System.err.println(bc.getEndereco());// imprime o endereco
-        System.err.println(bc.getBairro());// imprime o bairro
-        System.err.println(bc.getCidade());// imprime a cidade
-        System.err.println(bc.getUf());// imprime o uf
-        System.err.println(bc.getCep());// imprime o cep
-        // System.err.println(bc.getDoc());//imprime o html da pagina
+    public String getValor() {
+        return valor;
     }
 
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+    
+    
+    
 }

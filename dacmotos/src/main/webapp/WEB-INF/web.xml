@@ -18,7 +18,7 @@
      <context-param>
         <param-name>primefaces.THEME</param-name>
         <!--<param-value>bootstrap</param-value>-->
-        <param-value>home</param-value>
+        <param-value>blitzer</param-value>
     </context-param>
     
     <context-param>
@@ -32,10 +32,7 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <filter>
-        <filter-name>Primefaces FileUpload Filter</filter-name>
-        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
-    </filter>
+   
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>

@@ -5,9 +5,10 @@
  */
 package com.jms.dacmotos.bean;
 
+import com.jms.dacmotos.dao.Dao;
 import com.jms.dacmotos.interfaces.InterfaceDao;
 import com.jms.dacmotos.model.Unidade;
-import com.jms.dacmotos.util.FacesContextUtil;
+
 import com.jms.dacmotos.util.HibernateDao;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class BeanUnidade implements Serializable{
     private List<Unidade> unidades;
     
     private InterfaceDao<Unidade> unidadeDao(){
-        InterfaceDao<Unidade> unidadeDao = new HibernateDao<>(Unidade.class, FacesContextUtil.getRequestSession());
+        InterfaceDao<Unidade> unidadeDao = new Dao<>(Unidade.class);
         return unidadeDao;
     }
     
@@ -49,18 +50,24 @@ public class BeanUnidade implements Serializable{
     }
     
     public void delete(){
-        System.out.println(unidade.getDescricao());
-        unidadeDao().remove(unidade);
+        System.out.println(unidadeSelecionada.getDescricao());
+        if(unidadeDao().remove(unidadeSelecionada)){
+            criarObjeto();
+        }
         
     }
     
     public void update(){
-        System.out.println(unidade.getDescricao());
+        System.out.println(unidadeSelecionada.getDescricao());
         unidadeDao().update(unidade);
         criarObjeto();
         
     }
     
+    public void editar(){
+        unidade = unidadeSelecionada;
+         System.out.println(unidade.getDescricao());
+    }
     
     public void criarObjeto(){
         unidade = new Unidade();

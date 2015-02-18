@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -28,7 +29,8 @@ public class VeiculoCor  implements Serializable{
     @Column(name = "vco_id")
     private Long id;
     
-    @Column(name = "vco_descricao_cor")
+    @NotBlank
+    @Column(name = "vco_descricao_cor", unique = true, nullable = false, length = 50)
     private String descricaoCor;
 
     public VeiculoCor() {
@@ -47,7 +49,7 @@ public class VeiculoCor  implements Serializable{
     }
 
     public void setDescricaoCor(String descricaoCor) {
-        this.descricaoCor = descricaoCor;
+        this.descricaoCor = descricaoCor.toUpperCase();
     }
 
     @Override

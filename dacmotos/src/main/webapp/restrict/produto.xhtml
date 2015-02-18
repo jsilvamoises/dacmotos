@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:="http://www.w3.org/1999/xhtml">
 
     <body>
 
@@ -12,8 +13,9 @@
             <!--<ui:define name="top"/>-->
              <!--<ui:define name="bottom"/>-->
             <ui:define name="content">
+                <h:form>
                 <div id="home"></div>
-                <p:dialog class="frm-medio" header="Cadastro de Produto" visible="true" closeOnEscape="true" footer="#{benMessages.MENSAGEM_RODAPE}" modal="true" resizable="false">
+                <p:dialog  class="frm-medio" header="Cadastro de Produto" visible="true" closeOnEscape="true" footer="#{benMessages.MENSAGEM_RODAPE}"  resizable="false">
                     <p:tabView >
                         <p:tab title="Produto" >
 
@@ -179,7 +181,7 @@
                         </p:tab>
 
                         <p:tab title="Pesquisa">
-                            <h:form>
+                            
                                 <p:fieldset legend="Pesquisa">
                                     <h:panelGrid columns="2">
                                         <p:selectOneRadio>
@@ -216,11 +218,12 @@
                                         <h:outputText value="#{prod}"/>
                                     </p:column>
                                 </p:dataTable>
-                            </h:form>
+                            
                         </p:tab>
 
                     </p:tabView>
                 </p:dialog>
+                </h:form>
             </ui:define>
 
         </ui:composition>

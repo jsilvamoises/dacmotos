@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="restrict/template/menu.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="restrict/veiculo.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="login2.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="index.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="restrict/unidade.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="restrict/template/home.xhtml" x="150" y="300" zoom="false"/>
+        <Node id="restrict/produto.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="restrict/template/template.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="restrict/template/template2.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="restrict/endereco.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="restrict/newTemplateClient.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="restrict/pessoaconsulta.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="restrict/teste.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="restrict/template/footer.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="home.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="restrict/modelo.xhtml" x="400" y="450" zoom="false"/>
+        <Node id="restrict/marcaproduto.xhtml" x="400" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

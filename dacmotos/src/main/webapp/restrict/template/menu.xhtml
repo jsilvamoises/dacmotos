@@ -3,15 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:="http://www.w3.org/1999/xhtml">
     <h:head>
         <title>Dac Motos</title>
         <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
     <h:body>
         <h:form>
+            <p:growl autoUpdate="true"/>
+            
             <p:menubar id="menu-bar">
-                <p:menuitem icon="icon-home" outcome="/restrict/template/template.xhtml"/>
+                <p:menuitem icon="icon-home" outcome="/index.xhtml"/>
                 <p:submenu label="Controle" icon="icon-control">
                     <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto"/>
                     <p:menuitem value=" .: Veículo" icon="icon-motorcycle" outcome="/restrict/veiculo"/>
@@ -23,12 +26,12 @@
                         <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%"/>
                         <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Modelo" icon="icon-motorcycle"/>
-                        <p:menuitem value=" .: Cor" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Cor" icon="icon-motorcycle" outcome="/restrict/cores.xhtml"/>
                     </p:submenu>
 
                     <p:submenu label=".: Produto" icon="ui-icon-plus">
                         <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto.xhtml"/>
-                        <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="/restrict/marcaproduto.xhtml"/>
                         <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle"/>
                         <p:menuitem value=" .: Unidade" icon="icon-motorcycle" outcome="/restrict/unidade.xhtml"/>
                         <p:menuitem value=" .: Aplicação" icon="icon-motorcycle"/>
@@ -71,7 +74,7 @@
                 </p:submenu>
 
                 <p:submenu label="Utilitário" icon="icon-gear">
-                    <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle"/> 
+                    <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle" outcome="/restrict/consultacep.xhtml"/> 
                 </p:submenu>
 
 

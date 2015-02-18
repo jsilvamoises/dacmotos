@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./template/template.xhtml"
-
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="./template/template.xhtml"                xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
-        <ui:include src="../restrict/template/home.xhtml"/>
-        <h:form >
+        <!--<ui:include src="../restrict/template/home.xhtml"/>-->
+        <div class="ducati"></div>
+        <h:form  >
 
 
 
             <p:dialog id="dlg" header="Cadastro de Unidades" hideEffect="explode" showEffect="fade" visible="true" height="500" width="600" resizable="false">
                 <!--<p:messages autoUpdate="true"/>-->
                 <p:growl autoUpdate="true"/>
-                <h:panelGrid columns="1">
+                <h:panelGrid columns="1" id="grid">
                     <p:outputLabel value="ID"/>
                     <p:inputText disabled="true"/>
 
@@ -29,8 +29,10 @@
                 <p:separator style="margin-top: 10px"/>
                 <p:toolbar style="margin-top: 10px; margin-bottom: 10px ">
                     <f:facet name="left">
-                        <p:commandButton  value="Novo" icon="ui-icon-plus"  update="sigla, descricao"/>
+                        <p:commandButton process="@this"  value="Novo" icon="ui-icon-plus"  update="sigla, descricao"/>
                         <p:commandButton  value="Salvar" icon="ui-icon-disk" action="#{beanUnidade.saveOrUpdate()}" update="sigla, descricao, tabela"/>
+                        <p:commandButton process="@this" value="Fechar" icon="ui-icon-close" action="/index.xhtml?faces-redirect=true" />
+                        
                     </f:facet>
                 </p:toolbar>
 
@@ -48,13 +50,15 @@
                         <h:outputText value="#{unidade.sigla}"/>
                     </p:column>
 
-                    <p:column headerText="Descrição" >
+                    <p:column headerText="Descrição" filterBy="#{unidade.descricao}"  >
                         <h:outputText value="#{unidade.descricao}"/>
                     </p:column>
                     
                     <p:column width="80" >
-                        <p:commandButton partialSubmit="true" icon="ui-icon-pencil"  process="@this" update="@form"/>
-                        <p:commandButton partialSubmit="true" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();" process="@this" >
+                        <p:commandButton  icon="ui-icon-pencil"  process="@this"  update="@form" action="#{beanUnidade.editar()}">
+                             <f:setPropertyActionListener target="#{beanUnidade.unidadeSelecionada}" value="#{unidade}"/>
+                        </p:commandButton>
+                        <p:commandButton partialSubmit="true" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();" process="@this" update="tabela"  >
                             <f:setPropertyActionListener target="#{beanUnidade.unidadeSelecionada}" value="#{unidade}"/>
                         </p:commandButton>
                     </p:column>
@@ -64,9 +68,9 @@
 
             </p:dialog>
 
-            <p:confirmDialog  header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
+            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
                 <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()"  update="tabela, sigla, descricao"/>
+                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanUnidade.delete()}" update="tabela, sigla, descricao"/>
 
             </p:confirmDialog>
 
