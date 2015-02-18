@@ -37,6 +37,7 @@ public class Modelo implements Serializable{
     private  Marca marca; 
 
     public Modelo() {
+        marca = new Marca();
     }
     
     

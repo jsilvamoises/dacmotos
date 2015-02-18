@@ -37,6 +37,10 @@ public class BeanVeiculoCor implements Serializable{
         cores = new ArrayList<>();
     }
     
+    public void editar(){
+        cor = corSelecionada;
+        // System.out.println(unidade.getDescricao());
+    }
     
     
     private InterfaceDao<VeiculoCor> Dao(){

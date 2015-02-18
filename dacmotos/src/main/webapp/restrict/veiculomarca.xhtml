@@ -14,49 +14,49 @@
 
 
             <p:dialog header="DAC MOTOS" visible="true" height="550" width="700" style="padding: 0; margin: 0">
-                <h1>Cores</h1>
+                <h1>Marca</h1>
                 <p:separator style="padding: 10px"/>
                 <h:panelGrid columns="1">
                     <p:outputLabel value="Código"/>
-                    <p:inputText value="#{beanVeiculoCor.cor.id}"  size="10" disabled="true"/>
+                    <p:inputText value="#{beanMarca.marca.id}"  size="10" disabled="true"/>
 
                     <p:outputLabel value="Nome" for="nome"/>
-                    <p:inputText value="#{beanVeiculoCor.cor.descricaoCor}"  id="nome" size="50" placeholder="Insira o nome da cor"/>                
+                    <p:inputText value="#{beanMarca.marca.nome}"  id="nome" size="50" placeholder="Insira o nome da marca Ex. Honda, Suzuki"/>                
                 </h:panelGrid>
                 <!--BARRA DE FERRAMENTAS-->
                 <p:toolbar style="padding:  10px; margin-top: 10px; margin-bottom: 10px">
                     <f:facet name="left">
-                        <p:commandButton value="Novo" />
-                        <p:commandButton value="Salvar"  update="tabela, nome, @form" action="#{beanVeiculoCor.save()}"/>
-                        <p:commandButton value="Fechar"/>
+                        <p:commandButton value="Novo" action="#{beanMarca.criarObjeto()}" update="@form" />
+                        <p:commandButton value="Salvar"  update="tabela, nome, @form" action="#{beanMarca.save()}"/>
+                        <p:commandButton value="Fechar" action="/index.xhtml?faces-redirect=true" />
                     </f:facet>
                 </p:toolbar>
 
                 <!--TABELA-->
-                <p:dataTable id="tabela"  var="cores" value="#{beanVeiculoCor.cores}" paginator="true" rows="5">
+                <p:dataTable id="tabela"  var="marcas" value="#{beanMarca.marcas}" paginator="true" rows="5">
                     <p:column headerText="ID" style="width: 10%">
-                        <h:outputText value="#{cores.id}" />
+                        <h:outputText value="#{marcas.id}" />
                     </p:column>
 
-                    <p:column headerText="Nome" filterBy="#{cores.descricaoCor}">
-                        <h:outputText value="#{cores.descricaoCor}" />
+                    <p:column headerText="Nome" filterBy="#{marcas.nome}">
+                        <h:outputText  value="#{marcas.nome}" />
                     </p:column>
 
                     <p:column headerText="Ação" style="width: 20%">
-                        <p:commandButton process="@this" icon="ui-icon-pencil" action="#{beanVeiculoCor.editar()}" update="@form">
-                            <f:setPropertyActionListener target="#{beanVeiculoCor.corSelecionada}" value="#{cores}"/>
+                        <p:commandButton process="@this" icon="ui-icon-pencil" action="#{beanMarca.editar()}" update="@form">
+                            <f:setPropertyActionListener target="#{beanMarca.marcaSelecionda}" value="#{marcas}"/>
                         </p:commandButton>
                         <p:commandButton process="@this" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();">
-                            <f:setPropertyActionListener target="#{beanVeiculoCor.corSelecionada}" value="#{cores}"/>
+                            <f:setPropertyActionListener target="#{beanMarca.marcaSelecionda}" value="#{marcas}"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
             </p:dialog>
             
             
-            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
+            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanMarca.marcaSelecionda.nome}" widgetVar="confirmacaoExclusao">
                 <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanVeiculoCor.delete()}" update="tabela, nome"/>
+                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanMarca.delete()}" update="tabela, nome"/>
 
             </p:confirmDialog>
         </h:form>

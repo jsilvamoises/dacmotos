@@ -24,15 +24,15 @@
                 <p:submenu label="Cadastro" icon="icon-new">
                     <p:submenu label=" .: Veículos" icon="ui-icon-plus">
                         <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%"/>
-                        <p:menuitem value=" .: Marca" icon="icon-motorcycle"/>
-                        <p:menuitem value=" .: Modelo" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="/restrict/veiculomarca.xhtml"/>
+                        <p:menuitem value=" .: Modelo" icon="icon-motorcycle" outcome="/restrict/veiculomodelo.xhtml"/>
                         <p:menuitem value=" .: Cor" icon="icon-motorcycle" outcome="/restrict/cores.xhtml"/>
                     </p:submenu>
 
                     <p:submenu label=".: Produto" icon="ui-icon-plus">
                         <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto.xhtml"/>
-                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="/restrict/marcaproduto.xhtml"/>
-                        <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" />
+                        <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle" outcome="/restrict/anoaplicacao.xhtml"/>
                         <p:menuitem value=" .: Unidade" icon="icon-motorcycle" outcome="/restrict/unidade.xhtml"/>
                         <p:menuitem value=" .: Aplicação" icon="icon-motorcycle"/>
                     </p:submenu>

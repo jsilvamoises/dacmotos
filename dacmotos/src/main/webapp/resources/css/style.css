@@ -22,6 +22,12 @@ input[type="text"]{
 input[type="buttom"]{
     height: 50px!important;
 }
+h1{
+    font-size: 25px;
+    color: #D20005;
+    font-family: "Arial Black";
+}
+
 #container{margin: 150px auto; height: 400px; width:256px }
 #cracha{height: 340px;border: 2px solid #ff7e27; margin-top: 60px; box-shadow: 5px 5px 5px #ff7e27; border-radius: 12px; position: relative}
 #furo{width: 60px;background-color: transparent; height: 15px; margin: 15px auto; border: 2px solid #ff7e27; border-radius: 5px; box-shadow: -1px -1px 2px #ff7e27; }
