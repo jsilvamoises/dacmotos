@@ -46,6 +46,11 @@ public class BeanModelo implements Serializable{
         modelo = modeloSelecionada;
         // System.out.println(unidade.getDescricao());
     }
+    
+    public void refresh(){
+        marcas.clear();
+        preecherListaMarcas();
+    }
   
     public void preecherListaMarcas(){
         System.err.println("Passou aqui");

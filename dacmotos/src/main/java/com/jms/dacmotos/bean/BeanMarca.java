@@ -67,6 +67,9 @@ public class BeanMarca implements Serializable{
         marcas.clear();
     }
     
+    public Marca getMarcaById(Long id){
+        return Dao().getEntity(id);
+    }
     
     public List<Marca> getMarcas() {
         if(marcas.isEmpty()){

@@ -8,7 +8,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-   
+
 
 
     <ui:define name="content">
@@ -26,12 +26,19 @@
                         <p:outputLabel value="Modelo" for="nome"/>
                         <p:outputLabel value="Marca" for="mar"/>
                         <p:inputText value="#{beanModelo.modelo.descricao}"  id="nome" size="50" placeholder="Insira o modelo do veículo"/>
+                        <h:panelGrid columns="3">
+                        <p:selectOneMenu   id="mar" value="#{beanModelo.marca}"  filter="true" widgetVar="mc" >
+                            <f:selectItem itemLabel="Selecione"/>
+                            <f:selectItems id="listagem" value="#{beanMarca.marcas}" itemLabel="#{m.nome}" var="m"/> 
+                        </p:selectOneMenu>                            
+                        
+                            <p:button  icon="ui-icon-plus" outcome="/restrict/veiculomarca.xhtml" target="popup"/>
+                            <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanModelo.refresh()}" update="@form">
+                               
+                            </p:commandButton>
+                        </h:panelGrid>
 
-                        <p:selectOneMenu  id="mar" value="#{beanModelo.marca}"  >
-                            <f:selectItems value="#{beanMarca.marcas}" itemLabel="#{m.nome}" var="m"/>
-                            
-                           
-                        </p:selectOneMenu>
+
                     </h:panelGrid>
 
 

@@ -5,6 +5,7 @@
  */
 package com.jms.dacmotos.converters;
 
+import com.jms.dacmotos.bean.BeanMarca;
 import com.jms.dacmotos.model.Marca;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -19,12 +20,21 @@ public class MarcaConverter implements javax.faces.convert.Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Marca marca = null;
+        
+        if(value!=null){
+            Long id = new Long(value);
+            return new BeanMarca().getMarcaById(id);
+        }
+        return marca;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(value!= null){
+            return ((Marca)value).getId().toString();
+        }
+        return "";
     }
 
 }

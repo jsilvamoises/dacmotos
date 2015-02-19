@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -29,9 +32,11 @@ public class Modelo implements Serializable{
     @Column(name = "mod_id")
     private Long id;
     
+    @NotBlank @NotEmpty
     @Column(name = "mod_descricao", nullable = false,length = 50,unique = true)
     private String descricao;
     
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "mod_marca_id")
     private  Marca marca; 

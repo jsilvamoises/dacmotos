@@ -116,7 +116,16 @@ public class Dao<T> implements InterfaceDao<T>, Serializable {
 
     @Override
     public T getEntity(Serializable id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      Session  session = HibernateUtil.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            T entity = (T) session.get(classe, id);
+            return entity;
+        } catch (Exception e) {
+            return null;
+        }finally{
+            session.getTransaction().commit();
+        }
     }
 
     @Override
