@@ -50,7 +50,7 @@ public class AnoAplicacao implements Serializable{
     }
 
     public void setAnoAplicacao(String anoAplicacao) {
-        this.anoAplicacao = anoAplicacao;
+        this.anoAplicacao = anoAplicacao.toUpperCase();
     }
 
     @Override

@@ -15,7 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -31,18 +33,22 @@ public class Aplicacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "apl_id")
     private Long id;
-
+    
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "apl_modelo_id")
+    @JoinColumn(name = "apl_modelo_id", nullable = false)
     @ForeignKey(name = "FK_APL_MODELO")
     private Modelo modelo;
-
+    
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "apl_ano_aplicacao_id")
+    @JoinColumn(name = "apl_ano_aplicacao_id", nullable = false)
     @ForeignKey(name="FK_APL_ANO_APLICACAO")
     private AnoAplicacao anoAplicacao;
 
     public Aplicacao() {
+        modelo = new Modelo();
+        anoAplicacao = new AnoAplicacao();
     }
 
     public Long getId() {
@@ -93,7 +99,7 @@ public class Aplicacao implements Serializable {
 
     @Override
     public String toString() {
-        return id.toString();
+        return String.valueOf(id);
     }
     
     

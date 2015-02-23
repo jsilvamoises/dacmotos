@@ -37,9 +37,14 @@ public class BeanModelo implements Serializable{
 
     public BeanModelo() {
         modelo = new Modelo();
+        marca = new Marca();
         modeloSelecionada = new Modelo();
         modelos = new ArrayList<>();
         marcas = new ArrayList<>();
+    }
+    
+     public Modelo getModeloById(Long id){
+        return Dao().getEntity(id);
     }
     
     public void editar(){

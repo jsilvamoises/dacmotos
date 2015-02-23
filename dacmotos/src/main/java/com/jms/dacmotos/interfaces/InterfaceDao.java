@@ -7,6 +7,7 @@ package com.jms.dacmotos.interfaces;
 
 import java.io.Serializable;
 import java.util.List;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 
 /**
@@ -24,4 +25,9 @@ public interface InterfaceDao<T> {
     T getEntityByDetachedCriteria(DetachedCriteria criteria);
     List<T> getEntities();
     List<T> getEntitiesByDetachetCriteria(DetachedCriteria criteria);
+    List<T> getEntitiesByQuery(String query);
+    public void commit(Session session);    
+    void rollback(Session session);    
+    public void begin(Session session);    
+    public Session getSession();
 }

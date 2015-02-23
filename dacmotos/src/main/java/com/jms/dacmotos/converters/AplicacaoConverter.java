@@ -5,35 +5,35 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanMarca;
-import com.jms.dacmotos.model.Marca;
+import com.jms.dacmotos.bean.BeanAnoAplicacao;
+
+import com.jms.dacmotos.model.Aplicacao;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.FacesConverter;
-import javax.faces.view.facelets.Tag;
 
 /**
  *
  * @author Moises
  */
-@FacesConverter(forClass = Marca.class)
-public class MarcaConverter implements javax.faces.convert.Converter {
+@FacesConverter(forClass = Aplicacao.class)
+public class AplicacaoConverter implements javax.faces.convert.Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Marca marca = null;
+        Aplicacao Aplicacao = null;
         
         if(value!=null){
             Long id = new Long(value);
-            return new BeanMarca().getMarcaById(id);
+            return new BeanAnoAplicacao().getAnoAplicacaoById(id);
         }
-        return marca;
+        return Aplicacao;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if(value!= null && !value.equals("")){
-            Long id = ((Marca)value).getId();
+        if(value!= null){
+            Long id = ((Aplicacao)value).getId();
             return String.valueOf(id);
         }
         return "";

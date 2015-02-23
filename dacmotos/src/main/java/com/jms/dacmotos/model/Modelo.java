@@ -60,7 +60,7 @@ public class Modelo implements Serializable{
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.toUpperCase();
     }
 
     public Marca getMarca() {

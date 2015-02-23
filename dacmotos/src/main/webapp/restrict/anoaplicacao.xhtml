@@ -21,7 +21,7 @@
                     <p:inputText value="#{beanAnoAplicacao.ano.id}"  size="10" disabled="true"/>
 
                     <p:outputLabel value="Nome" for="nome"/>
-                    <p:inputText value="#{beanAnoAplicacao.ano.anoAplicacao}"  id="nome" size="50" placeholder="Insira o ano de referência ex 2009 ou 2009-2010"/>                
+                    <p:inputText value="#{beanAnoAplicacao.ano.anoAplicacao}"  id="nome" size="50" placeholder="Insira o ano de referência ex 2009 ou 2009 a 2010"/>                
                 </h:panelGrid>
                 <!--BARRA DE FERRAMENTAS-->
                 <p:toolbar style="padding:  10px; margin-top: 10px; margin-bottom: 10px">
@@ -46,6 +46,7 @@
                         <p:commandButton process="@this" icon="ui-icon-pencil" action="#{beanAnoAplicacao.editar()}" update="@form">
                             <f:setPropertyActionListener target="#{beanAnoAplicacao.anoSelecionado}" value="#{ano}"/>
                         </p:commandButton>
+                        
                         <p:commandButton process="@this" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();">
                             <f:setPropertyActionListener target="#{beanAnoAplicacao.anoSelecionado}" value="#{ano}"/>
                         </p:commandButton>

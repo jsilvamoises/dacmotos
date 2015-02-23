@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns:="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div class="#{beanBackground.background}">
+            <h1>Aplicação</h1>
+        </div>
+        <h:form id="frm">
+            <p:dialog class="frm-medio" visible="true">
+
+                <!--ID-->
+                <p:panelGrid id="codigo" columns="1" class="full-width" rendered="#{beanAplicacao.aplicacao.id !=null}">
+                    <p:outputLabel value="ID" />
+                    <p:inputText  value="#{beanAplicacao.aplicacao.id}" disabled="true"/>
+                </p:panelGrid>
+                <!--DADOS-->
+                <p:panelGrid id="campos" columns="3" class="full-width">
+                    <p:outputLabel value="Marca"/>
+                    <p:outputLabel value="Modelo"/>
+                    <p:outputLabel value="Ano"/>
+
+
+                    <h:panelGrid columns="3">
+                        <p:selectOneMenu filter="true"  value="#{beanAplicacao.aplicacao.modelo.marca}" >
+                            <f:selectItem itemLabel=">> SELECIONE A MARCA"/>
+                            <f:selectItems value="${beanAplicacao.marcas}" var="marca" itemLabel="#{marca.nome}" itemValue="#{marca}"/>
+                        </p:selectOneMenu>
+                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_MARCA}" target="_new"/>
+                        <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanAplicacao.refreshMarcas()}" update="@form" />
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3">
+                        <p:selectOneMenu filter="true" value="#{beanAplicacao.aplicacao.modelo}" >
+                            <f:selectItem itemLabel=">> SELECIONE MODELO"/>
+                            <f:selectItems value="${beanAplicacao.modelos}" var="modelo" itemLabel="#{modelo.descricao}" itemValue="#{modelo}"/>                       
+                        </p:selectOneMenu>
+                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_MODELO}" target="_new"/>
+                        <p:commandButton process="@this"  icon="ui-icon-refresh" actionListener="#{beanAplicacao.refreshModelos()}" update="@form"/>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="3">
+                        <p:selectOneMenu filter="true" value="#{beanAplicacao.aplicacao.anoAplicacao}" > 
+                            <f:selectItem  itemLabel=">> SELECIONE O ANO"/>
+                            <f:selectItems value="${beanAplicacao.anos}" var="ano" itemLabel="#{ano.anoAplicacao}" itemValue="#{ano}"/>
+                        </p:selectOneMenu>                        
+                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_ANO_APLICACAO}" target="_new"/>
+                        <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanAplicacao.refreshAnos()}" update="@form"/>
+                    </h:panelGrid>
+
+                </p:panelGrid>
+
+                <!--TOOLBAR-->
+                <p:toolbar style="margin-top: 20px">
+                    <f:facet name="left">
+                        <p:commandButton process="@this" value="Novo" icon="ui-icon-plus" update="@form" action="#{beanAplicacao.clear()}"/>
+                        <p:commandButton  value="Salvar" icon="ui-icon-disk" action="#{beanAplicacao.save()}" update="@form tabela"/>
+                        <p:button value="Fechar" icon="ui-icon-close" outcome="#{beanNavigation.GO_HOME}"/>
+                    </f:facet>
+                </p:toolbar>
+
+                <p:dataTable id="tabela" value="#{beanAplicacao.aplicacoes}" var="aplicacao" paginator="true" rows="5">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{aplicacao.id}"/>
+                    </p:column>
+
+                    <p:column headerText="MARCA" >
+                        <h:outputText value="#{aplicacao.modelo.marca.nome}"/>
+                    </p:column>
+
+                    <p:column headerText="MODELO">
+                        <h:outputText value="#{aplicacao.modelo.descricao}"/>
+                    </p:column>
+
+                    <p:column headerText="ANO">
+                        <h:outputText value="#{aplicacao.anoAplicacao.anoAplicacao}"/>
+                    </p:column>
+
+                    <p:column headerText="Ações">
+                        <p:commandButton process="@this" icon="ui-icon-pencil" action="#{beanAplicacao.edit()}" update="@form">
+                            <f:setPropertyActionListener target="#{beanAplicacao.aplicacaoSelecionada}" value="#{aplicacao}"/>
+                        </p:commandButton>
+
+                        <p:commandButton partialSubmit="true" process="@this"  icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();"  >
+                              <f:setPropertyActionListener target="#{beanAplicacao.aplicacaoSelecionada}" value="#{aplicacao}"/>
+                        </p:commandButton>
+
+                    </p:column>
+                </p:dataTable>
+            </p:dialog>
+            
+            
+            <p:confirmDialog id="dlg"  global="true" header="Exclusão" message="Realmente deseja excluir?" widgetVar="confirmacaoExclusao">
+                <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
+                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanAplicacao.delete()}" update="frm:codigo frm:tabela frm:campos"/>
+
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

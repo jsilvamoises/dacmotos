@@ -26,6 +26,11 @@ import org.hibernate.Session;
 public class BeanAnoAplicacao implements Serializable{
     private static final Long serialVersionUID=1L;
     
+    /*DAOS*/
+   
+    
+    
+    
     private AnoAplicacao anoAplicacao;
     private AnoAplicacao  anoAplicacaoSelecionado;
     
@@ -46,6 +51,10 @@ public class BeanAnoAplicacao implements Serializable{
     private InterfaceDao<AnoAplicacao> Dao(){
         InterfaceDao<AnoAplicacao> anoDao = new Dao<>(AnoAplicacao.class);
         return anoDao;
+    }
+    
+     public AnoAplicacao getAnoAplicacaoById(Long id){
+        return Dao().getEntity(id);
     }
     
     public void save(){
