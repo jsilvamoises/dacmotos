@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dacmotos?createDatabaseIfNotExixt=true</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dacmotos?createDatabaseIfNotExist=true</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1982</property>
     <property name="hibernate.current_session_context_class">thread</property>

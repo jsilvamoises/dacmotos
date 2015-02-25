@@ -5,16 +5,21 @@
  */
 package com.jms.dacmotos.model;
 
+import com.jms.dacmotos.enums.TipoPessoa;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,16 +40,16 @@ public class Pessoa implements Serializable{
     @Column(name = "pes_nome", length = 80, nullable = false)
     private String nome;
     
-    @Column(name = "pes_cpf",unique = true, length = 14)
+    @Column(name = "pes_cpf",unique = true, length = 14, nullable = true)
     private String cpf;
     
-    @Column(name = "pes_rg",length = 12)
+    @Column(name = "pes_rg",length = 12, nullable = true)
     private String rg;
     
-    @Column(name = "pes_cnpj", length = 20, unique = true)
+    @Column(name = "pes_cnpj", length = 20, unique = true, nullable = true)
     private String cnpj;
     
-    @Column(name = "pes_email", length = 100, unique = true)
+    @Column(name = "pes_email", length = 100, unique = true, nullable = true)
     private String Email;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -65,12 +70,29 @@ public class Pessoa implements Serializable{
     private String telefoneRecado;
     
     @Column(name = "pes_nome_pessoa_recado")
-    private String nomePessoaRecado;   
+    private String nomePessoaRecado; 
     
-    @OneToMany(cascade = CascadeType.MERGE)
+    @Column(name = "pes_telefone_comercial")
+    private String telefoneComercial;
+    
+    @Column(name = "pes_ie")
+    private String ie;
+    
+    @Lob()
+    @Column(name = "pes_observacao")
+    private String observacao;
+    
+    
+    @Column(name = "pes_tipo_pessoa")
+    @Enumerated(EnumType.STRING)
+    private TipoPessoa tipoPessoa;
+    
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
+    
 
     public Pessoa() {
+        enderecos = new ArrayList<>();
     }
 
     public Long getId() {
@@ -202,6 +224,38 @@ public class Pessoa implements Serializable{
     @Override
     public String toString() {
         return id.toString();
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    public String getIe() {
+        return ie;
+    }
+
+    public void setIe(String ie) {
+        this.ie = ie;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public String getTelefoneComercial() {
+        return telefoneComercial;
+    }
+
+    public void setTelefoneComercial(String telefoneComercial) {
+        this.telefoneComercial = telefoneComercial;
     }
     
     

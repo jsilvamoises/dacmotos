@@ -7,8 +7,10 @@ package com.jms.dacmotos.model;
 
 import com.jms.dacmotos.enums.TipoEndereco;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -55,11 +57,12 @@ public class Endereco implements Serializable{
     @Column(name = "end_tipo_endereco")
     private TipoEndereco tipoEndereco;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @ForeignKey(name = "FK_PESSOA")
     private List<Pessoa> pessoas;
 
     public Endereco() {
+        pessoas = new ArrayList<>();
     }
 
     public Long getId() {
@@ -158,7 +161,7 @@ public class Endereco implements Serializable{
 
     @Override
     public String toString() {
-        return id.toString();
+        return String.valueOf(id);
     }
     
     

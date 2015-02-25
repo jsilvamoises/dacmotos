@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_14248151009041" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="AnoAplicacao" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14248151009674">
+        <jpa:table name="tbl_ano_aplicacao"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_14248151009825">
+                <jpa:column name="aap_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="aap_id"/>
+            </jpa:id>
+            <jpa:basic name="anoAplicacao" attribute-type="java.lang.String" visibile="true" id="_14248151009826">
+                <jpa:column name="aap_ano_aplicacao"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Aplicacao" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14248151010147">
+        <jpa:table name="tbl_aplicacao"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_14248151010148">
+                <jpa:column name="apl_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="apl_id"/>
+            </jpa:id>
+            <jpa:many-to-one name="modelo" target-entity="Modelo" primaryKey="false" connected-entity-id="_142481510134199" visibile="true" id="_14248151010149">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_APL_MODELO")</annotation>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="anoAplicacao" target-entity="AnoAplicacao" primaryKey="false" connected-entity-id="_14248151009674" visibile="true" id="_142481510101410">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_APL_ANO_APLICACAO")</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Banco" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510104511">
+        <jpa:table name="tbl_banco"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510104512">
+                <jpa:column name="ban_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="ban_id"/>
+            </jpa:id>
+            <jpa:basic name="numeroBanco" attribute-type="java.lang.String" visibile="true" id="_142481510104513">
+                <jpa:column name="ban_numero_banco" nullable="false" length="15"/>
+            </jpa:basic>
+            <jpa:basic name="nomeBanco" attribute-type="java.lang.String" visibile="true" id="_142481510104514">
+                <jpa:column name="ban_nome_banco" nullable="false" length="50"/>
+            </jpa:basic>
+            <jpa:basic name="agencia" attribute-type="java.lang.String" visibile="true" id="_142481510104515">
+                <jpa:column name="ban_agencia" nullable="false" length="15"/>
+            </jpa:basic>
+            <jpa:basic name="conta" attribute-type="java.lang.String" visibile="true" id="_142481510104516">
+                <jpa:column name="ban_conta" nullable="false" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="tipoConta" attribute-type="com.jms.dacmotos.enums.TipoConta" visibile="true" id="_142481510104517">
+                <jpa:column name="ban_tipo_conta"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic name="cidade" attribute-type="java.lang.String" visibile="true" id="_142481510104518">
+                <jpa:column name="ban_cidade" nullable="false" length="80"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Caixa" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510106019">
+        <jpa:table name="tbl_caixa"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510106020">
+                <jpa:column name="cai_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="cai_id"/>
+            </jpa:id>
+            <jpa:basic name="nomeCaixa" attribute-type="java.lang.String" visibile="true" id="_142481510106021">
+                <jpa:column name="cai_nome_caixa"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ContaPagar" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510109222">
+        <jpa:table name="tbl_contas_pagar"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510109223">
+                <jpa:column name="cpa_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="cpa_id"/>
+            </jpa:id>
+            <jpa:basic name="dataEmissaoNota" attribute-type="java.util.Date" visibile="true" id="_142481510109225">
+                <jpa:column name="cpa_data_emissao_nota"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataLancamento" attribute-type="java.util.Date" visibile="true" id="_142481510109226">
+                <jpa:column name="cpa_data_lancamento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="numeroNota" attribute-type="int" visibile="true" id="_142481510109227">
+                <jpa:column name="cpa_numero_nota"/>
+            </jpa:basic>
+            <jpa:basic name="valorNotaFiscal" attribute-type="double" visibile="true" id="_142481510109228">
+                <jpa:column name="cpa_valor_nota_fiscal"/>
+            </jpa:basic>
+            <jpa:basic name="valorEntrada" attribute-type="double" visibile="true" id="_142481510109229">
+                <jpa:column name="cpa_valor_entrada"/>
+            </jpa:basic>
+            <jpa:basic name="quantidadeParcelas" attribute-type="int" visibile="true" id="_142481510109230">
+                <jpa:column name="cpa_quantidade_parcelas"/>
+            </jpa:basic>
+            <jpa:basic name="valorParcela" attribute-type="double" visibile="true" id="_142481510109231">
+                <jpa:column name="cpa_valor_parcela"/>
+            </jpa:basic>
+            <jpa:basic name="intervaloEntreParcelas" attribute-type="int" visibile="true" id="_142481510109232">
+                <jpa:column name="cpa_intervalo_entre_parcelas"/>
+            </jpa:basic>
+            <jpa:basic name="numeroCheque" attribute-type="java.lang.String" visibile="true" id="_142481510109233">
+                <jpa:column name="cpa_numero_cheque"/>
+            </jpa:basic>
+            <jpa:basic name="formaPagamento" attribute-type="com.jms.dacmotos.enums.FormaPagamento" visibile="true" id="_142481510109234">
+                <jpa:column name="cpa_forma_pagamento_entrada"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic name="dataVencimento" attribute-type="java.util.Date" visibile="true" id="_142481510109235">
+                <jpa:column name="cpa_data_vencimento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataPagamento" attribute-type="java.util.Date" visibile="true" id="_142481510109236">
+                <jpa:column name="cpa_data_pagamento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="numeroParcela" attribute-type="int" visibile="true" id="_142481510109237">
+                <jpa:column name="cpa_numero_parcela"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fornecedor" target-entity="Pessoa" primaryKey="false" connected-entity-id="_1424815101404104" visibile="true" id="_142481510109224">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_CPA_FORNECEDOR")</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ContaReceber" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510112338">
+        <jpa:table name="tbl_contas_receber"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510112339">
+                <jpa:column name="cre_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="cre_id"/>
+            </jpa:id>
+            <jpa:basic name="dataFaturamento" attribute-type="java.util.Date" visibile="true" id="_142481510112342">
+                <jpa:column name="cre_data_faturamento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataVencimento" attribute-type="java.util.Date" visibile="true" id="_142481510112343">
+                <jpa:column name="cre_data_vencimento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataPagamento" attribute-type="java.util.Date" visibile="true" id="_142481510112344">
+                <jpa:column name="cre_data_pagemento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="notaFiscal" attribute-type="java.lang.Long" visibile="true" id="_142481510112345">
+                <jpa:column name="cre_nota_fiscal"/>
+            </jpa:basic>
+            <jpa:basic name="totalParcela" attribute-type="int" visibile="true" id="_142481510112346">
+                <jpa:column name="cre_total_parcela"/>
+            </jpa:basic>
+            <jpa:basic name="valorParcela" attribute-type="double" visibile="true" id="_142481510112347">
+                <jpa:column name="cre_valor_parcela"/>
+            </jpa:basic>
+            <jpa:basic name="formaPagamento" attribute-type="com.jms.dacmotos.enums.FormaPagamento" visibile="true" id="_142481510112348">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-one name="cliente" target-entity="Pessoa" primaryKey="false" connected-entity-id="_1424815101404104" visibile="true" id="_142481510112340">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_CRE_CLIENTE")</annotation>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="pedido" target-entity="Pedido" primaryKey="false" connected-entity-id="_1424815101372103" visibile="true" id="_142481510112341">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_CRE_PEDIDO")</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Empresa" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510115449">
+        <jpa:table name="tbl_empresa"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510115450">
+                <jpa:column name="emp_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="emp_id"/>
+            </jpa:id>
+            <jpa:basic name="nome" attribute-type="java.lang.String" visibile="true" id="_142481510115451">
+                <jpa:column name="emp_nome" nullable="false" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="apelido" attribute-type="java.lang.String" visibile="true" id="_142481510115452">
+                <jpa:column name="emp_apelido" length="50"/>
+            </jpa:basic>
+            <jpa:basic name="cnpj" attribute-type="java.lang.String" visibile="true" id="_142481510115453">
+                <jpa:column name="emp_cnpj"/>
+            </jpa:basic>
+            <jpa:basic name="site" attribute-type="java.lang.String" visibile="true" id="_142481510115454">
+                <jpa:column name="emp_site"/>
+            </jpa:basic>
+            <jpa:basic name="email" attribute-type="java.lang.String" visibile="true" id="_142481510115455">
+                <jpa:column name="emp_email"/>
+            </jpa:basic>
+            <jpa:basic name="telefone1" attribute-type="java.lang.String" visibile="true" id="_142481510115456">
+                <jpa:column name="emp_telefone1"/>
+            </jpa:basic>
+            <jpa:basic name="telefone2" attribute-type="java.lang.String" visibile="true" id="_142481510115457">
+                <jpa:column name="emp_telefone2"/>
+            </jpa:basic>
+            <jpa:one-to-one name="endereco" target-entity="Endereco" connected-entity-id="_142481510117059" visibile="true" id="_142481510115458">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_EMP_ENDERECO")</annotation>
+            </jpa:one-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Endereco" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510117059">
+        <jpa:table name="tbl_endereco"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510117060">
+                <jpa:column name="end_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="end_id"/>
+            </jpa:id>
+            <jpa:basic name="cep" attribute-type="java.lang.String" visibile="true" id="_142481510118561">
+                <jpa:column name="end_cep" unique="true" nullable="false" length="10"/>
+            </jpa:basic>
+            <jpa:basic name="logradouro" attribute-type="java.lang.String" visibile="true" id="_142481510118562">
+                <jpa:column name="end_logradouro" nullable="false" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="bairro" attribute-type="java.lang.String" visibile="true" id="_142481510118563">
+                <jpa:column name="end_bairro" nullable="false" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="cidade" attribute-type="java.lang.String" visibile="true" id="_142481510118564">
+                <jpa:column name="end_cidade" nullable="false" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="uf" attribute-type="java.lang.String" visibile="true" id="_142481510118565">
+                <jpa:column name="end_uf" nullable="false" length="2"/>
+            </jpa:basic>
+            <jpa:basic name="numero" attribute-type="java.lang.String" visibile="true" id="_142481510118566">
+                <jpa:column name="end_numero" nullable="false" length="15"/>
+            </jpa:basic>
+            <jpa:basic name="tipoEndereco" attribute-type="com.jms.dacmotos.enums.TipoEndereco" visibile="true" id="_142481510118567">
+                <jpa:column name="end_tipo_endereco"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-many name="pessoas" target-entity="Pessoa" collection-type="java.util.List" connected-entity-id="_1424815101404104" visibile="true" id="_142481510118568">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_PESSOA")</annotation>
+            </jpa:many-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Entrada" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510120169">
+        <jpa:table name="tbl_entrada"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510120170">
+                <jpa:column name="ent_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="ent_id"/>
+            </jpa:id>
+            <jpa:basic name="dataDocumento" attribute-type="java.util.Date" visibile="true" id="_142481510120172">
+                <jpa:column name="ent_data_documento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataRegistro" attribute-type="java.util.Date" visibile="true" id="_142481510120173">
+                <jpa:column name="ent_data_registro"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="numeroDocumento" attribute-type="java.lang.Long" visibile="true" id="_142481510120174">
+                <jpa:column name="ent_num_documento"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fornecedor" target-entity="Pessoa" primaryKey="false" connected-entity-id="_1424815101404104" visibile="true" id="_142481510120171"/>
+            <jpa:one-to-many name="itens" target-entity="EntradaItens" collection-type="java.util.List" connected-entity-id="_142481510123276" visibile="true" id="_142481510120175">
+                <jpa:cascade>
+                    <jpa:cascade-merge/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="EntradaItens" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510123276">
+        <jpa:table name="tbl_entrada_itens"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510123277">
+                <jpa:column name="eit_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="eit_id"/>
+            </jpa:id>
+            <jpa:basic name="quantidade" attribute-type="double" visibile="true" id="_142481510123280">
+                <jpa:column name="eit_quantidade" precision="3"/>
+            </jpa:basic>
+            <jpa:basic name="valorUnitario" attribute-type="double" visibile="true" id="_142481510123281">
+                <jpa:column name="eit_valor_initario"/>
+            </jpa:basic>
+            <jpa:many-to-one name="entrada" target-entity="Entrada" primaryKey="false" connected-entity-id="_142481510120169" visibile="true" id="_142481510123278">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_EIT_ENTRADA")</annotation>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="produto" target-entity="Produto" primaryKey="false" connected-entity-id="_1424815101419117" visibile="true" id="_142481510123279">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_EIT_PRODUTO")</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="HistoricoVeiculoCliente" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510126382">
+        <jpa:table name="tbl_historico_veiculo_cliente"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510126383">
+                <jpa:column name="hvc_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="hvc_id"/>
+            </jpa:id>
+            <jpa:basic name="dataHistorico" attribute-type="java.util.Date" visibile="true" id="_142481510126384">
+                <jpa:column name="hvc_data_historico"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="descricaoServico" attribute-type="java.lang.String" visibile="true" id="_142481510126387">
+                <jpa:column name="hvc_descricao_servico"/>
+            </jpa:basic>
+            <jpa:many-to-one name="cliente" target-entity="Pessoa" primaryKey="false" connected-entity-id="_1424815101404104" visibile="true" id="_142481510126385">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_HVC_CLIENTE")</annotation>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="veiculo" target-entity="Veiculo" primaryKey="false" connected-entity-id="_1424815101560153" visibile="true" id="_142481510126386">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="hvc_veidulo_id")</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="MapaEnderecamentoProduto" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510127988">
+        <jpa:table name="tbl_mapa_enderecamento_produtos"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510127989">
+                <jpa:column name="mep_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="mep_id"/>
+            </jpa:id>
+            <jpa:basic name="localizacao" attribute-type="java.lang.String" visibile="true" id="_142481510127990">
+                <jpa:column name="mep_localizacao" nullable="false" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="prateleira" attribute-type="java.lang.String" visibile="true" id="_142481510127991">
+                <jpa:column name="mep_prateleira" nullable="false" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="nivel" attribute-type="java.lang.String" visibile="true" id="_142481510127992">
+                <jpa:column name="mep_nivel" nullable="false" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="gaveta" attribute-type="java.lang.String" visibile="true" id="_142481510127993">
+                <jpa:column name="mep_gaveta" nullable="false" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="observacao" attribute-type="java.lang.String" visibile="true" id="_142481510127994">
+                <jpa:column name="mep_observacao" nullable="false" length="255"/>
+            </jpa:basic>
+            <jpa:one-to-many name="produtos" target-entity="Produto" collection-type="java.util.List" connected-entity-id="_1424815101419117" visibile="true" id="_142481510127995">
+                <jpa:cascade>
+                    <jpa:cascade-merge/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Marca" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510132696">
+        <jpa:table name="tbl_montadora"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_142481510132697">
+                <jpa:column name="mar_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="mar_id"/>
+            </jpa:id>
+            <jpa:basic name="nome" attribute-type="java.lang.String" visibile="true" id="_142481510132698">
+                <jpa:column name="mar_nome" unique="true" nullable="false" length="40"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Modelo" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_142481510134199">
+        <jpa:table name="tbl_modelo"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101341100">
+                <jpa:column name="mod_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="mod_id"/>
+            </jpa:id>
+            <jpa:basic name="descricao" attribute-type="java.lang.String" visibile="true" id="_1424815101341101">
+                <annotation>@org.hibernate.validator.constraints.NotBlank</annotation>
+                <annotation>@org.hibernate.validator.constraints.NotEmpty</annotation>
+                <jpa:column name="mod_descricao" unique="true" nullable="false" length="50"/>
+            </jpa:basic>
+            <jpa:many-to-one name="marca" target-entity="Marca" primaryKey="false" connected-entity-id="_142481510132696" visibile="true" id="_1424815101341102">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Pedido" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101372103">
+        <jpa:table name="tbl_pedido"/>
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity class="Pessoa" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101404104">
+        <jpa:table name="tbl_pessoa"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101404105">
+                <jpa:column name="pes_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="pes_id"/>
+            </jpa:id>
+            <jpa:basic name="nome" attribute-type="java.lang.String" visibile="true" id="_1424815101404106">
+                <jpa:column name="pes_nome" nullable="false" length="80"/>
+            </jpa:basic>
+            <jpa:basic name="cpf" attribute-type="java.lang.String" visibile="true" id="_1424815101404107">
+                <jpa:column name="pes_cpf" unique="true" length="14"/>
+            </jpa:basic>
+            <jpa:basic name="rg" attribute-type="java.lang.String" visibile="true" id="_1424815101404108">
+                <jpa:column name="pes_rg" length="12"/>
+            </jpa:basic>
+            <jpa:basic name="cnpj" attribute-type="java.lang.String" visibile="true" id="_1424815101404109">
+                <jpa:column name="pes_cnpj" unique="true" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="dataCadastro" attribute-type="java.util.Date" visibile="true" id="_1424815101404110">
+                <jpa:column name="pes_data_cadastro"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataNascimento" attribute-type="java.util.Date" visibile="true" id="_1424815101404111">
+                <jpa:column name="pes_data_nascimento"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="telefoneResidencial" attribute-type="java.lang.String" visibile="true" id="_1424815101404112">
+                <jpa:column name="pes_telefone_residencial" length="16"/>
+            </jpa:basic>
+            <jpa:basic name="telefoneCelular" attribute-type="java.lang.String" visibile="true" id="_1424815101404113">
+                <jpa:column name="pes_telefone_celular" length="16"/>
+            </jpa:basic>
+            <jpa:basic name="telefoneRecado" attribute-type="java.lang.String" visibile="true" id="_1424815101404114">
+                <jpa:column name="pes_telefone_recado" length="16"/>
+            </jpa:basic>
+            <jpa:basic name="nomePessoaRecado" attribute-type="java.lang.String" visibile="true" id="_1424815101404115">
+                <jpa:column name="pes_nome_pessoa_recado"/>
+            </jpa:basic>
+            <jpa:one-to-many name="enderecos" target-entity="Endereco" collection-type="java.util.List" connected-entity-id="_142481510117059" visibile="true" id="_1424815101404116">
+                <jpa:cascade>
+                    <jpa:cascade-merge/>
+                </jpa:cascade>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Produto" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101419117">
+        <jpa:table name="tbl_produto"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101419118">
+                <jpa:column name="pro_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="pro_id"/>
+            </jpa:id>
+            <jpa:basic name="descricao" attribute-type="java.lang.String" visibile="true" id="_1424815101419121">
+                <jpa:column name="pro_descricao" nullable="false" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="modelo" attribute-type="java.lang.String" visibile="true" id="_1424815101419122">
+                <jpa:column name="pro_modelo" length="60"/>
+            </jpa:basic>
+            <jpa:basic name="codigoFornecedor" attribute-type="java.lang.String" visibile="true" id="_1424815101419124">
+                <jpa:column name="pro_codigo_fornecedor"/>
+            </jpa:basic>
+            <jpa:basic name="codigoMontadora" attribute-type="java.lang.String" visibile="true" id="_1424815101419125">
+                <jpa:column name="pro_codigo_montadora"/>
+            </jpa:basic>
+            <jpa:basic name="codigoBarra" attribute-type="java.lang.String" visibile="true" id="_1424815101419126">
+                <jpa:column name="pro_codigo_barra"/>
+            </jpa:basic>
+            <jpa:basic name="tipoCodigoBarra" attribute-type="com.jms.dacmotos.enums.TipoCodigoBarra" visibile="true" id="_1424815101419127">
+                <jpa:column name="pro_tipo_codigo_barra"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic name="quantidadeCaixa" attribute-type="double" visibile="true" id="_1424815101419128">
+                <jpa:column name="pro_quantidade_caixa" nullable="false"/>
+            </jpa:basic>
+            <jpa:basic name="pesoBruto" attribute-type="double" visibile="true" id="_1424815101419129">
+                <jpa:column name="pro_peso_bruto"/>
+            </jpa:basic>
+            <jpa:basic name="pesoLiquido" attribute-type="double" visibile="true" id="_1424815101419130">
+                <jpa:column name="pro_peso_liquido"/>
+            </jpa:basic>
+            <jpa:basic name="altura" attribute-type="double" visibile="true" id="_1424815101419131">
+                <jpa:column name="pro_altura"/>
+            </jpa:basic>
+            <jpa:basic name="largura" attribute-type="double" visibile="true" id="_1424815101419132">
+                <jpa:column name="pro_largura"/>
+            </jpa:basic>
+            <jpa:basic name="comprimento" attribute-type="double" visibile="true" id="_1424815101419133">
+                <jpa:column name="pro_comprimento"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fornecedor" target-entity="Pessoa" primaryKey="false" connected-entity-id="_1424815101404104" visibile="true" id="_1424815101419119">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_PRO_FORNECEDOR")</annotation>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="marca" target-entity="Marca" primaryKey="false" connected-entity-id="_142481510132696" visibile="true" id="_1424815101419120">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_PRO_MARCA")</annotation>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="aplicacao" target-entity="Aplicacao" collection-type="java.util.List" connected-entity-id="_14248151010147" visibile="true" id="_1424815101419123">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_PRO_APLICACAO")</annotation>
+            </jpa:one-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ProdutoMarca" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101450134">
+        <jpa:table name="tbl_produto_marca"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101450135">
+                <jpa:column name="pma_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="pma_id"/>
+            </jpa:id>
+            <jpa:basic name="nomeMarca" attribute-type="java.lang.String" visibile="true" id="_1424815101450136">
+                <jpa:column name="pma_nome_marca" nullable="false" length="60"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Unidade" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101482137">
+        <jpa:table name="tbl_unidade"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101482138">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="sigla" attribute-type="java.lang.String" visibile="true" id="_1424815101482139">
+                <annotation>@org.hibernate.validator.constraints.NotBlank</annotation>
+                <annotation>@org.hibernate.validator.constraints.Length(max=5, min=2)</annotation>
+                <jpa:column name="uni_sigla" unique="true" nullable="false" length="5"/>
+            </jpa:basic>
+            <jpa:basic name="descricao" attribute-type="java.lang.String" visibile="true" id="_1424815101482140">
+                <annotation>@org.hibernate.validator.constraints.NotBlank</annotation>
+                <jpa:column name="uni_descricao" unique="true" nullable="false" length="20"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Usuario" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101497141">
+        <jpa:table name="tbl_usuario"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101497142">
+                <jpa:column name="usu_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="usu_id"/>
+            </jpa:id>
+            <jpa:basic name="nome" attribute-type="java.lang.String" visibile="true" id="_1424815101497143">
+                <jpa:column name="usu_nome" nullable="false" length="80"/>
+            </jpa:basic>
+            <jpa:basic name="login" attribute-type="java.lang.String" visibile="true" id="_1424815101497144">
+                <jpa:column name="usu_login" nullable="false" length="90"/>
+            </jpa:basic>
+            <jpa:basic name="senha" attribute-type="java.lang.String" visibile="true" id="_1424815101497145">
+                <jpa:column name="usu_senha" nullable="false" length="90"/>
+            </jpa:basic>
+            <jpa:basic name="dataCadastro" attribute-type="java.util.Date" visibile="true" id="_1424815101497146">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dataUltimoAcesso" attribute-type="java.util.Date" visibile="true" id="_1424815101497147">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="statusUsuario" attribute-type="com.jms.dacmotos.enums.StatusUsuario" visibile="true" id="_1424815101497148">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:one-to-many name="acessos" target-entity="UsuarioAcesso" collection-type="java.util.List" connected-entity-id="_1424815101528150" visibile="true" id="_1424815101497149"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="UsuarioAcesso" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101528150">
+        <jpa:table name="tbl_usuario_acesso"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101528151">
+                <jpa:column name="uac_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="uac_id"/>
+            </jpa:id>
+            <jpa:basic name="descricao" attribute-type="java.lang.String" visibile="true" id="_1424815101528152">
+                <jpa:column name="uac_descricao" unique="true" updatable="true" length="20"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Veiculo" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101560153">
+        <jpa:table name="tbl_veiculo"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101560154">
+                <jpa:column name="vei_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="vei_id"/>
+            </jpa:id>
+            <jpa:basic name="placa" attribute-type="java.lang.String" visibile="true" id="_1424815101560155">
+                <jpa:column name="vei_placa" unique="true" nullable="false" length="8"/>
+            </jpa:basic>
+            <jpa:basic name="anoFabricacao" attribute-type="int" visibile="true" id="_1424815101560156">
+                <jpa:column name="vei_ano_fabricacao"/>
+            </jpa:basic>
+            <jpa:basic name="anoModelo" attribute-type="int" visibile="true" id="_1424815101560157">
+                <jpa:column name="vei_ano_modelo"/>
+            </jpa:basic>
+            <jpa:basic name="renavam" attribute-type="java.lang.String" visibile="true" id="_1424815101560158">
+                <jpa:column name="vei_renavam" nullable="false" length="12"/>
+            </jpa:basic>
+            <jpa:basic name="tipoCombustivel" attribute-type="com.jms.dacmotos.enums.TipoCombustivel" visibile="true" id="_1424815101560159">
+                <jpa:column name="vei_tipo_combustivel"/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-one name="veiculoCor" target-entity="VeiculoCor" primaryKey="false" connected-entity-id="_1424815101592161" visibile="true" id="_1424815101560160">
+                <annotation>@org.hibernate.annotations.ForeignKey(name="FK_VEICULO_COR")</annotation>
+                <jpa:cascade>
+                    <jpa:cascade-merge/>
+                </jpa:cascade>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="VeiculoCor" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1424815101592161">
+        <jpa:table name="tbl_veiculo_cor"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Long" visibile="true" id="_1424815101592162">
+                <jpa:column name="vco_id"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="vco_id"/>
+            </jpa:id>
+            <jpa:basic name="descricaoCor" attribute-type="java.lang.String" visibile="true" id="_1424815101592163">
+                <annotation>@org.hibernate.validator.constraints.NotBlank</annotation>
+                <jpa:column name="vco_descricao_cor" unique="true" nullable="false" length="50"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14248151009202">
+        <plane elementRef="_14248151009041" id="_14248151009203_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>

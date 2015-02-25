@@ -14,34 +14,119 @@
             </div>
 
             <p:dialog class="frm-medio" header="DAC MOTOS" visible="true" style="overflow: hidden">
-                <p:wizard showNavBar="true" showStepStatus="true" style="height: 600px" >
-                    <p:tab title="Dados Cadastrais">
-                        <h:panelGrid columns="1" style="margin-top: 20px">
-                            <p:outputLabel value="Nome" for="nome"/>
-                            <p:inputText id="nome" size="60" placeholder="INFORME O NOME"/>
+                <p:wizard  style="height: 600px"  >
+                    <p:tab title="Dados Cadastrais"  >
+                        <p:panel>
+                            <h:panelGrid columns="2" style="margin-top: 20px" class="full-width">
+                                <p:fieldset legend="Nome / Razão Social">
+                                    <p:inputText id="nome" size="60" placeholder="INFORME O NOME" value="#{beanPessoa.pessoa.nome}"/>
 
-                            <p:separator/>
-                            <p:fieldset legend="Tipo Pessoa">
-                                <p:selectOneRadio id="tipoPessoa">
-                                    <f:selectItem itemLabel="Fisica"/>
-                                    <f:selectItem itemLabel="Jurídica"/>
-                                </p:selectOneRadio>
+                                </p:fieldset>
+
+
+
+
+                                <p:fieldset legend="Tipo Pessoa">
+                                    <p:selectOneRadio id="tipoPessoa" >
+                                        <f:selectItems value="#{beanPessoa.tipos()}" var="tipo" itemLabel="#{tipo}" itemValue="#{tipo}"/>
+                                    </p:selectOneRadio>
+                                </p:fieldset>
+
+
+
+                            </h:panelGrid>
+
+                            <p:fieldset legend="Dados Cadastrais" >
+                                <h:panelGrid columns="4" class="full-width">                                
+                                    <p:outputLabel value="CNPJ" for="cnpj"/>
+                                    <p:outputLabel value="IE" for="ie"/>
+                                    <p:outputLabel value="CPF" for="cpf"/>
+                                    <p:outputLabel value="RG" for="rg"/>
+
+                                    <p:inputMask mask="99.999.999/9999-99" id="cnpj" value="#{beanPessoa.pessoa.cnpj}"/>
+                                    <p:inputText  id="ie" value="#{beanPessoa.pessoa.ie}"/>
+                                    <p:inputMask mask="999.999.999.99" id="cpf" value="#{beanPessoa.pessoa.cpf}"/>
+                                    <p:inputText id="rg" value="#{beanPessoa.pessoa.rg}"/>
+
+
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" class="full-width">
+                                    <p:outputLabel value="Data Nascimento" />
+                                    <p:outputLabel value="Email" />
+
+                                    <p:calendar label="Data Nascimento" style="width: 10px" value="#{beanPessoa.pessoa.dataNascimento}"/>
+                                    <p:inputText size="65" value="#{beanPessoa.pessoa.email}" />
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="4" class="full-width">
+                                    <h:outputLabel value="Telefone Res."/>
+                                    <h:outputLabel value="Telefone Cel."/>
+                                    <h:outputLabel value="Telefone Com."/>
+                                    <h:outputLabel value="Telefone Rec."/>
+
+                                    <p:inputMask mask="(99) 9999-9999" value="#{beanPessoa.pessoa.telefoneResidencial}"/>
+                                    <p:inputMask mask="(99) ?9.9999-9999" value="#{beanPessoa.pessoa.telefoneCelular}"/>
+                                    <p:inputMask mask="(99) 9999-9999" value="#{beanPessoa.pessoa.telefoneComercial}"/>
+                                    <p:inputMask mask="(99) 9999-9999" value="#{beanPessoa.pessoa.telefoneRecado}"/>
+
+                                </h:panelGrid>
+
                             </p:fieldset>
-                            <p:separator/>
+                        </p:panel>
 
-                        </h:panelGrid>
 
                     </p:tab>
 
                     <p:tab title="Endereço">
+                        <p:panel>
+
+                            <p:fieldset legend="CEP">
+                                <h:panelGrid columns="2">
+                                    <p:inputMask mask="99.999-999" value="#{beanPessoa.cepString}"/>
+                                    <p:commandButton value="Buscar Online" icon="ui-icon-refresh"  update="@form" action="#{beanPessoa.pesquisar()}"/>
+
+                                </h:panelGrid>
+
+                            </p:fieldset>
+
+                            <p:fieldset legend="Endereço">
+                                <h:panelGrid columns="1">
+                                    <p:outputLabel value="Logradouro" />
+                                    <p:inputText size="60" value="#{beanPessoa.endereco.logradouro}"/>
+                                    <p:outputLabel value="Numero"/>
+                                    <p:inputText size="5" value="#{beanPessoa.endereco.numero}"/>
+                                    <p:outputLabel  value="Bairro" />
+                                    <p:inputText size="40" value="#{beanPessoa.endereco.bairro}" />
+                                    <p:outputLabel value="Cidade" />
+                                    <p:inputText value="#{beanPessoa.endereco.cidade}"/> 
+                                    <p:outputLabel value="Estado" />
+                                    <p:inputText value="#{beanPessoa.endereco.uf}"/>
+
+
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </p:panel>
 
                     </p:tab>
 
+
+
                     <p:tab title="Observações">
-                        <p:inputTextarea style="width: 100%"/>
+                        <p:panel>
+                            <p:inputTextarea style="width: 100%" value="#{beanPessoa.pessoa.observacao}"/>
+                            <p:toolbar>
+                                <f:facet name="left">
+                                    <p:commandButton value="Salvar" action="#{beanPessoa.save()}"/>
+                                </f:facet>
+                            </p:toolbar>
+                        </p:panel>
                     </p:tab>
 
                     <p:tab title="Relatório">
+                        <p:panel>
+
+                        </p:panel>
 
                     </p:tab>
                 </p:wizard>

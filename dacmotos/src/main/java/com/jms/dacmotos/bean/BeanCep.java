@@ -48,6 +48,21 @@ public class BeanCep implements Serializable{
 
     }
     
+    public Endereco getEnderecoByCep(String s){
+        try {
+            buscarEndereco(s);
+        endereco.setLogradouro(getEndereco());
+        endereco.setBairro(getBairro());
+        endereco.setCidade(getCidade());
+        endereco.setUf(getUf());
+        endereco.setCep(getCep());
+        return endereco;
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
     
     public void pesquisar(){
         buscarEndereco(valor);
@@ -55,6 +70,7 @@ public class BeanCep implements Serializable{
         endereco.setBairro(getBairro());
         endereco.setCidade(getCidade());
         endereco.setUf(getUf());
+        endereco.setCep(getCep());
         System.err.println("Pesquisa de cep finalizada!");
     }
 
