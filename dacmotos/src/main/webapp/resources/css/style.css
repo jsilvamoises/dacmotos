@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 @import "../../resources/css/icon.css";
 @import "../../resources/css/backgound.css";
+
 *{padding: 0; margin: 0; font-size: 14px}
 
 input[type="text"]{
