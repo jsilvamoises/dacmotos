@@ -11,4 +11,5 @@ package com.jms.dacmotos.enums;
  */
 public enum TipoCombustivel {
     GASOLINA, ETANOL, DIESEL,ELETRICO
+    
 }

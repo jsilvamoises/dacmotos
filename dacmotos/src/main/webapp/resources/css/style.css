@@ -9,6 +9,7 @@ and open the template in the editor.
 */
 @import "../../resources/css/icon.css";
 @import "../../resources/css/backgound.css";
+@import "../../resources/css/images.css";
 
 *{padding: 0; margin: 0; font-size: 14px}
 
@@ -45,6 +46,10 @@ h1{
 .frm-medio{
     height: 600px!important;
     width: 1050px!important;
+}
+.frm-intermediario{
+    height:550px !important; 
+    width:700px !important;
 }
 .frm-big{
     height: 100%!important;
