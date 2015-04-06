@@ -28,7 +28,7 @@ public class AnoAplicacao implements Serializable{
     @Column(name = "aap_id")
     private Long id;
     
-    @Column(name = "aap_ano_aplicacao")
+    @Column(name = "aap_ano_aplicacao", unique = true)
     private String anoAplicacao;
 
     public AnoAplicacao() {

@@ -16,6 +16,6 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class BeanBackground {
     public String getBackground(){
-        return "galaxia";
+        return "ducati";
     }
 }
