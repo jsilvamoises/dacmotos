@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        <style>
+            #lblDescricaoProduto{color: red!important; font-size: 2em}
+            #tipoVenda{margin-left: 10px}
+            .fonte-blue{color: royalblue; font-size: 2em}
+            .fonte-verde{color: darkgreen; font-size: 2em}
+        </style>
+
+        <div id="area_venda">
+            <div id="area_venda_esquerda">
+                <h:form>
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="Venda / Orçamento" style="font-size: 2em;color: red"/>
+                        </f:facet>
+                        
+                        <f:facet name="right">
+                            <p:outputLabel value="Orçamento Nº 123456" style="font-size: 2em;color: red"/>
+                        </f:facet>
+                    </p:toolbar>
+
+                    <p:fieldset legend="Cliente">
+
+                        <h:panelGrid columns="1" width="100%">
+                            <p:outputLabel value="CPF / CNPJ / Nome / Razão Social"/>
+
+                            <p:autoComplete size="60"/>
+                        </h:panelGrid>  
+                    </p:fieldset>
+
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="Itens do Pedido" style="font-size: 2em;color: red"/>
+                        </f:facet>
+                    </p:toolbar>
+                    <!--TABELA DE ITENS-->
+                    <p:dataTable value="#{beanTexte.lista}" var="l"  scrollHeight="120" scrollable="true">
+                        <p:column headerText="Seq.">
+                            <h:outputText value="#{l}"/>
+                        </p:column>
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value="1234#{l}"/>
+                        </p:column>
+
+                        <p:column headerText="Descrição">
+                            <h:outputText/>
+                        </p:column>
+
+                        <p:column headerText="Quantidade">
+                            <h:outputText/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="Serviços" style="font-size: 2em;color: red"/>
+                        </f:facet>
+                    </p:toolbar>
+
+                    <!--TABELA DE SERVIÇOS-->
+
+                    <p:dataTable value="#{beanTexte.lista}" var="l" scrollHeight="120" scrollable="true">
+                        <p:column headerText="Seq.">
+                            <h:outputText value="#{l}"/>
+                        </p:column>
+
+                        <p:column headerText="Codigo">
+                            <h:outputText value="1234#{l}"/>
+                        </p:column>
+
+                        <p:column headerText="Descrição">
+                            <h:outputText/>
+                        </p:column>
+
+                        <p:column headerText="Quantidade">
+                            <h:outputText/>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:outputLabel value="Inclusão de Itens" style="font-size: 2em;color: blue"/>
+                            
+                            <p:selectOneRadio style="margin-left: 10px;color: #006666; font: bold;" tabindex="3" >
+                                <f:selectItems value="#{beanVenda.tipoVenda}" var="tv" itemValue="#{tv}" itemLabel="#{tv.getTipoVenda(tipoVenda)}"  id="tipoVenda"/>
+                            </p:selectOneRadio>
+                        </f:facet>
+                    </p:toolbar>
+
+                    <p:fieldset >
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Quantidade"/>
+                            <p:outputLabel value="Codigo"/>
+
+                            <p:inputText value="1" size="10"/>
+                            <p:inputText size="40"/>  
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Descrição"/>
+
+                            <p:autoComplete size="60"/>
+                        </h:panelGrid>
+
+                    </p:fieldset>
+                    
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton value="Buscar Orcamento" icon="ui-icon-plus"/>
+                            <p:commandButton value="Salvar Orçamento" icon="ui-icon-disk"/>
+                            <p:commandButton value="Excluir Orcamento" icon="ui-icon-trash"/>
+                        </f:facet>
+                        
+                        <f:facet name="right">
+                            <p:commandButton value="Processar / Reservar Produtos" icon="ui-icon-gear"/>
+                            <p:commandButton value="Finalizar / Faturar" icon="ui-icon-circle-check"/>
+                        </f:facet>
+                    </p:toolbar>
+
+                </h:form>
+            </div>
+            <div id="area_venda_direita">
+
+                <p:panelGrid columns="1" style="width: 100%">
+                    <h:outputLabel value="Vendedor" />
+                    <h:outputLabel value="MOISES JUVENAL DA SILVA" class="fonte-verde"/>
+
+                    <p:graphicImage library="images/produtos" name="vela_teste.gif" style="margin-top: 10px;" width="100%" />
+
+                    <h:outputLabel value="Produto" id="lblProduto"/>
+                    <h:outputLabel value="VELLA APOLINARIO MOD. HJGKE" id="lblDescricaoProduto"/>                    
+
+                </p:panelGrid>
+
+                <p:panelGrid columns="2" style="width: 100%">
+                    <h:outputLabel value="Quantidade"/>
+                    <h:outputLabel value="Preço Unitário"/>
+
+                    <h:outputLabel value="1" class="fonte-blue"/>
+                    <h:outputLabel value="R$ 159,30" class="fonte-blue"/>
+                </p:panelGrid>
+
+                <p:panelGrid columns="2" style="width: 100%">                   
+                    <h:outputLabel value="Valor do Serviço"/>
+                    <h:outputLabel value="Sub-total"/>
+
+                    <h:outputLabel value="R$ 125,02" class="fonte-blue"/>
+                    <h:outputLabel value="R$ 125,02" class="fonte-blue"/>
+                </p:panelGrid>
+
+
+
+                <p:panelGrid columns="1" style="width: 100%">                   
+                    <h:outputLabel value="Desconto"/>
+                    <h:outputLabel value="R$ 125,02" class="fonte-blue"/>
+                </p:panelGrid>
+
+                <p:panelGrid columns="1" style="width: 100%">                   
+                    <h:outputLabel value="Total a pagar"/>
+                    <h:outputLabel value="R$ 125,02" class="fonte-verde"/>
+                </p:panelGrid>
+
+
+
+
+
+            </div>
+        </div>
+
+    </ui:define>
+
+</ui:composition>

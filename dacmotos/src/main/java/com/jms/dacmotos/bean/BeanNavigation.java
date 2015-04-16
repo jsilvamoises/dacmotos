@@ -24,6 +24,11 @@ public class BeanNavigation {
     private static final String GO_MODELO = URL.concat("veiculomodelo".concat(EXT));
     private static final String GO_PESSOA = URL.concat("pessoa".concat(EXT));
     private static final String GO_VEICULO = URL.concat("veiculo".concat(EXT));
+    private static final String GO_VENDA_PRODUTO_SERVICO = URL.concat("vendaprodutoservico".concat(EXT));
+
+    public  String getGO_VENDA_PRODUTO_SERVICO() {
+        return GO_VENDA_PRODUTO_SERVICO;
+    }
 
     public String getGO_VEICULO() {
         return GO_VEICULO;
