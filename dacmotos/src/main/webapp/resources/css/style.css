@@ -66,3 +66,4 @@ h1{
     height: 100%!important;
     width: 100%!important;
 }
+.field-set-border{border: #D20005 solid 1px !important;  width: 97.5% !important;margin-top: 5px }
