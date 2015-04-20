@@ -8,51 +8,62 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form >
-            <div class="#{beanBackground.background}"/>
-            <p:dialog header="Cadastro de Veículos"  closable="true" visible="true" height="550" width="700" resizable="false">
-                <p:graphicImage library="images/images" name="vehicle64.png"/>
+
+
+        <div id="conteiner-default">
+            <h:form >
+
+
+
+                <h1>Veículo</h1>
+
+
+
                 <h:panelGrid columns="1" style="width: 100%">
 
+                    <p:fieldset>
 
-                    
-                    <h:panelGrid columns="1">                   
-                        <p:outputLabel value="ID"/>
-                        <p:inputText size="10"/>                
-                    </h:panelGrid>
 
-                    <h:panelGrid columns="3">
-                        <p:outputLabel value="Placa"/>
-                        <p:outputLabel value="Ano Fabricação"/>
-                        <p:outputLabel value="Ano Modelo"/>
 
-                        <p:inputMask mask="aaa-9999"/>
-                        <p:inputMask mask="9999" size="10"/>
-                        <p:inputMask mask="9999" size="17"/>                    
-                    </h:panelGrid>
-
-                    <h:panelGrid columns="3">
-                        <p:outputLabel value="Renavam"/>
-                        <p:outputLabel value="Tipo Combustivel"/>
-                        <p:outputLabel value="Cor do Veículo"/>
-
-                        <p:inputText/>
-                        <p:selectOneMenu filter="true">
-                            <f:selectItem itemLabel="Selecione!"/>
-                            <f:selectItems value="#{beanVeiculo.tipos}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
-                        </p:selectOneMenu>
-
-                        <h:panelGrid columns="3">
-                            <p:selectOneMenu filter="true" >
-                                <f:selectItem itemLabel="Selecione!"/>
-                                <f:selectItems value="#{beanVeiculo.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
-                            </p:selectOneMenu>
-                            
-                            <p:commandButton icon="ui-icon-plus"/>
-                            <p:commandButton icon="ui-icon-refresh"/>
+                        <h:panelGrid columns="1">                   
+                            <p:outputLabel value="ID"/>
+                            <p:inputText size="10"/>                
                         </h:panelGrid>
 
-                    </h:panelGrid>                
+                        <h:panelGrid columns="3">
+                            <p:outputLabel value="Placa"/>
+                            <p:outputLabel value="Ano Fabricação"/>
+                            <p:outputLabel value="Ano Modelo"/>
+
+                            <p:inputMask mask="aaa-9999"/>
+                            <p:inputMask mask="9999" size="10"/>
+                            <p:inputMask mask="9999" size="17"/>                    
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+                            <p:outputLabel value="Renavam"/>
+                            <p:outputLabel value="Tipo Combustivel"/>
+                            <p:outputLabel value="Cor do Veículo"/>
+
+                            <p:inputText/>
+                            <p:selectOneMenu filter="true">
+                                <f:selectItem itemLabel="Selecione!"/>
+                                <f:selectItems value="#{beanVeiculo.tipos}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
+                            </p:selectOneMenu>
+
+                            <h:panelGrid columns="3">
+                                <p:selectOneMenu filter="true" >
+                                    <f:selectItem itemLabel="Selecione!"/>
+                                    <f:selectItems value="#{beanVeiculo.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
+                                </p:selectOneMenu>
+
+                                <p:commandButton icon="ui-icon-plus"/>
+                                <p:commandButton icon="ui-icon-refresh"/>
+                            </h:panelGrid>
+
+                        </h:panelGrid>  
+
+                    </p:fieldset>
 
 
                     <p:toolbar>
@@ -62,28 +73,29 @@
                             <p:commandButton value="Excluir"/>
                         </f:facet>
                     </p:toolbar>
-                    
+
                     <p:dataTable >
                         <p:column headerText="Código">
-                            
+
                         </p:column>
-                        
+
                         <p:column headerText="Placa">
-                            
+
                         </p:column>
-                        
+
                         <p:column headerText="Renavam">
-                            
+
                         </p:column>
-                        
+
                         <p:column headerText="Proprietário">
-                            
+
                         </p:column>
                     </p:dataTable>
                 </h:panelGrid>
 
-            </p:dialog>
-        </h:form>
+
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

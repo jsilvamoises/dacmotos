@@ -3,16 +3,87 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./template/template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        
-        <h:form>
-            <p:dialog>
-                
-            </p:dialog>
-        </h:form>
-        
+        <div id="conteiner-default">
+            <h1>Produto</h1>
+            <h:form>
+                <!--FORNECEDOR-->
+                <p:fieldset legend="Fornecedor">
+                    <p:panelGrid columns="1" style="width: 100%">
+                        <p:outputLabel value="Fornecedor" />
+                        <h:panelGroup>
+                            <p:autoComplete size="100"/>
+                            <p:commandButton icon="icon-plus"/>
+                            <p:commandButton icon="icon-refresh"/>
+                        </h:panelGroup>
+                    </p:panelGrid>
+                </p:fieldset>
+
+                <!--DADOS DO PRODUTO-->
+
+                <p:fieldset legend="Dados do Produto">
+                    <p:outputLabel value="Codigo do Produto "><h1>123456</h1></p:outputLabel>
+                    <!--DADOS DO PRODUTO-->
+                    <p:panelGrid columns="3" style="width: 100%">
+                        <p:outputLabel for="codigo-barra" value="Codigo Barra"/>
+                        <p:outputLabel for="codigo-fornecedor" value="Codigo Fornededor"/>
+                        <p:outputLabel for="codigo-montadora" value="Codigo Montadora"/>
+                        
+                        <p:inputText id="codigo-barra" size="30"/>
+                        <p:inputText id="codigo-fornecedor" size="30"/>
+                        <p:inputText id="codigo-montadora" size="30"/>
+                    </p:panelGrid>
+                    
+                    <p:panelGrid columns="2" style="width: 100%; margin-top: 5px">
+                        <p:outputLabel for="descricao" value="Descrição"/>
+                        <p:outputLabel for="modelo" value="Modelo"/>
+                        
+                        <p:inputText id="descricao" size="80"/>
+                        <p:inputText id="modelo" size="30"/>
+                    </p:panelGrid>
+                    
+                    <!--INFORMAÇAO DE ESTOQUE-->
+                    <p:panelGrid columns="4" style="width: 100%;margin-top: 5px">
+                        <p:outputLabel for="estoque-atual" value="Est. atual"/>
+                        <p:outputLabel for="estoque-maximo" value="Est. Max"/>
+                        <p:outputLabel for="estoque-minimo" value="Est. Min"/>
+                        <p:outputLabel for="unidade" value="Unidade"/>
+                        
+                        
+                        <p:inputText id="estoque-atual" />
+                        <p:inputText id="estoque-maximo" />
+                        <p:inputText id="estoque-minimo" />
+                        <p:selectOneMenu id="unidade" >
+                            <f:selectItem itemLabel="Selecione"/>
+                            <f:selectItems value="#{beanUnidade.unidades}" var="und" itemLabel="#{und.descricao}" itemValue="#{und}"/>
+                        </p:selectOneMenu>                       
+                    </p:panelGrid>
+                    
+                    <!--CUBAGEM E PESO-->
+                    <p:panelGrid columns="4" style="width: 100%;margin-top: 5px">
+                        <p:outputLabel for="estoque-atual" value="Est. atual"/>
+                        <p:outputLabel for="estoque-maximo" value="Est. Max"/>
+                        <p:outputLabel for="estoque-minimo" value="Est. Min"/>
+                        <p:outputLabel for="unidade" value="Unidade"/>
+                        
+                        
+                        <p:inputText id="estoque-atual" />
+                        <p:inputText id="estoque-maximo" />
+                        <p:inputText id="estoque-minimo" />
+                        <p:selectOneMenu id="unidade" >
+                            <f:selectItem itemLabel="Selecione"/>
+                            <f:selectItems value="#{beanUnidade.unidades}" var="und" itemLabel="#{und.descricao}" itemValue="#{und}"/>
+                        </p:selectOneMenu>                       
+                    </p:panelGrid>
+
+                </p:fieldset>
+
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

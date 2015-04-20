@@ -12,37 +12,40 @@
 
 
     <ui:define name="content">
-        <div class="#{beanBackground.background}"></div>
-        <h:form id="frm-cor">
+        <div id="conteiner-default">
+            <h:form id="frm-cor">
 
 
-            <p:dialog header="DAC MOTOS" visible="true" height="550" width="700" style="padding: 0; margin: 0">
+
                 <h1>Modelo</h1>
-                <p:separator style="padding: 10px"/>
-                <h:panelGrid columns="1">
-                    <p:outputLabel value="Código"/>
-                    <p:inputText value="#{beanModelo.modelo.id}"  size="10" disabled="true"/>
-                    <h:panelGrid columns="2">
-                        <p:outputLabel value="Modelo" for="nome"/>
-                        <p:outputLabel value="Marca" for="mar"/>
-                        <p:inputText value="#{beanModelo.modelo.descricao}"  id="nome" size="50" placeholder="Insira o modelo do veículo"/>
-                        <h:panelGrid columns="3">
-                        <p:selectOneMenu   id="mar" value="#{beanModelo.marca}"  filter="true" widgetVar="mc" >
-                            <f:selectItem itemLabel="Selecione"/>
-                            <f:selectItems id="listagem" value="#{beanMarca.marcas}" itemLabel="#{marca.nome}" var="marca" itemValue="#{marca}"/> 
-                        </p:selectOneMenu>                            
-                        
-                            <p:button  icon="ui-icon-plus" outcome="/restrict/veiculomarca.xhtml" target="popup"/>
-                            <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanModelo.refresh()}" update="@form">
-                               
-                            </p:commandButton>
+                <p:fieldset>
+
+
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Código"/>
+                        <p:inputText value="#{beanModelo.modelo.id}"  size="10" disabled="true"/>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Modelo" for="nome"/>
+                            <p:outputLabel value="Marca" for="mar"/>
+                            <p:inputText value="#{beanModelo.modelo.descricao}"  id="nome" size="50" placeholder="Insira o modelo do veículo"/>
+                            <h:panelGrid columns="3">
+                                <p:selectOneMenu   id="mar" value="#{beanModelo.marca}"  filter="true" widgetVar="mc" >
+                                    <f:selectItem itemLabel="Selecione"/>
+                                    <f:selectItems id="listagem" value="#{beanMarca.marcas}" itemLabel="#{marca.nome}" var="marca" itemValue="#{marca}"/> 
+                                </p:selectOneMenu>                            
+
+                                <p:button  icon="ui-icon-plus" outcome="/restrict/veiculomarca.xhtml" target="popup"/>
+                                <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanModelo.refresh()}" update="@form">
+
+                                </p:commandButton>
+                            </h:panelGrid>
+
+
                         </h:panelGrid>
 
 
                     </h:panelGrid>
-
-
-                </h:panelGrid>
+                </p:fieldset>
                 <!--BARRA DE FERRAMENTAS-->
                 <p:toolbar style="padding:  10px; margin-top: 10px; margin-bottom: 10px">
                     <f:facet name="left">
@@ -75,16 +78,17 @@
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
-            </p:dialog>
 
 
-            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanModelo.modeloSelecionda.descricao}" widgetVar="confirmacaoExclusao">
-                <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
-                        return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanModelo.delete()}" update="tabela, nome"/>
 
-            </p:confirmDialog>
-        </h:form>
+                <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanModelo.modeloSelecionda.descricao}" widgetVar="confirmacaoExclusao">
+                    <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
+                            return false;" />
+                    <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanModelo.delete()}" update="tabela, nome"/>
+
+                </p:confirmDialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

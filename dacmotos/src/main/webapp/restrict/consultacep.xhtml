@@ -7,32 +7,34 @@
                 xmlns:="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
-        <div class="#{beanBackground.background}"></div>
-        <h:form>
-            <p:dialog visible="true" height="500" width="600">
-                <p:fieldset legend="Informe o cep">
-                    <p:inputMask mask="99-999-999" value="#{beanCep.valor}"/>
-                    <p:commandButton value=" Buscar" action="#{beanCep.pesquisar()}" update="@form"/>
-                </p:fieldset>
+        <div id="conteiner-default">
+            <h1>Consulta CEP</h1>
+            <h:form>
                 
-                <p:fieldset legend="Endereço">
-                    <h:panelGrid columns="1">
-                        <p:outputLabel value="Logradoura" />
-                        <p:inputText value="#{beanCep.objetoEndereco.logradouro}" size="50"/>
-                        
-                        <p:outputLabel value="Bairro"/>
-                        <p:inputText value="#{beanCep.objetoEndereco.bairro}" size="40"/>
-                        
-                        <p:outputLabel value="Cidade"/>
-                        <p:inputText value="#{beanCep.objetoEndereco.cidade}" size="60"/>
-                        
-                        <p:outputLabel value="Estado"/>
-                        <p:inputText value="#{beanCep.objetoEndereco.uf}" size="20"/>
-                        
-                    </h:panelGrid>
-                </p:fieldset>
-            </p:dialog>
-        </h:form>
+                    <p:fieldset legend="Informe o cep">
+                        <p:inputMask mask="99-999-999" value="#{beanCep.valor}"/>
+                        <p:commandButton value=" Buscar" action="#{beanCep.pesquisar()}" update="@form"/>
+                    </p:fieldset>
+
+                    <p:fieldset legend="Endereço">
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Logradoura" />
+                            <p:inputText value="#{beanCep.objetoEndereco.logradouro}" size="50"/>
+
+                            <p:outputLabel value="Bairro"/>
+                            <p:inputText value="#{beanCep.objetoEndereco.bairro}" size="40"/>
+
+                            <p:outputLabel value="Cidade"/>
+                            <p:inputText value="#{beanCep.objetoEndereco.cidade}" size="60"/>
+
+                            <p:outputLabel value="Estado"/>
+                            <p:inputText value="#{beanCep.objetoEndereco.uf}" size="20"/>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+               
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

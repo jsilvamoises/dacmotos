@@ -9,20 +9,21 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="content">
-        <div class="#{beanBackground.background}"></div>
-        <h:form id="frm-cor">
+        <div id="conteiner-default">
+            <h:form id="frm-cor">
 
 
-            <p:dialog header="DAC MOTOS" visible="true" height="550" width="700" style="padding: 0; margin: 0">
+
                 <h1>Ano Aplicação</h1>
-                <p:separator  style="padding: 10px"/>
-                <h:panelGrid columns="1">
-                    <p:outputLabel value="Código"/>
-                    <p:inputText value="#{beanAnoAplicacao.ano.id}"  size="10" disabled="true"/>
+                <p:fieldset>
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Código"/>
+                        <p:inputText value="#{beanAnoAplicacao.ano.id}"  size="10" disabled="true"/>
 
-                    <p:outputLabel value="Nome" for="nome"/>
-                    <p:inputText value="#{beanAnoAplicacao.ano.anoAplicacao}"  id="nome" size="50" placeholder="Insira o ano de referência ex 2009 ou 2009 a 2010"/>                
-                </h:panelGrid>
+                        <p:outputLabel value="Nome" for="nome"/>
+                        <p:inputText value="#{beanAnoAplicacao.ano.anoAplicacao}"  id="nome" size="50" placeholder="Insira o ano de referência ex 2009 ou 2009 a 2010"/>                
+                    </h:panelGrid>
+                </p:fieldset>
                 <!--BARRA DE FERRAMENTAS-->
                 <p:toolbar style="padding:  10px; margin-top: 10px; margin-bottom: 10px">
                     <f:facet name="left">
@@ -46,21 +47,23 @@
                         <p:commandButton process="@this" icon="ui-icon-pencil" action="#{beanAnoAplicacao.editar()}" update="@form">
                             <f:setPropertyActionListener target="#{beanAnoAplicacao.anoSelecionado}" value="#{ano}"/>
                         </p:commandButton>
-                        
+
                         <p:commandButton process="@this" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();">
                             <f:setPropertyActionListener target="#{beanAnoAplicacao.anoSelecionado}" value="#{ano}"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
-            </p:dialog>
-            
-            
-            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanAnoAplicacao.anoSelecionado.anoAplicacao}" widgetVar="confirmacaoExclusao">
-                <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanAnoAplicacao.delete()}" update="tabela, nome"/>
 
-            </p:confirmDialog>
-        </h:form>
+
+
+                <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanAnoAplicacao.anoSelecionado.anoAplicacao}" widgetVar="confirmacaoExclusao">
+                    <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
+                            return false;" />
+                    <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanAnoAplicacao.delete()}" update="tabela, nome"/>
+
+                </p:confirmDialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

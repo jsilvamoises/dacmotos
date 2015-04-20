@@ -32,11 +32,15 @@ h1{
 #area_venda_esquerda{background-color: white !important;float: left; width: 68%; min-height: 100%; margin-right:  2%}
 #area_venda_direita{background-color: white!important;float: left; width: 28%; min-height: 100%}
 #container{margin: 150px auto; height: 400px; width:256px }
+#conteudo-orcamento{margin: 0 auto!important}
+#conteiner-default{width: 900px!important; margin: 0 auto}
 #cracha{height: 340px;border: 2px solid #ff7e27; margin-top: 60px; box-shadow: 5px 5px 5px #ff7e27; border-radius: 12px; position: relative}
 #furo{width: 60px;background-color: transparent; height: 15px; margin: 15px auto; border: 2px solid #ff7e27; border-radius: 5px; box-shadow: -1px -1px 2px #ff7e27; }
 #texto-inferior-cracha{position: absolute;font-size: 10px; bottom: 20px; color: #ff7e27; text-align: center; width: 100%; font-weight: bolder}
 #foto-chacha{width: 92px; height: 100px; border: 1px solid #ffffff; margin: 20px ; }
 #home{background-image: url(../..//resources/images/moto-ducati.jpg);width: 1920px;min-height: 795px; opacity: 0.2; position: relative}
+#itens{float: left!important; margin-left: 30px; width: 500px; padding: 20px 20PX!important; margin-left: 10px !important}
+#orcamento{margin-left: 55px;float: left !important; width: 955px!important;  min-height: 100% !important }
 
 .icon-logo{background-image: url(../..//resources/images/logodacMotos50px.png)!important; background-repeat: no-repeat; width: 100px; height: 22px}
 .color-orange{background: #ff7e27!important;height: 5px}
@@ -67,3 +71,5 @@ h1{
     width: 100%!important;
 }
 .field-set-border{border: #D20005 solid 1px !important;  width: 97.5% !important;margin-top: 5px }
+.field-set{ border-radius: 5px 5px 5px 5px !important}
+.link{font-family: sans-serif !important; font-size: 18px !important; color: #D20005 !important}

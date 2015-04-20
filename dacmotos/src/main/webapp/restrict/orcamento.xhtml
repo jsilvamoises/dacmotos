@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <div id="conteudo-orcamento">
+            <div id="orcamento">
+                <h:form>
+
+
+                    <p:toolbar>
+                        <f:facet name="left">
+
+                            <p:commandButton value="Voltar" icon="icon-back"/>
+                            <p:commandButton value="Novo" icon="icon-plus"/>
+                        </f:facet>     
+                    </p:toolbar>
+
+                    <!--CLIENTE-->
+
+                    <p:fieldset legend="Cliente" class="field-set">
+                        <p:panelGrid columns="1" style="width: 100%">
+                            <p:outputLabel value="CPF / CNPJ / Nome"/>
+
+                            <h:panelGrid columns="3" style="width: 100%">
+                                <p:autoComplete size="50"/>
+                                <p:commandButton icon="ui-icon-plus"/>
+                                <p:commandButton icon="ui-icon-refresh"/>
+                            </h:panelGrid>                       
+                        </p:panelGrid>
+                    </p:fieldset>
+
+                    <!--DADOS DO VEICULO-->
+                    <p:fieldset legend="Dados do Véiculo" class="field-set">
+                        <p:panelGrid columns="7" style="width: 100%">
+                            <p:outputLabel value="Buscar Placa" />
+                            <p:outputLabel value="Marca"/>
+                            <p:outputLabel value="Modelo"/>
+                            <p:outputLabel value="Ano Fab."/>
+                            <p:outputLabel value="Ano Mod."/>
+                            <p:outputLabel value="Km Atual"/>
+                            <p:outputLabel value="*"/>
+
+                            <p:autoComplete size="8"/>
+                            <p:inputText size="12"/>
+                            <p:inputText size="12"/>
+                            <p:inputText size="8"/>
+                            <p:inputText size="8"/>
+                            <p:inputText />
+                            <h:panelGroup>
+                                <p:commandButton icon="ui-icon-refresh"/>
+                                <p:commandButton icon="ui-icon-plus"/>
+                            </h:panelGroup>
+
+
+                        </p:panelGrid>                    
+
+                    </p:fieldset>
+
+                    <!--OUTRAS INFORMAÇÕES-->
+                    <p:fieldset legend="Outras Informações" class="field-set">
+                        <p:panelGrid columns="4" style="width: 100%">
+                            <p:outputLabel value="Data de Orçamento" />
+                            <p:outputLabel value="Validade Orçamento"/>
+                            <p:outputLabel value="Data Prevista Entrega"/>
+                            <p:outputLabel value="Obs. Condições do veículo"/>
+
+                            <p:calendar />
+                            <p:calendar />
+                            <p:calendar />
+                            <p:inputTextarea style="width: 100%" scrollHeight="10" autoResize="false" placeholder="Ex. Veículo com laterna dianteira esquerda quebrada." maxlength="255"/>
+
+                        </p:panelGrid>
+                    </p:fieldset>
+
+                    <p:fieldset legend="Produtos e Servíços" class="field-set">
+                        <h:panelGrid columns="3" style="width: 100%">
+                            <p:panelGrid columns="1" style="width: 100%">
+                                <p:selectOneRadio layout="grid" columns="1" value="#{beanVenda.tipoDeOrcamento}" required="true" >
+                                    <f:selectItem itemLabel=". Produto" itemValue="p"  />
+                                    <f:selectItem itemLabel=". Produto + Serviço" itemValue="ps"/>
+                                    <f:selectItem itemLabel=". Serviço" itemValue="p" />
+                                </p:selectOneRadio>
+                                <p:commandButton value="Cadastro Novo Produto" style="width: 100%"/>
+                                <p:commandButton value="Cadastrar Serviço" style="width: 100%"/>
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="1" style="margin-left: 20px; width: 100%" >
+                                <p:outputLabel value="Valor dos Produtos"/>
+                                <p:outputLabel value="RS 59,30" style="height: 80px; font-size: 30pt!important" />
+
+                                <p:outputLabel value="Valor do Serviço"/>
+                                <p:outputLabel value="RS 59,30" style="height: 80px; font-size: 30pt!important" />
+
+                            </p:panelGrid>
+
+                            <p:panelGrid columns="1" style="width: 100%">
+                                <p:outputLabel value="Valor Desconto"/>
+                                <p:outputLabel value="RS 59,30" style="height: 80px; font-size: 30pt!important;color: blue !important" />
+
+                                <p:outputLabel value="Total a Pagar"/>
+                                <p:outputLabel value="RS 59,30" style="height: 80px; font-size: 30pt!important; color: red!important" />
+                            </p:panelGrid>
+
+                        </h:panelGrid>
+                    </p:fieldset>
+
+                    <p:fieldset>
+                        <p:panelGrid columns="4" style="width: 100%">
+                            <p:outputLabel value="Quantidade"/>
+                            <p:outputLabel value="Código"/>
+                            <p:outputLabel value="Descrição"/>
+                            <p:outputLabel value="Valor Unit"/>
+
+
+                            <p:inputText size="5"/>  
+                            <p:autoComplete size="12"/>
+                            <p:inputText size="41"/>  
+                            <p:outputLabel value="RS 56,00"/> 
+
+
+                        </p:panelGrid>
+                        <p:panelGrid columns="3" style="width: 100%">
+                            <p:outputLabel value="Serviço"/>
+                            <p:outputLabel value="Valor"/>
+                            <p:outputLabel value="Ações"/>
+                            <p:autoComplete size="70"/>
+                            <p:outputLabel value="RS 56,00"/>
+                            <h:panelGroup>
+                                <p:commandButton icon="icon-check"/>
+                                <p:commandButton icon="icon-clear"/>
+                            </h:panelGroup>
+                        </p:panelGrid>
+                    </p:fieldset>
+
+
+                </h:form>
+            </div>
+
+            <div id="itens">
+                <h:form id="frmItens">
+                    <p:dataList type="unordered" itemType="none" paginator="true" rows="10" value="#{beanTexte.lista}" style="font-size: 8pt!important; background-color: khaki!important; " var="item">
+                        <f:facet name="header">
+                            ITENS DO PEDIDO / SERVIÇO
+                        </f:facet>
+                        1 - <b>CABO DE VELA SMALTEC</b> | 1 X 25,00 = 25,00 <p:commandButton icon="ui-icon-minus"/><BR/>
+                        1.1 - INSTALAÇÃO R$ -  10,00 Sub-Total 35,00<BR/><BR/>
+                    </p:dataList>
+                </h:form>
+
+            </div>
+
+
+
+
+        </div>
+    </ui:define>
+
+</ui:composition>

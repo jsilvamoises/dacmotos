@@ -5,9 +5,6 @@
  */
 package com.jms.dacmotos.bean;
 
-import com.jms.dacmotos.enums.TipoVenda;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -18,15 +15,23 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class BeanVenda {
-    private final List<TipoVenda> tipoVenda;
+    private String tipoDeOrcamento;
+    
 
     public BeanVenda() {
-        tipoVenda = new ArrayList<>();
+       
     }
 
-    public TipoVenda[] getTipoVenda() {
-        return TipoVenda.values();
+    public String getTipoDeOrcamento() {
+        return tipoDeOrcamento;
     }
+
+    public void setTipoDeOrcamento(String tipoDeOrcamento) {
+        this.tipoDeOrcamento = tipoDeOrcamento;
+    }
+
+    
+    
     
     
 }

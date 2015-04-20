@@ -8,34 +8,40 @@
 
     <ui:define name="content">
         <!--<ui:include src="../restrict/template/home.xhtml"/>-->
-        <div class="ducati">
-            <h1>Ano Aplicação</h1>
+        <div id="conteiner-default">
+            <h1>Unidade</h1>
 
-        </div>
-        <h:form  >
 
-           
-            <p:dialog id="dlg" header="Cadastro de Unidades" hideEffect="explode" showEffect="fade" visible="true" height="500" width="600" resizable="false">
-                
+            <h:form  >
+
+
+
+
                 <!--<p:messages autoUpdate="true"/>-->
-                <p:growl autoUpdate="true"/>
-                <h:panelGrid columns="1" id="grid">
-                    <p:outputLabel value="ID"/>
-                    <p:inputText disabled="true"/>
+                <p:messages autoUpdate="true"/>
 
-                    <p:outputLabel value="Sigla" for="sigla" />
-                    <p:inputText id="sigla" value="#{beanUnidade.unidade.sigla}" size="10" />
+                <p:fieldset>
 
-                    <p:outputLabel value="Descrição" for="descricao"/>
-                    <p:inputText id="descricao" value="#{beanUnidade.unidade.descricao}" size="50" />
-                </h:panelGrid>
-                <p:separator style="margin-top: 10px"/>
+
+                    <h:panelGrid columns="1" id="grid">
+                        <p:outputLabel value="ID"/>
+                        <p:inputText disabled="true"/>
+
+                        <p:outputLabel value="Sigla" for="sigla" />
+                        <p:inputText id="sigla" value="#{beanUnidade.unidade.sigla}" size="10" />
+
+                        <p:outputLabel value="Descrição" for="descricao"/>
+                        <p:inputText id="descricao" value="#{beanUnidade.unidade.descricao}" size="50" />
+                    </h:panelGrid>
+
+                </p:fieldset>
+               
                 <p:toolbar style="margin-top: 10px; margin-bottom: 10px ">
                     <f:facet name="left">
                         <p:commandButton process="@this"  value="Novo" icon="ui-icon-plus"  update="sigla, descricao"/>
                         <p:commandButton  value="Salvar" icon="ui-icon-disk" action="#{beanUnidade.saveOrUpdate()}" update="sigla, descricao, tabela"/>
                         <p:commandButton process="@this" value="Fechar" icon="ui-icon-close" action="/index.xhtml?faces-redirect=true" />
-                        
+
                     </f:facet>
                 </p:toolbar>
 
@@ -44,7 +50,7 @@
                     <p:menuitem  value="Delete"  icon="ui-icon-close" oncomplete="PF('confirmacaoExclusao').show();" />
                 </p:contextMenu>
 
-                <p:dataTable  id="tabela" value="#{beanUnidade.unidades}" var="unidade"  scrollable="true" scrollHeight="150" style="width: 560px" selectionMode="single" selection="#{beanUnidade.unidadeSelecionada}" rowKey="#{unidade.id}"  >
+                <p:dataTable  id="tabela" value="#{beanUnidade.unidades}" var="unidade"  paginator="true"  rows="10" selectionMode="single" selection="#{beanUnidade.unidadeSelecionada}" rowKey="#{unidade.id}"  >
                     <p:column headerText="ID" style="width: 40px" >
                         <h:outputText value="#{unidade.id}"/>
                     </p:column>
@@ -56,10 +62,10 @@
                     <p:column headerText="Descrição" filterBy="#{unidade.descricao}"  >
                         <h:outputText value="#{unidade.descricao}"/>
                     </p:column>
-                    
+
                     <p:column width="80" >
                         <p:commandButton  icon="ui-icon-pencil"  process="@this"  update="@form" action="#{beanUnidade.editar()}">
-                             <f:setPropertyActionListener target="#{beanUnidade.unidadeSelecionada}" value="#{unidade}"/>
+                            <f:setPropertyActionListener target="#{beanUnidade.unidadeSelecionada}" value="#{unidade}"/>
                         </p:commandButton>
                         <p:commandButton partialSubmit="true" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();" process="@this" update="tabela"  >
                             <f:setPropertyActionListener target="#{beanUnidade.unidadeSelecionada}" value="#{unidade}"/>
@@ -69,15 +75,17 @@
 
 
 
-            </p:dialog>
 
-            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
-                <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanUnidade.delete()}" update="tabela, sigla, descricao"/>
 
-            </p:confirmDialog>
+                <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
+                    <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
+                            return false;" />
+                    <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanUnidade.delete()}" update="tabela, sigla, descricao"/>
 
-        </h:form>
+                </p:confirmDialog>
+
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>

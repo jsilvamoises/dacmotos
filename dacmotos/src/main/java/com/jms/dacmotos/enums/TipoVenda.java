@@ -11,10 +11,10 @@ package com.jms.dacmotos.enums;
  */
 public enum TipoVenda {
     
-    VENDA_SIMPLES("VENDA SIMPLES"), VENDA_PRODUTO_SERVICO("VENDA DE PRODUTOS E SERVICOS"), ORÇAMENTO("ORCAMENTO");
-
-    TipoVenda(String venda) {
-
+    VENDA_SIMPLES("APENAS PRODUTO"), VENDA_PRODUTO_SERVICO("PRODUTOS E SERVICO"), ORÇAMENTO("ORCAMENTO");
+    private final String tipoVenda;
+    TipoVenda(String tipoVenda) {
+          this.tipoVenda = tipoVenda;
     }
 
     public  TipoVenda getTipoVenda(String tipoVenda) {

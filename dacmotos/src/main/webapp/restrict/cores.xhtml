@@ -9,20 +9,25 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="content">
-        <div class="#{beanBackground.background}"></div>
-        <h:form id="frm-cor">
+        <div id="conteiner-default">
+            <p:messages autoUpdate="true" closable="true"/>
+            <h:form id="frm-cor">
 
 
-            <p:dialog header="DAC MOTOS" visible="true" height="550" width="700" style="padding: 0; margin: 0">
+
                 <h1>Cores</h1>
-                <p:separator style="padding: 10px"/>
-                <h:panelGrid columns="1">
-                    <p:outputLabel value="Código"/>
-                    <p:inputText value="#{beanVeiculoCor.cor.id}"  size="10" disabled="true"/>
+                <p:fieldset>
 
-                    <p:outputLabel value="Nome" for="nome"/>
-                    <p:inputText value="#{beanVeiculoCor.cor.descricaoCor}"  id="nome" size="50" placeholder="Insira o nome da cor"/>                
-                </h:panelGrid>
+
+                   
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Código"/>
+                        <p:inputText value="#{beanVeiculoCor.cor.id}"  size="10" disabled="true"/>
+
+                        <p:outputLabel value="Nome" for="nome"/>
+                        <p:inputText value="#{beanVeiculoCor.cor.descricaoCor}"  id="nome" size="50" placeholder="Insira o nome da cor"/>                
+                    </h:panelGrid>
+                </p:fieldset>
                 <!--BARRA DE FERRAMENTAS-->
                 <p:toolbar style="padding:  10px; margin-top: 10px; margin-bottom: 10px">
                     <f:facet name="left">
@@ -51,15 +56,17 @@
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
-            </p:dialog>
-            
-            
-            <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
-                <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();return false;" />
-                <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanVeiculoCor.delete()}" update="tabela, nome"/>
 
-            </p:confirmDialog>
-        </h:form>
+
+
+                <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanUnidade.unidadeSelecionada.descricao}" widgetVar="confirmacaoExclusao">
+                    <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
+                            return false;" />
+                    <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanVeiculoCor.delete()}" update="tabela, nome"/>
+
+                </p:confirmDialog>
+            </h:form>
+        </div>
     </ui:define>
 
 </ui:composition>
