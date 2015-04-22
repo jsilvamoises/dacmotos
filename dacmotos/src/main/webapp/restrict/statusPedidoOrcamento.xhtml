@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <div id="conteiner-default">
+            <h1>Status Pedido / Orçamento</h1>
+            <p:messages autoUpdate="true" closable="true"/>
+            <h:form>
+                <p:fieldset>
+                    <p:panelGrid  columns="1" style="width: 100%">
+                        <p:outputLabel value="ID" for="id" rendered="#{beanStatusOrcamentoPedido.statusPedidoOrcamento.id >0}"/>
+                        <p:inputText value="#{beanStatusOrcamentoPedido.statusPedidoOrcamento.id}" id="id" size="12" rendered="#{beanStatusOrcamentoPedido.statusPedidoOrcamento.id >0}" disabled="true"/>
+
+                        <p:outputLabel value="Descrição" for="descricao"/>
+                        <p:inputText value="#{beanStatusOrcamentoPedido.statusPedidoOrcamento.descricao}" id="descricao"  size="120"/>
+
+                    </p:panelGrid>
+                </p:fieldset> 
+
+                <!--BARRA DE FERRAMENTAS-->
+                <p:toolbar style="margin-top: 10px">
+                    <f:facet name="left">
+                        <p:commandButton value="Limpar" action="#{beanStatusOrcamentoPedido.criarObjeto()}" update="@form"/>
+                        <p:commandButton value="Salvar" action="#{beanStatusOrcamentoPedido.save()}" update="@form"/>
+                    </f:facet>
+                </p:toolbar>
+
+                <!--TABELA DE REGISTROS-->
+
+                <p:dataTable id="tabela" value="#{beanStatusOrcamentoPedido.listaStatus}" var="status" paginator="true" rows="10">
+                    <p:column headerText="ID" style="width: 80px">#{status.id}</p:column>
+                    <p:column headerText="DESCRIÇÃO" filterBy="#{status.descricao}">#{status.descricao}</p:column>
+
+                    <p:column headerText="Operação" style="width: 80px">
+                        <p:commandButton icon="ui-icon-pencil" action="#{beanStatusOrcamentoPedido.editar()}" update="@form" process="@this">
+                            <f:setPropertyActionListener target="#{beanStatusOrcamentoPedido.statusPedidoOrcamentoSelecionado}" value="#{status}"/>
+                        </p:commandButton>
+                        <p:commandButton partialSubmit="true" icon="ui-icon-trash" oncomplete="PF('confirmacaoExclusao').show();" process="@this" update="tabela"  >
+                            <f:setPropertyActionListener target="#{beanStatusOrcamentoPedido.statusPedidoOrcamentoSelecionado}" value="#{status}"/>
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+
+                <!--CAIXA DE DIALOGO CONFIRMAÇÃO DE EXCLUSAO-->
+                <p:confirmDialog  global="true" header="Exclusão" message="Realmente deseja excluir? #{beanStatusOrcamentoPedido.statusPedidoOrcamentoSelecionado.descricao}" widgetVar="confirmacaoExclusao">
+                    <p:button  value="Não" onclick="PF('confirmacaoExclusao').hide();
+                            return false;" />
+                    <p:commandButton process="@this" value="Sim" oncomplete="PF('confirmacaoExclusao').hide()" action="#{beanStatusOrcamentoPedido.delete()}" update="tabela, id, descricao"/>
+
+                </p:confirmDialog>
+            </h:form>
+
+        </div>
+    </ui:define>
+
+</ui:composition>

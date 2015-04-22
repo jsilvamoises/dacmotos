@@ -35,9 +35,9 @@
                             <p:outputLabel value="Ano Fabricação"/>
                             <p:outputLabel value="Ano Modelo"/>
 
-                            <p:inputMask mask="aaa-9999"/>
-                            <p:inputMask mask="9999" size="10"/>
-                            <p:inputMask mask="9999" size="17"/>                    
+                            <p:inputMask mask="aaa-9999" value="#{beanVeiculo.veiculo.placa}"/>
+                            <p:inputMask mask="9999" size="10" value="#{beanVeiculo.veiculo.anoFabricacao}"/>
+                            <p:inputMask mask="9999" size="17" value="#{beanVeiculo.veiculo.anoModelo}"/>                    
                         </h:panelGrid>
 
                         <h:panelGrid columns="3">
@@ -45,23 +45,28 @@
                             <p:outputLabel value="Tipo Combustivel"/>
                             <p:outputLabel value="Cor do Veículo"/>
 
-                            <p:inputText/>
-                            <p:selectOneMenu filter="true">
+                            <p:inputText value="#{beanVeiculo.veiculo.renavam}"/>
+                            <p:selectOneMenu filter="true" value="#{beanVeiculo.veiculo.tipoCombustivel}">
                                 <f:selectItem itemLabel="Selecione!"/>
-                                <f:selectItems value="#{beanVeiculo.tipos}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
+                                <f:selectItems value="#{beanTipoCombustivel.tipos}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
                             </p:selectOneMenu>
 
                             <h:panelGrid columns="3">
-                                <p:selectOneMenu filter="true" >
+                                <p:selectOneMenu filter="true" value="#{beanVeiculo.veiculo.veiculoCor}" >
                                     <f:selectItem itemLabel="Selecione!"/>
-                                    <f:selectItems value="#{beanVeiculo.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
+                                    <f:selectItems value="#{beanVeiculoCor.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
                                 </p:selectOneMenu>
 
                                 <p:commandButton icon="ui-icon-plus"/>
                                 <p:commandButton icon="ui-icon-refresh"/>
                             </h:panelGrid>
 
-                        </h:panelGrid>  
+                        </h:panelGrid> 
+                        
+                        <h:panelGrid columns="1" style="width: 100%">
+                            <p:outputLabel value="Proprietário"/>
+                            <p:autoComplete size="100"/>
+                        </h:panelGrid>
 
                     </p:fieldset>
 

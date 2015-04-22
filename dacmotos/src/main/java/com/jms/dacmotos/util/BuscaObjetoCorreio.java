@@ -53,8 +53,8 @@ public class BuscaObjetoCorreio {
     public String getBairro() {
         Elements urlPesquisa = doc.select("td:gt(1)");
         bairro = urlPesquisa.text().replace(getCidade(), "");//remove o nome da cidade da variavel 
-        bairro = bairro.replace(getUf(), "");//remove o estado da variavel bairro
-        return bairro;
+        bairro = bairro.replace(getCidade(), "");//remove o estado da variavel bairro
+        return bairro.replace(getCidade(), "");
     }
 
     /**

@@ -43,6 +43,7 @@ public class BeanVeiculoCor implements Serializable{
     }
     
     
+    
     private InterfaceDao<VeiculoCor> Dao(){
         InterfaceDao<VeiculoCor> veiculoDao = new Dao<>(VeiculoCor.class);
         return veiculoDao;
@@ -92,5 +93,9 @@ public class BeanVeiculoCor implements Serializable{
 
     public void setCorSelecionada(VeiculoCor corSelecionada) {
         this.corSelecionada = corSelecionada;
+    }
+    
+    public VeiculoCor getObjectById(Long id){
+        return Dao().getEntity(id);
     }
 }

@@ -18,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
@@ -55,6 +56,11 @@ public class Veiculo implements Serializable{
     @JoinColumn(name = "vco_id")
     @ForeignKey(name = "FK_VEICULO_COR")
     private VeiculoCor veiculoCor;
+    
+    @ManyToOne
+    @JoinColumn(name = "pes_id")
+    @ForeignKey(name = "FK_VEICULO_PESSOA")
+    private Pessoa pessoa;
 
     public Veiculo() {
     }

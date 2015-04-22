@@ -38,5 +38,6 @@
     <mapping class="com.jms.dacmotos.model.UsuarioAcesso"/>
     <mapping class="com.jms.dacmotos.model.Veiculo"/>
     <mapping class="com.jms.dacmotos.model.VeiculoCor"/>
+    <mapping class="com.jms.dacmotos.model.StatusPedidoOrcamento"/>
   </session-factory>
 </hibernate-configuration>

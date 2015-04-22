@@ -53,8 +53,8 @@ public class BuscaCepOnline {
     public String getBairro() {
         Elements urlPesquisa = doc.select("td:gt(1)");
         bairro = urlPesquisa.text().replace(getCidade(), "");//remove o nome da cidade da variavel 
-        bairro = bairro.replace(getUf(), "");//remove o estado da variavel bairro
-        return bairro.toUpperCase();
+        bairro = bairro.replace(getCidade(), "").replace(getUf(), "");//remove o estado da variavel bairro
+        return bairro.toUpperCase().replace(getCidade(), "");
     }
 
     /**
@@ -101,7 +101,7 @@ public class BuscaCepOnline {
 
     public static void main(String args[]) {
         BuscaCepOnline bc = new BuscaCepOnline();
-        bc.buscarEndereco("69.901-000".replace(".", "").replace("-", ""));
+        bc.buscarEndereco("13.221-300".replace(".", "").replace("-", ""));
         System.err.println(bc.getEndereco());// imprime o endereco
         System.err.println(bc.getBairro());// imprime o bairro
         System.err.println(bc.getCidade());// imprime a cidade

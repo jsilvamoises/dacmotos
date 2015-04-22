@@ -65,19 +65,16 @@
                     
                     <!--CUBAGEM E PESO-->
                     <p:panelGrid columns="4" style="width: 100%;margin-top: 5px">
-                        <p:outputLabel for="estoque-atual" value="Est. atual"/>
-                        <p:outputLabel for="estoque-maximo" value="Est. Max"/>
-                        <p:outputLabel for="estoque-minimo" value="Est. Min"/>
-                        <p:outputLabel for="unidade" value="Unidade"/>
+                        <p:outputLabel for="altura" value="Altura"/>
+                        <p:outputLabel for="largura" value="Largura"/>
+                        <p:outputLabel for="comprimento" value="Comprimento"/>
+                        <p:outputLabel for="peso" value="Peso"/>
                         
                         
-                        <p:inputText id="estoque-atual" />
-                        <p:inputText id="estoque-maximo" />
-                        <p:inputText id="estoque-minimo" />
-                        <p:selectOneMenu id="unidade" >
-                            <f:selectItem itemLabel="Selecione"/>
-                            <f:selectItems value="#{beanUnidade.unidades}" var="und" itemLabel="#{und.descricao}" itemValue="#{und}"/>
-                        </p:selectOneMenu>                       
+                        <p:inputText id="altura" />
+                        <p:inputText id="largura" />
+                        <p:inputText id="comprimento" />
+                        <p:inputText id="peso"/>                       
                     </p:panelGrid>
 
                 </p:fieldset>

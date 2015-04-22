@@ -22,19 +22,22 @@ import org.jsoup.select.Elements;
  */
 @ManagedBean
 @ViewScoped
-public class BeanCep implements Serializable{
-    private static final Long serialVersionUID=1L;
+public class BeanCep implements Serializable {
+
+    private static final Long serialVersionUID = 1L;
     private String valor;
     private Endereco endereco;
-     private Document doc;
+    private Document doc;
+    private BeanEndereco beanEnd = new BeanEndereco();
+
     public BeanCep() {
         endereco = new Endereco();
     }
-    
-    public Endereco getObjetoEndereco(){
+
+    public Endereco getObjetoEndereco() {
         return endereco;
     }
-    
+
     public void buscarEndereco(String cep) {
 
         //***************************************************
@@ -47,24 +50,26 @@ public class BeanCep implements Serializable{
         }
 
     }
-    
-    public Endereco getEnderecoByCep(String s){
+
+    public Endereco getEnderecoByCep(String s) {
         try {
-            buscarEndereco(s);
-        endereco.setLogradouro(getEndereco());
-        endereco.setBairro(getBairro());
-        endereco.setCidade(getCidade());
-        endereco.setUf(getUf());
-        endereco.setCep(getCep());
-        return endereco;
+            //busca primeiro nos registros de endereco
+            
+                buscarEndereco(s);
+                endereco.setLogradouro(getEndereco());
+                endereco.setBairro(getBairro());
+                endereco.setCidade(getCidade());
+                endereco.setUf(getUf());
+                endereco.setCep(getCep());
+            
+            return endereco;
         } catch (Exception e) {
             return null;
         }
-        
-        
+
     }
-    
-    public void pesquisar(){
+
+    public void pesquisar() {
         buscarEndereco(valor);
         endereco.setLogradouro(getEndereco());
         endereco.setBairro(getBairro());
@@ -94,7 +99,7 @@ public class BeanCep implements Serializable{
         Elements urlPesquisa = doc.select("td:gt(1)");
         endereco.setBairro(urlPesquisa.text().replace(getCidade(), ""));//remove o nome da cidade da variavel 
         endereco.setBairro(endereco.getBairro().replace(getUf(), ""));//remove o estado da variavel bairro
-        return endereco.getBairro().toUpperCase();
+        return endereco.getBairro().toUpperCase().replace(getCidade(), "");
     }
 
     /**
@@ -138,9 +143,6 @@ public class BeanCep implements Serializable{
 //    public Document getDoc() {
 //        return doc;
 //    }I
-
-   
-
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
@@ -152,7 +154,5 @@ public class BeanCep implements Serializable{
     public void setValor(String valor) {
         this.valor = valor;
     }
-    
-    
-    
+
 }

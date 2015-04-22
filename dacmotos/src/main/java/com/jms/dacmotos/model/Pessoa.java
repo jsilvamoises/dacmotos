@@ -16,13 +16,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -40,14 +44,16 @@ public class Pessoa implements Serializable{
     @Column(name = "pes_nome", length = 80, nullable = false)
     private String nome;
     
-    @Column(name = "pes_cpf",unique = true, length = 14, nullable = true)
-    private String cpf;
+    @Column(name = "pes_cpf_cnpj",unique = true, length = 18, nullable = true)
+    private String cpfCnpj;
     
-    @Column(name = "pes_rg",length = 12, nullable = true)
-    private String rg;
+    @Column(name = "pes_rg_ie",length = 15, nullable = true)
+    private String rgIe;
     
-    @Column(name = "pes_cnpj", length = 20, unique = true, nullable = true)
-    private String cnpj;
+     @Column(name = "pes_habilitacao",length = 20, nullable = true)
+    private String habilitacao;
+    
+   
     
     @Column(name = "pes_email", length = 100, unique = true, nullable = true)
     private String Email;
@@ -87,12 +93,16 @@ public class Pessoa implements Serializable{
     @Enumerated(EnumType.STRING)
     private TipoPessoa tipoPessoa;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Endereco> enderecos;
+   
+    @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+   // @JoinColumn(name = "pes_endereco_id"  )
+    
+    private Endereco endereco;
     
 
     public Pessoa() {
-        enderecos = new ArrayList<>();
+        endereco = new Endereco();
     }
 
     public Long getId() {
@@ -111,29 +121,23 @@ public class Pessoa implements Serializable{
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public String getRg() {
-        return rg;
+    public String getRgIe() {
+        return rgIe;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setRgIe(String rgIe) {
+        this.rgIe = rgIe;
     }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+    
 
     public String getEmail() {
         return Email;
@@ -191,13 +195,7 @@ public class Pessoa implements Serializable{
         this.nomePessoaRecado = nomePessoaRecado;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -256,6 +254,22 @@ public class Pessoa implements Serializable{
 
     public void setTelefoneComercial(String telefoneComercial) {
         this.telefoneComercial = telefoneComercial;
+    }
+
+    public String getHabilitacao() {
+        return habilitacao;
+    }
+
+    public void setHabilitacao(String habilitacao) {
+        this.habilitacao = habilitacao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
     
     

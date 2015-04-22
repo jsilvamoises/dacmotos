@@ -15,12 +15,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.ForeignKey;
 
 /**
@@ -35,7 +39,7 @@ public class Endereco implements Serializable{
     @Column(name = "end_id")
     private Long id;
     
-    @Column(name = "end_cep", length = 10, nullable = false,unique = true)
+    @Column(name = "end_cep", length = 10, nullable = false,unique = false)
     private String cep;
     
     @Column(name = "end_logradouro",length = 100,nullable = false)
@@ -53,16 +57,28 @@ public class Endereco implements Serializable{
     @Column(name = "end_numero", length = 15, nullable = false)
     private String numero;
     
+    @Column(name = "end_complemento", length = 15, nullable = false)
+    private String complemento;
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+    
     @Enumerated(EnumType.STRING) 
     @Column(name = "end_tipo_endereco")
     private TipoEndereco tipoEndereco;
     
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    @ForeignKey(name = "FK_PESSOA")
-    private List<Pessoa> pessoas;
+//    @ManyToMany(cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
+//    @ForeignKey(name = "FK_PESSOA")
+//    @Fetch(FetchMode.JOIN)
+//    private List<Pessoa> pessoas;
 
     public Endereco() {
-        pessoas = new ArrayList<>();
+       // pessoas = new ArrayList<>();
     }
 
     public Long getId() {
@@ -129,13 +145,13 @@ public class Endereco implements Serializable{
         this.tipoEndereco = tipoEndereco;
     }
 
-    public List<Pessoa> getPessoas() {
-        return pessoas;
-    }
-
-    public void setPessoas(List<Pessoa> pessoas) {
-        this.pessoas = pessoas;
-    }
+//    public List<Pessoa> getPessoas() {
+//        return pessoas;
+//    }
+//
+//    public void setPessoas(List<Pessoa> pessoas) {
+//        this.pessoas = pessoas;
+//    }
 
     @Override
     public int hashCode() {
