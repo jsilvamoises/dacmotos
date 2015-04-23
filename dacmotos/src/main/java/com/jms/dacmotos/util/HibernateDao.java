@@ -139,6 +139,7 @@ public class HibernateDao<T> implements InterfaceDao<T>, Serializable {
 
     @Override
     public List<T> getEntitiesByDetachetCriteria(DetachedCriteria criteria) {
+        System.err.println("dETAC");
         return criteria.getExecutableCriteria(session).list();
     }
 

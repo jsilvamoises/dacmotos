@@ -166,7 +166,7 @@ public class Dao<T> implements InterfaceDao<T>, Serializable {
         try {
             session.getTransaction().begin();
             List<T> lista = (List<T>) session.createCriteria(classe).list();
-            return lista;
+            return criteria.getExecutableCriteria(session).list();
         } catch (Exception e) {
             return null;
         }finally{

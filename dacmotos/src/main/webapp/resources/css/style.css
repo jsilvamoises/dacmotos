@@ -10,6 +10,7 @@ and open the template in the editor.
 @import "../../resources/css/icon.css";
 @import "../../resources/css/backgound.css";
 @import "../../resources/css/images.css";
+@import "../../resources/css/row.css";
 
 *{padding: 0; margin: 0; font-size: 14px}
 
@@ -73,3 +74,4 @@ h1{
 .field-set-border{border: #D20005 solid 1px !important;  width: 97.5% !important;margin-top: 5px }
 .field-set{ border-radius: 5px 5px 5px 5px !important}
 .link{font-family: sans-serif !important; font-size: 18px !important; color: #D20005 !important}
+.red{background-color: #D20005 !important}

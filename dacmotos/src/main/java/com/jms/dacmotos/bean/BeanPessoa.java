@@ -16,6 +16,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
 import com.jms.dacmotos.dao.Dao;
+import com.jms.dacmotos.enums.StatusCadastroCliente;
+import com.jms.dacmotos.suport.PessoaSuport;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
@@ -33,17 +35,27 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     private String mascaraCPF_CNPJ;
     private String cepString;
     private Pessoa pessoa = new Pessoa();
+    private Pessoa pessoaSelecionada = new Pessoa();
     private Endereco endereco = new Endereco();
     private BeanEndereco beanEnd = new BeanEndereco();
     private BeanCep benCep;
     private BeanMascaras mascaraCelNum;
     private List<Pessoa> pessoas;
+    private PessoaSuport suport = new PessoaSuport();
+    private String campoPesquisa;
+
+    private String rowColor;
 
     private byte tipoPesquisa = 0;
 
-    @PostConstruct
-    public void listarTodos() {
-        pessoas = Dao().getEntities();
+   
+
+    public void pesquisaPorNomeOuDocumento() {
+        
+       pessoas.clear();
+        System.err.println("Pesquisa");
+        if(pessoas.isEmpty())
+         pessoas = suport.ListByNameOrDocument(campoPesquisa);
     }
 
     public String getMascaraCel() {
@@ -76,11 +88,10 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     }
 
     public void pesquisar() {
-        endereco = beanEnd.getEnderecoByCep(cepString, pessoa.getEndereco().getNumero());
-        if (endereco == null) {
-            endereco = benCep.getEnderecoByCep(cepString);
-        }
-
+        // endereco = beanEnd.getEnderecoByCep(cepString, pessoa.getEndereco().getNumero());
+        endereco = null;
+        pessoa.setEndereco(endereco);
+        endereco = benCep.getEnderecoByCep(cepString);
         if (endereco.getBairro().isEmpty()) {
             System.out.println(endereco);
             // pessoa.getEnderecos().add(endereco);
@@ -97,7 +108,11 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     }
 
     public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+
+        if (pessoa != null) {
+            this.pessoa = pessoa;
+            endereco = pessoa.getEndereco();
+        }
     }
 
     public Endereco getEndereco() {
@@ -131,16 +146,27 @@ public class BeanPessoa implements Serializable, InterfaceBean {
 
     @Override
     public void save() {
-
+        // pesquisar();
         // endereco.getPessoas().add(pessoa);
         //pessoa.setEndereco(endereco);
-        new BeanEndereco().setEndereco(endereco);
+
+        beanEnd.setEndereco(endereco);
 
         if (Dao().save(pessoa)) {
 
             criarObjeto();
-           
+
         }
+    }
+
+    public void bloquearCliente() {
+        pessoaSelecionada.setStatus(StatusCadastroCliente.BLOQUEADO);
+        Dao().save(pessoaSelecionada);
+    }
+
+    public void ativarCliente() {
+        pessoaSelecionada.setStatus(StatusCadastroCliente.ATIVO);
+        Dao().save(pessoaSelecionada);
     }
 
     @Override
@@ -150,7 +176,7 @@ public class BeanPessoa implements Serializable, InterfaceBean {
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        criarObjeto();
     }
 
     @Override
@@ -166,7 +192,7 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     @Override
     public List listAllObjects() {
         System.err.println(pessoas.size());
-        return pessoas.size()<1 ? Dao().getEntities() : pessoas;
+        return null;// pessoas.size() < 1 ? Dao().getEntities() : pessoas;
     }
 
     public boolean getIsTipoPessoaSelecionado() {
@@ -193,27 +219,24 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     public void setDigitosCel(int digitosCel) {
         this.digitosCel = digitosCel;
     }
-    
-    public void criarObjeto(){
+
+    public void criarObjeto() {
         pessoa = new Pessoa();
         pessoas.clear();
         endereco = new Endereco();
     }
-    
-  
-
+    public void limparCampo(){
+        campoPesquisa ="";
+        pessoas.clear();
+    }
+    public void inicializar(){
+        if(pessoas.isEmpty())
+        pessoas = Dao().getEntities();
+    }
 
     public List<Pessoa> getPessoas() {
-        switch (tipoPesquisa) {
-            case 0:
-                pessoas = Dao().getEntities();
-                break;
-            case 1:
-                break;
-            default:
-                break;
-
-        }
+        
+       
         return pessoas;
     }
 
@@ -227,6 +250,48 @@ public class BeanPessoa implements Serializable, InterfaceBean {
 
     public void setTipoPesquisa(byte tipoPesquisa) {
         this.tipoPesquisa = tipoPesquisa;
+    }
+
+    public Pessoa getPessoaSelecionada() {
+        
+        
+        return pessoaSelecionada;
+    }
+
+    public void setPessoaSelecionada(Pessoa pessoaSelecionada) {
+        this.pessoaSelecionada = pessoaSelecionada;
+    }
+
+    public Pessoa getPessoaById(Long id) {
+        if (id > 0) {
+            try {
+                pessoa = Dao().getEntity(id);
+                if (pessoa != null) {
+                    endereco = pessoa.getEndereco();
+                }
+            } catch (Exception e) {
+            }
+        }
+
+        return pessoa;
+
+    }
+
+    public String getRowColor() {
+        switch (pessoa.getStatus()) {
+            case BLOQUEADO:
+                return "red";
+            default:
+                return null;
+        }
+    }
+
+    public String getCampoPesquisa() {
+        return campoPesquisa;
+    }
+
+    public void setCampoPesquisa(String campoPesquisa) {
+        this.campoPesquisa = campoPesquisa;
     }
 
 }

@@ -8,6 +8,7 @@ package com.jms.dacmotos.suport;
 import com.jms.dacmotos.dao.Dao;
 import com.jms.dacmotos.interfaces.InterfaceDao;
 import com.jms.dacmotos.model.Endereco;
+import java.io.Serializable;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -15,7 +16,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author MOISES
  */
-public class EnderecoSuport {
+public class EnderecoSuport implements Serializable {
     private InterfaceDao<Endereco> Dao() {
         InterfaceDao<Endereco> dao = new Dao<>(Endereco.class);
         return dao;

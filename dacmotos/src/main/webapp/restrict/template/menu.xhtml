@@ -13,7 +13,7 @@
         <h:form>
             <p:growl autoUpdate="true"/>
             
-            <p:menubar id="menu-bar">
+            <p:menubar id="menu-bar" >
                 <p:menuitem icon="icon-home" outcome="/index.xhtml"/>
 
 
@@ -36,8 +36,8 @@
                     </p:submenu  >
                     
                     <p:submenu label=".: Pessoa" icon="ui-icon-plus">
-                        <p:menuitem value=" .: Física" icon="icon-motorcycle"/>
-                        <p:menuitem value=" .: Jurídica" icon="icon-motorcycle"/>
+                        <p:menuitem value=" .: Cadastro" icon="icon-motorcycle" outcome="/restrict/pessoa.xhtml"/>
+                         <p:menuitem value=" .: Relatório" icon="icon-report" outcome="/restrict/pessoalista.xhtml"/>
                     </p:submenu>
                     
                     <p:menuitem value=".: Empresa" icon="icon-motorcycle"/>

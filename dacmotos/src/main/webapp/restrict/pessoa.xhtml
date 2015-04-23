@@ -8,6 +8,9 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="pessoa" value="#{beanPessoa.pessoa}"/>
+        </f:metadata>
         <div id="conteiner-default" >
             <h1>Cadastro de Pessoas Física / Jurídica</h1>
 
@@ -35,7 +38,7 @@
                         <p:outputLabel value="Data Nascimento / Fundação" />
 
                         <p:inputText size="90" value="#{beanPessoa.pessoa.nome}"/>
-                        <p:calendar size="35" value="#{beanPessoa.pessoa.dataNascimento}"/>
+                        <p:calendar size="35" value="#{beanPessoa.pessoa.dataNascimento}" navigator="true" pattern="dd/MM/yyyy"/>
                     </p:panelGrid>
 
                     <!--DOCUEMENTOS-->
@@ -56,8 +59,11 @@
                 <p:fieldset legend="Endereço" rendered="#{beanPessoa.isTipoPessoaSelecionado}">
                     <p:panelGrid columns="1" style="width: 100%">
                         <p:outputLabel value="CEP"/>
+                        
+                         
                         <h:panelGroup>
-                            <p:inputMask mask="99.999-999" value="#{beanPessoa.cepString}"/>
+                           <p:inputMask mask="99.999-999" value="#{beanPessoa.cepString}"/>
+                            
                             <p:commandButton value="Buscar Online" action="#{beanPessoa.pesquisar()}" update="@form"/>
 
                         </h:panelGroup>
@@ -65,7 +71,7 @@
                     <p:spacer/>
                     <p:panelGrid columns="2" style="width: 100%">
                         <p:outputLabel value="Endereço" />
-                        <p:outputLabel value="Número"/>
+                        <p:outputLabel value="Número" />
 
                         <p:inputText size="115" value="#{beanPessoa.endereco.logradouro}" disabled="#{beanPessoa.isEndereçoNull}"/>
                         <p:inputText size="10" value="#{beanPessoa.endereco.numero}"/>
@@ -101,23 +107,29 @@
                         <p:outputLabel value="Tel. Residencial"/>
 
                         <p:inputText size="80" value="#{beanPessoa.pessoa.email}" />
-                        <p:inputText size="30"  value="#{beanPessoa.pessoa.telefoneResidencial}" />
+                        <p:inputMask size="30"  value="#{beanPessoa.pessoa.telefoneResidencial}"  mask="#{beanMascaras.mascaraCelOitoDigitos}" />
                     </p:panelGrid>
 
-                    <p:panelGrid columns="3" style="width: 100%">
+                    <p:panelGrid columns="4" style="width: 100%">
                         <p:outputLabel value="Tel. Comercial"/>
                         <p:outputLabel value="Cel."/>
                         <p:outputLabel value="Recado."/>
+                        <p:outputLabel value="Status do Cadastro"/>
 
                         <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{beanPessoa.pessoa.telefoneComercial}" />
                         <h:panelGroup>
                             <p:outputLabel value="Dig."/>
                             <p:spinner value="#{beanPessoa.digitosCel}" min="8" max="9" size="3" >
-                                <p:ajax update="@form"/>
+                                <p:ajax update="cel"/>
                             </p:spinner>
-                            <p:inputMask mask="#{beanPessoa.mascaraCel}" value="#{beanPessoa.pessoa.telefoneCelular}"/>
+                            <p:inputMask id="cel" mask="#{beanPessoa.mascaraCel}" value="#{beanPessoa.pessoa.telefoneCelular}"/>
                         </h:panelGroup>
                         <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{beanPessoa.pessoa.telefoneRecado}" />
+                        
+                        <p:selectOneMenu value="#{beanPessoa.pessoa.status}">
+                            <f:selectItem itemLabel="Selecione"/>
+                            <f:selectItems value="#{beanStatusPessoa.statusPessoa}" var="st" itemLabel="#{st}" itemValue="#{st}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
 
 
@@ -128,6 +140,11 @@
                         <p:commandButton value="Salvar" action="#{beanPessoa.save()}" update="@form"/>
                         <p:commandButton value="Limpar" action="#{beanPessoa.clear()}" update="@form"/>
 
+                    </f:facet>
+                    
+                    <f:facet name="right">
+                        <p:commandButton value="Pesquisar" action="/restrict/pessoalista.xhtml?faces-redirect=true" actionListener="#{beanPessoa.criarObjeto()}" />
+                           
                     </f:facet>
 
                 </p:toolbar>

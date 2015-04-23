@@ -5,13 +5,11 @@
  */
 package com.jms.dacmotos.model;
 
+import com.jms.dacmotos.enums.StatusCadastroCliente;
 import com.jms.dacmotos.enums.TipoPessoa;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,10 +21,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -94,11 +93,15 @@ public class Pessoa implements Serializable{
     private TipoPessoa tipoPessoa;
     
    
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-   // @JoinColumn(name = "pes_endereco_id"  )
-    
+    @JoinColumn(name = "pes_endereco_id"  )  
+    //@Fetch(FetchMode.SELECT)
     private Endereco endereco;
+    
+    @Column(name = "pes_status_cadastro")
+    @Enumerated(EnumType.STRING)
+    private StatusCadastroCliente status;
     
 
     public Pessoa() {
@@ -118,7 +121,7 @@ public class Pessoa implements Serializable{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public String getCpfCnpj() {
@@ -144,7 +147,7 @@ public class Pessoa implements Serializable{
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.Email = Email.toLowerCase();
     }
 
     public Date getDataCadastro() {
@@ -192,7 +195,7 @@ public class Pessoa implements Serializable{
     }
 
     public void setNomePessoaRecado(String nomePessoaRecado) {
-        this.nomePessoaRecado = nomePessoaRecado;
+        this.nomePessoaRecado = nomePessoaRecado.toUpperCase();
     }
 
     
@@ -221,7 +224,7 @@ public class Pessoa implements Serializable{
 
     @Override
     public String toString() {
-        return id.toString();
+        return String.valueOf(id);
     }
 
     public TipoPessoa getTipoPessoa() {
@@ -245,7 +248,7 @@ public class Pessoa implements Serializable{
     }
 
     public void setObservacao(String observacao) {
-        this.observacao = observacao;
+        this.observacao = observacao.toUpperCase();
     }
 
     public String getTelefoneComercial() {
@@ -263,13 +266,21 @@ public class Pessoa implements Serializable{
     public void setHabilitacao(String habilitacao) {
         this.habilitacao = habilitacao;
     }
-
+    
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public StatusCadastroCliente getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusCadastroCliente status) {
+        this.status = status;
     }
     
     
