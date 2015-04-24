@@ -10,6 +10,6 @@ package com.jms.dacmotos.enums;
  * @author Moises
  */
 public enum TipoPessoa {
-    JURIDICA, FISICA
+    FISICA, JURIDICA, 
     
 }
