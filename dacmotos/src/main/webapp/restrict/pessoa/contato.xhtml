@@ -7,13 +7,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h2>Contato</h2>
     <p:fieldset>
-        <h:form>
+        
              <p:panelGrid columns="2" style="width: 100%">
                         <p:outputLabel value="Email"/>
                         <p:outputLabel value="Tel. Residencial"/>
 
-                        <p:inputText size="80" value="#{beanPessoa.pessoa.email}" />
-                        <p:inputMask size="30"  value="#{beanPessoa.pessoa.telefoneResidencial}"  mask="#{beanMascaras.mascaraCelOitoDigitos}" />
+                        <p:inputText size="80" value="#{cadastroPessoaBean.pessoa.email}" />
+                        <p:inputMask size="30"  value="#{cadastroPessoaBean.pessoa.telefoneResidencial}"  mask="#{beanMascaras.mascaraCelOitoDigitos}" />
                     </p:panelGrid>
 
                     <p:panelGrid columns="4" style="width: 100%">
@@ -22,22 +22,22 @@
                         <p:outputLabel value="Recado."/>
                         <p:outputLabel value="Status do Cadastro"/>
 
-                        <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{beanPessoa.pessoa.telefoneComercial}" />
+                        <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{cadastroPessoaBean.pessoa.telefoneComercial}" />
                         <h:panelGroup>
                             <p:outputLabel value="Dig."/>
                             <p:spinner value="#{beanPessoa.digitosCel}" min="8" max="9" size="3" >
                                 <p:ajax update="cel"/>
                             </p:spinner>
-                            <p:inputMask id="cel" mask="#{beanPessoa.mascaraCel}" value="#{beanPessoa.pessoa.telefoneCelular}"/>
+                            <p:inputMask id="cel" mask="#{beanPessoa.mascaraCel}" value="#{cadastroPessoaBean.pessoa.telefoneCelular}"/>
                         </h:panelGroup>
-                        <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{beanPessoa.pessoa.telefoneRecado}" />
+                        <p:inputMask mask="#{beanMascaras.mascaraCelOitoDigitos}" value="#{cadastroPessoaBean.pessoa.telefoneRecado}" />
                         
                         <p:selectOneMenu value="#{beanPessoa.pessoa.status}">
-                            <f:selectItem itemLabel="Selecione"/>
+                            
                             <f:selectItems value="#{beanStatusPessoa.statusPessoa}" var="st" itemLabel="#{st}" itemValue="#{st}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-        </h:form>
+       
 
     </p:fieldset>
 

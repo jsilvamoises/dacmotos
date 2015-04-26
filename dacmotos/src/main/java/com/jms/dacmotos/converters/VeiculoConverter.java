@@ -5,11 +5,11 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanPessoa;
-import com.jms.dacmotos.bean.pessoa.CadastroPessoaBean;
 
 import com.jms.dacmotos.model.Pessoa;
+import com.jms.dacmotos.model.Veiculo;
 import com.jms.dacmotos.suport.PessoaSuport;
+import com.jms.dacmotos.suport.VeiculoSuport;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.FacesConverter;
@@ -18,29 +18,29 @@ import javax.faces.convert.FacesConverter;
  *
  * @author Moises
  */
-@FacesConverter(forClass = Pessoa.class)
-public class PessoaConverter implements javax.faces.convert.Converter {
+@FacesConverter(forClass = Veiculo.class)
+public class VeiculoConverter implements javax.faces.convert.Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Pessoa pessoa = null;
+        Veiculo veiculo = null;
 
         if (value != null) {
             try {
                 Long id = new Long(value);
                 System.out.println("Passou no pessoa converter");
-                pessoa = (Pessoa) new PessoaSuport().getPessoaById(id);
+                veiculo = (Veiculo) new VeiculoSuport().getPessoaById(id);
             } catch (Exception e) {
             }
 
         }
-        return pessoa;
+        return veiculo;
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if (value != null) {
-            Long id = ((Pessoa) value).getId();
+            Long id = ((Veiculo) value).getId();
             return String.valueOf(id);
         }
         return "";

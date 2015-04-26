@@ -6,13 +6,13 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h2>Dados Pessoais</h2>
     <p:fieldset>
-        <h:form>
+        
             
         
           
                    <p:panelGrid columns="1" style="width: 100%">
-                        <p:outputLabel value="ID" rendered="#{beanPessoa.pessoa.id >0}"/>
-                        <p:inputText value="#{beanPessoa.pessoa.id}" rendered="#{beanPessoa.pessoa.id >0}"/>
+                       <p:outputLabel value="ID" rendered="#{cadastroPessoaBean.pessoa.id >0}"/>
+                        <p:inputText value="#{cadastroPessoaBean.pessoa.id}" rendered="#{cadastroPessoaBean.pessoa.id >0}"/>
                     </p:panelGrid>
                     <p:spacer/>
 
@@ -20,8 +20,8 @@
                         <p:outputLabel value="Nome / Razão Social"/>
                         <p:outputLabel value="Data Nascimento / Fundação" />
 
-                        <p:inputText size="90" value="#{beanPessoa.pessoa.nome}"/>
-                        <p:calendar size="35" value="#{beanPessoa.pessoa.dataNascimento}" navigator="true" pattern="dd/MM/yyyy"/>
+                        <p:inputText size="90" value="#{cadastroPessoaBean.pessoa.nome}"/>
+                        <p:calendar size="35" value="#{cadastroPessoaBean.pessoa.dataNascimento}" navigator="true" pattern="dd/MM/yyyy"/>
                     </p:panelGrid>
 
                     <!--DOCUEMENTOS-->
@@ -32,12 +32,12 @@
                         <p:outputLabel value="RG / IE" />
                         <p:outputLabel value="Habilitação" />
 
-                        <p:inputMask mask="#{beanPessoa.mascara}" size="40" value="#{beanPessoa.pessoa.cpfCnpj}" />
-                        <p:inputText size="30" value="#{beanPessoa.pessoa.rgIe}"/>
-                        <p:inputText size="40" value="#{beanPessoa.pessoa.habilitacao}"/>
+                        <p:inputMask id="doc" mask="#{beanPessoa.mascara}" size="40" value="#{cadastroPessoaBean.pessoa.cpfCnpj}" />
+                        <p:inputText size="30" value="#{cadastroPessoaBean.pessoa.rgIe}"/>
+                        <p:inputText size="40" value="#{cadastroPessoaBean.pessoa.habilitacao}"/>
                     </p:panelGrid>
                 
-            </h:form>
+           
     </p:fieldset>
 
 </ui:composition>

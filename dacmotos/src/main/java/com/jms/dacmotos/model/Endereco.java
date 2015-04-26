@@ -25,30 +25,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_endereco")
 public class Endereco implements Serializable{
+    private static final Long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "end_id")
     private Long id;
     
-    @Column(name = "end_cep", length = 10, nullable = false,unique = false)
+    @Column(name = "end_cep", length = 10, nullable = true,unique = false)
     private String cep;
     
-    @Column(name = "end_logradouro",length = 100,nullable = false)
+    @Column(name = "end_logradouro",length = 100,nullable = true)
     private String logradouro;
     
-    @Column(name = "end_bairro",length = 100,nullable = false)
+    @Column(name = "end_bairro",length = 100,nullable = true)
     private String bairro;
     
-    @Column(name = "end_cidade", length = 100, nullable = false)
+    @Column(name = "end_cidade", length = 100, nullable = true)
     private String  cidade;
     
-    @Column(name = "end_uf", length = 2, nullable = false)
+    @Column(name = "end_uf", length = 2, nullable = true)
     private String uf;
     
-    @Column(name = "end_numero", length = 15, nullable = false)
+    @Column(name = "end_numero", length = 15, nullable = true)
     private String numero;
     
-    @Column(name = "end_complemento", length = 15, nullable = false)
+    @Column(name = "end_complemento", length = 15, nullable = true)
     private String complemento;
 
     public String getComplemento() {

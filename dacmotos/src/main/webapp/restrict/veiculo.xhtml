@@ -8,10 +8,14 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="veiculo" value="#{cadastroVeiculoBean.veiculo}"/>
+
+        </f:metadata>
 
 
         <div id="conteiner-default">
-            <h:form >
+            <h:form id="form" >
 
 
 
@@ -19,15 +23,15 @@
 
 
 
-                <h:panelGrid columns="1" style="width: 100%">
+                <h:panelGrid id="campos" columns="1" style="width: 100%">
 
                     <p:fieldset>
 
 
 
-                        <h:panelGrid columns="1">                   
+                        <h:panelGrid columns="1" rendered="#{cadastroVeiculoBean.veiculo.id>0}">                   
                             <p:outputLabel value="ID"/>
-                            <p:inputText size="10"/>                
+                            <p:inputText size="10" value="#{cadastroVeiculoBean.veiculo.id}"/>                
                         </h:panelGrid>
 
                         <h:panelGrid columns="3">
@@ -35,9 +39,9 @@
                             <p:outputLabel value="Ano Fabricação"/>
                             <p:outputLabel value="Ano Modelo"/>
 
-                            <p:inputMask mask="aaa-9999" value="#{beanVeiculo.veiculo.placa}"/>
-                            <p:inputMask mask="9999" size="10" value="#{beanVeiculo.veiculo.anoFabricacao}"/>
-                            <p:inputMask mask="9999" size="17" value="#{beanVeiculo.veiculo.anoModelo}"/>                    
+                            <p:inputMask mask="aaa-9999" value="#{cadastroVeiculoBean.veiculo.placa}"/>
+                            <p:inputMask mask="9999" size="10" value="#{cadastroVeiculoBean.veiculo.anoFabricacao}"/>
+                            <p:inputMask mask="9999" size="17" value="#{cadastroVeiculoBean.veiculo.anoModelo}"/>                    
                         </h:panelGrid>
 
                         <h:panelGrid columns="3">
@@ -45,14 +49,14 @@
                             <p:outputLabel value="Tipo Combustivel"/>
                             <p:outputLabel value="Cor do Veículo"/>
 
-                            <p:inputText value="#{beanVeiculo.veiculo.renavam}"/>
-                            <p:selectOneMenu filter="true" value="#{beanVeiculo.veiculo.tipoCombustivel}">
+                            <p:inputText value="#{cadastroVeiculoBean.veiculo.renavam}"/>
+                            <p:selectOneMenu filter="true" value="#{cadastroVeiculoBean.veiculo.tipoCombustivel}">
                                 <f:selectItem itemLabel="Selecione!"/>
                                 <f:selectItems value="#{beanTipoCombustivel.tipos}" var="t" itemLabel="#{t}" itemValue="#{t}"/>
                             </p:selectOneMenu>
 
                             <h:panelGrid columns="3">
-                                <p:selectOneMenu filter="true" value="#{beanVeiculo.veiculo.veiculoCor}" >
+                                <p:selectOneMenu filter="true" value="#{cadastroVeiculoBean.veiculo.veiculoCor}" >
                                     <f:selectItem itemLabel="Selecione!"/>
                                     <f:selectItems value="#{beanVeiculoCor.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
                                 </p:selectOneMenu>
@@ -62,10 +66,13 @@
                             </h:panelGrid>
 
                         </h:panelGrid> 
-                        
+
                         <h:panelGrid columns="1" style="width: 100%">
                             <p:outputLabel value="Proprietário"/>
-                            <p:autoComplete size="100"/>
+                            <p:autoComplete size="100" value="#{cadastroVeiculoBean.veiculo.pessoa}" required="true" 
+                                            completeMethod="#{pesquisaPessoaBean.autocomplete}" var="pessoa" widgetVar="p"
+                                            itemLabel="#{pessoa.nomeDocumento}" itemValue="#{pessoa}"
+                                            forceSelection="true" dropdown="true"/>
                         </h:panelGrid>
 
                     </p:fieldset>
@@ -73,27 +80,44 @@
 
                     <p:toolbar>
                         <f:facet name="left">
-                            <p:commandButton value="Limpar" />
-                            <p:commandButton value="Salvar"/>
+                            <p:commandButton value="Limpar" action="#{cadastroVeiculoBean.clear()}" update=":form:campos " process="@this" />
+                            <p:commandButton value="Salvar" action="#{cadastroVeiculoBean.save()}"  update=":form:table campos" />
                             <p:commandButton value="Excluir"/>
+
+                        </f:facet>
+
+                        <f:facet name="right">
+                            <p:inputText size="80" placeholder="Pesquisa por placa" value="#{pesquisaVeiculoBean.campoPesquisa}"/>
+                            <p:commandButton icon="icon-lupa" action="#{pesquisaVeiculoBean.listarTodos()}" process="@this" update=":form:table" accesskey="l"/>
                         </f:facet>
                     </p:toolbar>
 
-                    <p:dataTable >
-                        <p:column headerText="Código">
 
+
+                    <p:dataTable id="table" value="#{pesquisaVeiculoBean.veiculos}"  var="veiculo" rows="15" paginator="true"  >
+                        <p:column headerText="Código" width="60">
+                            <h:outputText value="#{veiculo.id}" />
                         </p:column>
 
-                        <p:column headerText="Placa">
-
+                        <p:column headerText="Placa" width="80">
+                            <h:outputText value="#{veiculo.placa}"/>
                         </p:column>
 
-                        <p:column headerText="Renavam">
-
+                        <p:column headerText="Renavam" width="120">
+                            <h:outputText value="#{veiculo.renavam}"/>
                         </p:column>
 
                         <p:column headerText="Proprietário">
+                            <h:outputText value="#{veiculo.pessoa.nomeDocumento}"/>
+                        </p:column>
 
+                        <p:column headerText="Ação" width="70" >
+                            
+                            <p:button icon="icon-lapis" title="Editar Cliente" outcome="/restrict/veiculo" >
+                                <f:param name="veiculo" value="#{veiculo.id}"  />
+                            </p:button>
+                            
+                            <p:commandButton id="apagar" icon="icon-apagar"/>
                         </p:column>
                     </p:dataTable>
                 </h:panelGrid>

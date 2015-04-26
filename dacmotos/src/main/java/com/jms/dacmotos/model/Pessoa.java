@@ -23,9 +23,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -40,9 +40,11 @@ public class Pessoa implements Serializable{
     @Column(name = "pes_id")
     private Long id;
     
+    @NotEmpty
     @Column(name = "pes_nome", length = 80, nullable = false)
     private String nome;
     
+    @NotEmpty
     @Column(name = "pes_cpf_cnpj",unique = true, length = 18, nullable = true)
     private String cpfCnpj;
     
@@ -95,7 +97,7 @@ public class Pessoa implements Serializable{
    
     @ManyToOne(fetch = FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name = "pes_endereco_id"  )  
+    @JoinColumn(name = "pes_endereco_id" , nullable = true )  
     //@Fetch(FetchMode.SELECT)
     private Endereco endereco;
     
@@ -103,6 +105,8 @@ public class Pessoa implements Serializable{
     @Enumerated(EnumType.STRING)
     private StatusCadastroCliente status;
     
+    @Transient
+    private String nomeDocumento;
 
     public Pessoa() {
         endereco = new Endereco();
@@ -281,6 +285,15 @@ public class Pessoa implements Serializable{
 
     public void setStatus(StatusCadastroCliente status) {
         this.status = status;
+    }
+
+    public String getNomeDocumento() {
+        nomeDocumento =  cpfCnpj.concat(" - ").concat(nome);
+        return nomeDocumento;
+    }
+
+    public void setNomeDocumento(String nomeDocumento) {
+        this.nomeDocumento = nomeDocumento;
     }
     
     

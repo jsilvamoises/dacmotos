@@ -6,50 +6,46 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h2>Endereço</h2>
     <p:fieldset >
-        <h:form>
+        
 
 
             <p:panelGrid columns="1" style="width: 100%">
-                <p:outputLabel value="CEP"/>
-
-
+                <p:outputLabel value="CEP" />
                 <h:panelGroup>
-                    <p:inputMask mask="99.999-999" />
-
-                    <p:commandButton value="Buscar Online"  update="@form"/>
-
+                    <p:inputMask mask="99.999-999" value="#{cadastroPessoaBean.pessoa.endereco.cep}"/>
+                    <p:commandButton value="Buscar Online"  update="@form" rendered="false"/>
                 </h:panelGroup>
             </p:panelGrid>
+
             <p:spacer/>
             <p:panelGrid columns="2" style="width: 100%">
                 <p:outputLabel value="Endereço" />
                 <p:outputLabel value="Número" />
 
-                <p:inputText size="115"  />
-                <p:inputText size="10" />
+                <p:inputText size="115" value="#{cadastroPessoaBean.pessoa.endereco.logradouro}" />
+                <p:inputText size="10" value="#{cadastroPessoaBean.pessoa.endereco.numero}" />
             </p:panelGrid>
+
             <p:spacer/>
             <p:panelGrid columns="3" style="width: 100%">
-                <p:outputLabel value="Bairro"/>
-                <p:outputLabel value="Cidade"/>
-                <p:outputLabel value="UF"/>
+                <p:outputLabel value="Bairro" />
+                <p:outputLabel value="Cidade" />
+                <p:outputLabel value="UF" />
 
-                <p:inputText  size="60"/>
-                <p:inputText size="40" />
-                <p:inputText size="15" />
-
+                <p:inputText  size="60" value="#{cadastroPessoaBean.pessoa.endereco.bairro}"/>
+                <p:inputText size="40"  value="#{cadastroPessoaBean.pessoa.endereco.cidade}"/>
+                <p:inputText size="15" value="#{cadastroPessoaBean.pessoa.endereco.uf}"/>
             </p:panelGrid>
+
             <p:spacer/>
             <p:panelGrid columns="2" style="width: 100%">
                 <p:outputLabel value="Complemento"  />
                 <p:outputLabel value="Observação" />
 
-                <p:inputText size="30" />
-                <p:inputTextarea style="width: 500px"  />
-
-
+                <p:inputText size="30" value="#{cadastroPessoaBean.pessoa.endereco.complemento}"/>
+                <p:inputTextarea style="width: 500px" value="#{cadastroPessoaBean.pessoa.observacao}" />   
             </p:panelGrid>
-        </h:form>
+       
 
     </p:fieldset>
 

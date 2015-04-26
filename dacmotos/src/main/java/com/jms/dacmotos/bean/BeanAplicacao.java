@@ -206,14 +206,14 @@ public class BeanAplicacao implements Serializable, InterfaceBean {
     }
 
     @Override
-    public void refresh() {
+    public void update() {
         clear();
-        listAllObjects();
+        list();
 
     }
 
     @Override
-    public List listAllObjects() {
+    public List list() {
         return Dao().getEntities();
     }
 

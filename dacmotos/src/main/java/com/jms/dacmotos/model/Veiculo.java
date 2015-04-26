@@ -80,7 +80,7 @@ public class Veiculo implements Serializable{
     }
 
     public void setPlaca(String placa) {
-        this.placa = placa;
+        this.placa = placa.toUpperCase();
     }
 
     public int getAnoFabricacao() {
@@ -145,6 +145,14 @@ public class Veiculo implements Serializable{
     @Override
     public String toString() {
         return id.toString();
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
     
     

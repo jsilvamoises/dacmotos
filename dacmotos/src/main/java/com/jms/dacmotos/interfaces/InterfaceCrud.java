@@ -9,13 +9,18 @@ import java.util.List;
 
 /**
  *
- * @author Moises
+ * @author MOISES
  */
-public interface InterfaceBean {
-    public void save();
-    public void delete();
-    public void clear();
-    public void edit();
-    public void update();
+public interface InterfaceCrud {
+
+    public boolean save(Object o);
+
+    public boolean saveOrUpdate(Object o);
+
+    public boolean delete(Object o);
+
+    public boolean merge(Object o);
+    
     public List list();
+
 }

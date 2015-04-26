@@ -10,20 +10,20 @@
     <ui:define name="content">
         <f:metadata>
             <f:param name="dummy"/>
-            <f:event listener="#{beanPessoa.inicializar()}" type="preRenderView"/>
+           
         </f:metadata>
 
 
         <div>
-            <h:form id="form">
+            <h:form id="form" >
                 <h2>Pesquisa</h2>
                 <p:fieldset>
                     <h:panelGrid columns="1" style="width: 100%">
                         <p:outputLabel value="CPF / CNPJ / Nome"/>
                         <h:panelGroup>
-                            <p:inputText id="pesquisa" size="120" value="#{beanPessoa.campoPesquisa}" />
-                            <p:commandButton action="#{beanPessoa.pesquisaPorNomeOuDocumento()}"  update="pessoas" icon="icon-lupa"/>
-                             <p:commandButton action="#{beanPessoa.limparCampo()}"  update="pessoas pesquisa" icon="icon-limpar"/>  
+                            <p:inputText id="pesquisa" size="120" value="#{pesquisaPessoaBean.campoPesquisa}"  />
+                            <p:commandButton   update=":form:pessoas" icon="icon-lupa" action="#{pesquisaPessoaBean.listarClienteByNameDocument()}" accesskey="t"/>
+                            <p:commandButton   update=":form:pessoas pesquisa" icon="icon-limpar" action="#{pesquisaPessoaBean.limparLista()}" accesskey="c" />  
                         </h:panelGroup>
 
 
@@ -32,12 +32,12 @@
 
                 <!--TABELA-->
 
-                <p:dataTable  id="pessoas" value="#{beanPessoa.pessoas}" var="pessoa" reflow="true"  rows="15" rowStyleClass="#{pessoa.status}"
+                <p:dataTable  id="pessoas" value="#{pesquisaPessoaBean.pessoas}" var="pessoa" reflow="true"  rows="15" rowStyleClass="#{pessoa.status}"
                               paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                              paginator="true"  style="margin-bottom:20px">
+                              paginator="true"  style="margin-top: 50px">
                     <!--EXPORTAR-->
                     <f:facet name="{Exporters}" >
-                        <h:commandLink>
+                        <h:commandLink accesskey="x">
                             <p:graphicImage name="/images/icons/32/microsoft-excel.png" width="24"/>
                             <p:dataExporter type="xls" target="pessoas" fileName="pessoas" />
                         </h:commandLink>
@@ -59,7 +59,7 @@
                     </f:facet>
                     <f:facet name="header">
                         Lista de Pessoas
-                        <p:button value="Cadastrar" outcome="/restrict/pessoa.xhtml" style="float: left"/>
+                        <p:button value="Cadastrar" outcome="/restrict/cadastro_pessoa.xhtml" style="float: left" accesskey="n"/>
                         <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="icon-calculadora" />
                         <p:columnToggler datasource="pessoas" trigger="toggler" />
                     </f:facet>
@@ -90,20 +90,20 @@
 
                     <p:column exportable="false" style="text-align: center" headerText="Endereço">
                         <p:commandButton update=":form:enderecoDetalhe" type="buttom" oncomplete="PF('carDialog').show()" icon="icon-lupa" title="Endereço" >
-                            <f:setPropertyActionListener value="#{pessoa}" target="#{beanPessoa.pessoaSelecionada}" />
+                            <f:setPropertyActionListener value="#{pessoa}" target="#{pesquisaPessoaBean.pessoaSelecionada}" />
                         </p:commandButton>
                     </p:column>
 
                     <p:column exportable="false" headerText="Opção" >
-                        <p:button icon="icon-lapis" title="Editar Cliente" outcome="/restrict/pessoa">
+                        <p:button icon="icon-lapis" title="Editar Cliente" outcome="/restrict/cadastro_pessoa">
                             <f:param name="pessoa" value="#{pessoa.id}" />
                         </p:button>
                         <p:commandButton icon="icon-apagar" title="Excluir Cliente"/>
-                        <p:commandButton icon="icon-cadeado" title="Bloquer Cliente" rendered="#{pessoa.status!='BLOQUEADO'}" action="#{beanPessoa.bloquearCliente()}" update="@form">
-                            <f:setPropertyActionListener value="#{pessoa}" target="#{beanPessoa.pessoaSelecionada}" />
+                        <p:commandButton icon="icon-cadeado" title="Bloquer Cliente" rendered="#{pessoa.status!='BLOQUEADO'}" action="#{pesquisaPessoaBean.bloquearCliente()}" update="@form">
+                            <f:setPropertyActionListener value="#{pessoa}" target="#{pesquisaPessoaBean.pessoaSelecionada}" />
                         </p:commandButton>
-                        <p:commandButton icon="icon-cadeado-aberto" title="Desbloquear Cliente" rendered="#{pessoa.status=='BLOQUEADO'}" action="#{beanPessoa.ativarCliente()}" update="@form">
-                            <f:setPropertyActionListener value="#{pessoa}" target="#{beanPessoa.pessoaSelecionada}"/>
+                        <p:commandButton icon="icon-cadeado-aberto" title="Desbloquear Cliente" rendered="#{pessoa.status=='BLOQUEADO'}" action="#{pesquisaPessoaBean.ativarCliente()}" update="@form">
+                            <f:setPropertyActionListener value="#{pessoa}" target="#{pesquisaPessoaBean.pessoaSelecionada}"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
@@ -113,28 +113,28 @@
 
                 <p:dialog header="Endereço" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" style="width: 400px" >
                     <p:outputPanel id="enderecoDetalhe" style="text-align:center;">
-                        <p:panelGrid  columns="2" rendered="#{not empty beanPessoa.pessoaSelecionada}" columnClasses="label,value">
+                        <p:panelGrid  columns="2" rendered="#{not empty pesquisaPessoaBean.pessoaSelecionada}" columnClasses="label,value">
                             <f:facet name="header">
                                 <p:graphicImage library="images/icons/128" name="address.png" />
                             </f:facet>
 
                             <h:outputText value="Id:" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.id}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.id}" />
 
                             <h:outputText value="Endereco" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.logradouro}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.logradouro}" />
 
                             <h:outputText value="Numero:" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.numero}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.numero}" />
 
                             <h:outputText value="Bairro:" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.bairro}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.bairro}" />
 
                             <h:outputText value="Cidade:" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.cidade}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.cidade}" />
 
                             <h:outputText value="UF" />
-                            <h:outputText value="#{beanPessoa.pessoaSelecionada.endereco.uf}" />
+                            <h:outputText value="#{pesquisaPessoaBean.pessoaSelecionada.endereco.uf}" />
                         </p:panelGrid>
                     </p:outputPanel>
                 </p:dialog>

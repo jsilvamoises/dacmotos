@@ -7,11 +7,12 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h2>Tipo de Pessoa</h2>
     <p:fieldset>
-        <h:form>
+       
             <p:selectOneMenu value="#{beanPessoa.pessoa.tipoPessoa}">
                 <f:selectItems value="#{beanTipoPessoa.tipos}"/>
+                <p:ajax update=":frm:doc"/>
             </p:selectOneMenu>
-        </h:form>
+       
 
     </p:fieldset>
 

@@ -7,21 +7,21 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <p:spacer/>
     <p:fieldset>
-        <h:form>
+        
             <p:toolbar>
                 <f:facet name="left">
-                    <p:commandButton value="Salvar" action="#{beanPessoa.save()}" update="@form"/>
-                    <p:commandButton value="Limpar" action="#{beanPessoa.clear()}" update="@form"/>
+                    <p:commandButton value="Salvar" action="#{cadastroPessoaBean.saveOrUpdate()}" update="@form"/>
+                    <p:commandButton value="Limpar" action="#{cadastroPessoaBean.limpar()}" update="@form"/>
 
                 </f:facet>
 
                 <f:facet name="right">
-                    <p:commandButton value="Pesquisar" action="/restrict/pessoalista.xhtml?faces-redirect=true" actionListener="#{beanPessoa.criarObjeto()}" />
+                    <p:commandButton process="@this" value="Pesquisar" action="/restrict/cadastro_pessoa_lista.xhtml?faces-redirect=true" actionListener="#{cadastroPessoaBean.limpar()}" />
 
                 </f:facet>
 
             </p:toolbar>
-        </h:form>
+        
     </p:fieldset>
 
 </ui:composition>

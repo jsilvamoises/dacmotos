@@ -14,12 +14,10 @@ import com.jms.dacmotos.util.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
 import com.jms.dacmotos.dao.Dao;
 import com.jms.dacmotos.enums.StatusCadastroCliente;
 import com.jms.dacmotos.suport.PessoaSuport;
 import java.util.ArrayList;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -185,12 +183,12 @@ public class BeanPessoa implements Serializable, InterfaceBean {
     }
 
     @Override
-    public void refresh() {
+    public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List listAllObjects() {
+    public List list() {
         System.err.println(pessoas.size());
         return null;// pessoas.size() < 1 ? Dao().getEntities() : pessoas;
     }
@@ -262,20 +260,7 @@ public class BeanPessoa implements Serializable, InterfaceBean {
         this.pessoaSelecionada = pessoaSelecionada;
     }
 
-    public Pessoa getPessoaById(Long id) {
-        if (id > 0) {
-            try {
-                pessoa = Dao().getEntity(id);
-                if (pessoa != null) {
-                    endereco = pessoa.getEndereco();
-                }
-            } catch (Exception e) {
-            }
-        }
-
-        return pessoa;
-
-    }
+    
 
     public String getRowColor() {
         switch (pessoa.getStatus()) {

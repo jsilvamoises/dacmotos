@@ -97,12 +97,12 @@ public class BeanEndereco implements Serializable, InterfaceBean {
     }
 
     @Override
-    public void refresh() {
+    public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List listAllObjects() {
+    public List list() {
         return enderecos == null ? Dao().getEntities() : enderecos;
     }
 

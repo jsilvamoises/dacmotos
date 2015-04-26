@@ -2,16 +2,26 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./template/template.xhtml"
-                xmlns="http://www.w3.org/1999/xhtml">
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="pessoa" value="#{cadastroPessoaBean.pessoa}"/>
+        </f:metadata>
         <div id="conteiner-default">
-            <ui:include src="pessoa/icone.xhtml"/>
-            <ui:include src="pessoa/tipo_pessoa.xhtml"/>
-            <ui:include src="pessoa/dados_pessoais.xhtml"/>
-            <ui:include src="pessoa/endereco.xhtml"/>
-            <ui:include src="pessoa/contato.xhtml"/>            
-            <ui:include src="pessoa/toolbar.xhtml"/>
+            <h:form id="frm">
+                <!--icone-->               
+                <ui:include src="pessoa/icone.xhtml"/>
+                <ui:include src="pessoa/tipo_pessoa.xhtml"/>
+                <ui:include src="pessoa/dados_pessoais.xhtml"/>
+                <ui:include src="pessoa/endereco.xhtml"/>
+                <ui:include src="pessoa/contato.xhtml"/>            
+                <ui:include src="pessoa/toolbar.xhtml"/>
+            </h:form>
+
         </div>
 
     </ui:define>
