@@ -19,45 +19,43 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class PesquisaVeiculoBean implements Serializable{
+public class PesquisaVeiculoBean implements Serializable {
+
     private static final Long serialVersionUID = 1L;
-    
+
     private String campoPesquisa;
-    private Veiculo veiculoSelecionado;
+    private Veiculo veiculo;
     private List<Veiculo> veiculos;
-    
-     private CadastroVeiculoBean cadVel;
-    
+
     private VeiculoSuport suport;
 
     public PesquisaVeiculoBean() {
         this.veiculos = new ArrayList<>();
-       
+        veiculo = new Veiculo();
         suport = new VeiculoSuport();
-      //  cadVel = new CadastroVeiculoBean();
-        
+
     }
 
-    
+    public void listarVeiculosPorPlaca() {
+        if (campoPesquisa.length()>0) {
+            veiculos = suport.veiculosPorPlaca(campoPesquisa);
+        } else {
+            veiculos = suport.list();
+        }
+    }
+
 //    get sets
     public List<Veiculo> getVeiculos() {
         return veiculos;
-    }
-    
-    public void editar(){
-        System.err.println("Pas");
-        cadVel.setVeiculo(veiculoSelecionado);
     }
 
     public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
 
-    public void listarTodos(){
+    public void listarTodos() {
         veiculos = suport.list();
     }
-
-    
 
     public VeiculoSuport getSuport() {
         return suport;
@@ -68,11 +66,11 @@ public class PesquisaVeiculoBean implements Serializable{
     }
 
     public Veiculo getVeiculoSelecionado() {
-        return veiculoSelecionado;
+        return veiculo;
     }
 
     public void setVeiculoSelecionado(Veiculo veiculoSelecionado) {
-        this.veiculoSelecionado = veiculoSelecionado;
+        this.veiculo = veiculoSelecionado;
     }
 
     public String getCampoPesquisa() {
@@ -82,7 +80,5 @@ public class PesquisaVeiculoBean implements Serializable{
     public void setCampoPesquisa(String campoPesquisa) {
         this.campoPesquisa = campoPesquisa;
     }
-    
-    
-    
+
 }

@@ -11,6 +11,9 @@ import com.jms.dacmotos.interfaces.InterfaceDao;
 import com.jms.dacmotos.model.Veiculo;
 import java.io.Serializable;
 import java.util.List;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -61,6 +64,12 @@ public class VeiculoSuport implements Serializable, InterfaceCrud{
         }
         return null;
 
+    }
+    
+    public List<Veiculo> veiculosPorPlaca(String valor){
+        DetachedCriteria criteria = DetachedCriteria.forClass(Veiculo.class)
+                .add(Restrictions.ilike("placa", valor, MatchMode.START));
+        return Dao().getEntitiesByDetachetCriteria(criteria);
     }
     
     

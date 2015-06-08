@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+
+
+            <div id="form" class="default">
+                <h1>Consulta Pedidos</h1>
+                <p:fieldset>
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Data Inicial"/>
+                            <p:calendar/>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Data Final"/>
+                            <p:calendar/>
+                        </h:panelGrid>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Cliente"/>
+                            <p:selectOneMenu style="width:500px ">
+                                <f:selectItem itemLabel="Cliente"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Pedido"/>
+                            <p:inputText/>
+                        </h:panelGrid>
+
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:fieldset>
+                    <p:dataTable value="#{beanTexte.lista}" var="cr">
+                        <p:column headerText="Pedido">
+                            1
+                        </p:column>
+
+                        <p:column headerText="Data Processamento">
+
+                        </p:column>
+
+                        <p:column headerText="Cliente">
+
+                        </p:column>
+
+                        <p:column headerText="Status">
+
+                        </p:column>
+                        
+                        <p:column headerText="Valor Total">
+
+                        </p:column>
+                        
+                        <p:column headerText="Forma Pagamento">
+
+                        </p:column>
+
+
+                        
+
+                    </p:dataTable>
+                </p:fieldset>
+
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

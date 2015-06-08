@@ -10,6 +10,7 @@ import com.jms.dacmotos.model.Veiculo;
 import com.jms.dacmotos.suport.VeiculoSuport;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -33,6 +34,10 @@ public class CadastroVeiculoBean implements InterfaceBean , Serializable{
         
     }
     
+    @PostConstruct
+    public void init(){
+        
+    }
     
 
     @Override
@@ -48,7 +53,7 @@ public class CadastroVeiculoBean implements InterfaceBean , Serializable{
             clear();
         }
     }
-
+    
     @Override
     public void clear() {
         veiculo = new Veiculo();
@@ -88,6 +93,7 @@ public class CadastroVeiculoBean implements InterfaceBean , Serializable{
 
     public void setVeiculo(Veiculo veiculo) {
         System.out.println("Setando veiculo");
+        if(veiculo!=null)
         this.veiculo = veiculo;
     }
 

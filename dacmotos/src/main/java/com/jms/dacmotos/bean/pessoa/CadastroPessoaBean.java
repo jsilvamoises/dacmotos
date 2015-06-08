@@ -92,6 +92,7 @@ public class CadastroPessoaBean implements Serializable {
 //        if(pessoa.getId()!=null){
 //            this.pessoa = suport.getPessoaById(pessoa.getId());
 //        }
+       if(pessoa!=null)
         this.pessoa = pessoa;
     }
 

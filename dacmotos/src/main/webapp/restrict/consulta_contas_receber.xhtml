@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+
+
+            <div id="form" class="default">
+                <h1>Relatorio contas receber</h1>
+                <p:fieldset>
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Data Inicial"/>
+                            <p:calendar/>
+                        </h:panelGrid>
+                        
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Data FInal"/>                            
+                            <h:panelGroup>
+                                <p:calendar/>
+                                <p:commandButton value="Pesquisar"/>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                        
+                    </h:panelGrid>
+                </p:fieldset>
+                
+                <p:fieldset>
+                    <p:dataTable value="#{beanTexte.lista}" var="cr">
+                        <p:column headerText="Registro Nº">
+                            1
+                        </p:column>
+                        
+                        <p:column headerText="Id Cliente">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Nome">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Data Faturamento">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Data Vencimento">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Data Pagamento">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Nota Fiscal">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Parcele Nº">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Pedido">
+                            
+                        </p:column>
+                        
+                        <p:column headerText="Valor">
+                            
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:fieldset>
+                    
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

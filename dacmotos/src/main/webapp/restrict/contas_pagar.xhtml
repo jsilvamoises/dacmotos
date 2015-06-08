@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+
+
+            <div id="form" class="default">
+                <h1>Contas a pagar</h1>
+                <!--Fornecedor-->
+                <p:fieldset>
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Fornecedor"/>
+                        <p:inputText id="id" />
+                        <p:selectOneMenu style="width: 420px">
+                            <f:selectItem itemLabel="Fornecedor"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>                    
+                </p:fieldset>
+
+                <!--DADOS DO PAGAMENTO-->
+                Dados do pagamento
+                <p:fieldset>
+                    <h:panelGrid columns="2">
+                        <p:selectOneRadio columns="1" layout="grid">
+                            <f:selectItem itemLabel=" Vista"/>
+                            <f:selectItem itemLabel=" Prazo"/>
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+
+
+                    <h:panelGrid columns="5">
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Data lançamento"/>
+                            <p:calendar size="13" showButtonPanel="true" effect="explode" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Nota Fiscal"/>
+                            <p:inputText size="10"/>                        
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Série"/>
+                            <p:inputText size="5"/>                        
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Observação"/>
+                            <p:inputText size="65"/> 
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Valor Total"/>
+                            <p:inputText size="15"/> 
+                        </h:panelGrid>
+                    </h:panelGrid>
+
+
+                    <h:panelGrid columns="7">
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Valor Entrada"/>
+                            <p:inputText size="15" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Qtd. Parc."/>
+                            <p:inputText size="5"/>                        
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Vlr. Parcelas"/>
+                            <p:inputText size="15"/>                        
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Intervalo dias"/>
+                            <p:inputText size="12"/> 
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Forma Pgt. entrada"/>
+                            <p:selectOneMenu style="width: 150px">
+                                <f:selectItem itemLabel="Selecione!!!!"/>
+                            </p:selectOneMenu>
+                           
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Forma Pgt. parcelas"/>
+                             <p:selectOneMenu style="width: 150px">
+                                <f:selectItem itemLabel="Selecione!!!!"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Venc. 1ª parc."/>
+                            <p:calendar size="15" showButtonPanel="true" effect="explode"/> 
+                        </h:panelGrid>
+                    </h:panelGrid>
+
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton value="Gerar Tabela"/>
+                        </f:facet>
+                    </p:toolbar>
+                </p:fieldset>
+
+                <!--TABELA-->
+                <p:fieldset>
+                    <p:dataTable tableStyle="grid" value="#{beanTexte.lista}" var="cp" style="width: 800px; font-size: 10px!important" reflow="true" paginator="true" rows="6" paginatorPosition="bottom" >
+                        
+                        <f:facet name="header">
+                            Parcelas
+                        </f:facet>
+                        
+                        <f:facet name="bottom">
+                            Registros
+                        </f:facet>
+                        
+                        
+                        
+                        <p:column headerText="Forma Pgt." style="width: 80px">
+                            <h:outputText value="1" />
+                        </p:column>
+
+                        <p:column headerText="Data Venc." style="width: 80px">
+                            <p:calendar value="#{beanCalendar.now.time}" size="10" effect="explode" showButtonPanel="true"/>
+                        </p:column>
+
+                        <p:column headerText="Vlr. parcela" style="width: 40px">
+                            <h:outputText value="1"/>
+                        </p:column>
+
+                        <p:column headerText="Parcela Nº" style="width: 40px">
+                            <h:outputText value="1"/>
+                        </p:column>
+
+                        <p:column headerText="Num cheque" style="width: 80px">
+                            <p:inputText value="1"/>
+                        </p:column>
+                    </p:dataTable>
+                    
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton value="Salvar"/>
+                            <p:commandButton value="Fechar"/>
+                        </f:facet>
+                    </p:toolbar>
+                </p:fieldset>
+
+
+
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -23,10 +23,24 @@ public class BeanNavigation {
     private static final String GO_MARCA = URL.concat("veiculomarca".concat(EXT));
     private static final String GO_MODELO = URL.concat("veiculomodelo".concat(EXT));
     private static final String GO_PESSOA = URL.concat("pessoa".concat(EXT));
-    private static final String GO_VEICULO = URL.concat("veiculo".concat(EXT));
+    private static final String GO_VEICULO = URL.concat("cadastro_veiculo".concat(EXT));
     private static final String GO_VENDA_PRODUTO_SERVICO = URL.concat("menuvenda".concat(EXT));
     private static final String GO_ORCAMENTO = URL.concat("orcamento".concat(EXT));
     private static final String GO_PRODUTO_MARCA = URL.concat("produtomarca".concat(EXT));
+    private static final String GO_VEICULO_LISTA = URL.concat("cadastro_veiculo_lista".concat(EXT));
+    private static final String GO_HOME = URL.concat("/index".concat(EXT));
+    private static final String GO_VEICULO_COR = URL.concat("/cores".concat(EXT));
+
+       public String getGO_VEICULO_COR(){
+        return GO_VEICULO_COR;
+    }
+    public String getGO_HOME(){
+        return GO_HOME;
+    }
+    
+    public String getGO_VEICULO_LISTA() {
+        return GO_VEICULO_LISTA;
+    }
 
     public String getGO_PRODUTO_MARCA() {
         return GO_PRODUTO_MARCA;
@@ -64,8 +78,6 @@ public class BeanNavigation {
         return GO_APLICACAO;
     }
 
-    public String getGO_HOME() {
-        return "/index".concat(EXT);
-    }
+    
 
 }

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>
+
+
+            <div id="form" class="default">
+                <h1>Consulta Preço</h1>
+               
+                <p:fieldset>
+                    <h:panelGrid columns="1">
+                        <p:outputLabel value="Descrição"/>
+                        <p:selectOneMenu style="width: 600px" >
+                            <f:selectItem itemLabel="Selecione a descrição!!"/>
+                        </p:selectOneMenu>
+                        
+                         <p:outputLabel value="Codigo"/>
+                         <p:inputText placeholder="Digite o código" size="40"/>
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:fieldset>
+                    <h:panelGrid columns="3" style="width: 100%">
+                        <h:panelGrid columns="1" style="width: 80%">
+                            <h:outputText value="DESCRIÇÃO" style="font-size:40px!important; color: green "/>
+                            <h:outputText value="VELA RANOX PARA FIAT 147 MODELO" style="font-size: 20px!important "/>
+                        </h:panelGrid>
+                        
+                        <h:panelGrid columns="1">
+                            <h:outputText value="MODELO" style="font-size:40px!important; color: green "/>
+                            <h:outputText value="xsdg" style="font-size: 20px!important "/>
+                        </h:panelGrid>
+                        
+                        <h:panelGrid columns="1">
+                            <h:outputText value="PREÇO" style="font-size:40px!important; color: green "/>
+                            <h:outputText value="RS 145,36" style="font-size: 30px!important; font-weight: bold!important; color: #D20005!important "/>
+                        </h:panelGrid>
+                        
+                    </h:panelGrid>
+                </p:fieldset>
+
+
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -45,6 +45,9 @@ h1{
 
 .icon-logo{background-image: url(../..//resources/images/logodacMotos50px.png)!important; background-repeat: no-repeat; width: 100px; height: 22px}
 .color-orange{background: #ff7e27!important;height: 5px}
+.colunalabel{width: 100px; text-align: right; padding-right: 5px!important}
+.colunainput{}
+.default{width: 80%;margin: 0 auto}
 .frm-pequeno{
     height: 550px!important;
     width: 800px!important;
@@ -75,3 +78,6 @@ h1{
 .field-set{ border-radius: 5px 5px 5px 5px !important}
 .link{font-family: sans-serif !important; font-size: 18px !important; color: #D20005 !important}
 .red{background-color: #D20005 !important}
+.toolbar-tranparente{background-color: transparent!important;background-image: none!important}
+.ui-inputswitch{background-color: #036fab!important;background-image: none!important}
+.ui-commandlink{margin-right: 10px!important}

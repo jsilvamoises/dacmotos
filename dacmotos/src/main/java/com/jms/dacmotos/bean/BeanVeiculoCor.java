@@ -42,6 +42,10 @@ public class BeanVeiculoCor implements Serializable{
         // System.out.println(unidade.getDescricao());
     }
     
+    public void limparLista(){
+        cores.clear();
+    }
+    
     
     
     private InterfaceDao<VeiculoCor> Dao(){
