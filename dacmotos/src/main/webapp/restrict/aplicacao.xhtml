@@ -31,7 +31,7 @@
                             <f:selectItem itemLabel=">> SELECIONE A MARCA"/>
                             <f:selectItems value="${beanAplicacao.marcas}" var="marca" itemLabel="#{marca.nome}" itemValue="#{marca}"/>
                         </p:selectOneMenu>
-                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_MARCA}" target="_new"/>
+                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_PRODUTO_MARCA}" target="_new"/>
                         <p:commandButton process="@this" icon="ui-icon-refresh" actionListener="#{beanAplicacao.refreshMarcas()}" update="@form" />
                     </h:panelGrid>
 
@@ -40,7 +40,7 @@
                             <f:selectItem itemLabel=">> SELECIONE MODELO"/>
                             <f:selectItems value="${beanAplicacao.modelos}" var="modelo" itemLabel="#{modelo.descricao}" itemValue="#{modelo}"/>                       
                         </p:selectOneMenu>
-                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_MODELO}" target="_new"/>
+                        <p:button icon="ui-icon-plus" outcome="#{beanNavigation.GO_INDEX}" target="_new"/>
                         <p:commandButton process="@this"  icon="ui-icon-refresh" actionListener="#{beanAplicacao.refreshModelos()}" update="@form"/>
                     </h:panelGrid>
 
@@ -60,7 +60,7 @@
                     <f:facet name="left">
                         <p:commandButton process="@this" value="Novo" icon="ui-icon-plus" update="@form" action="#{beanAplicacao.clear()}"/>
                         <p:commandButton  value="Salvar" icon="ui-icon-disk" action="#{beanAplicacao.save()}" update="@form tabela"/>
-                        <p:button value="Fechar" icon="ui-icon-close" outcome="#{beanNavigation.GO_HOME}"/>
+                        <p:button value="Fechar" icon="ui-icon-close" outcome="#{beanNavigation.GO_INDEX}"/>
                     </f:facet>
                 </p:toolbar>
 

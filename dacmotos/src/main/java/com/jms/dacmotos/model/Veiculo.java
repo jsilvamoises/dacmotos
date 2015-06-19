@@ -18,8 +18,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import org.hibernate.annotations.ForeignKey;
 
 /**
@@ -34,7 +34,7 @@ public class Veiculo implements Serializable{
     @Column(name = "vei_id")
     
     private Long id;
-    
+    @Max(8)
     @Column(name = "vei_placa", length = 8, nullable = false,unique =true )
     private String placa;
     
@@ -43,7 +43,7 @@ public class Veiculo implements Serializable{
     
     @Column(name = "vei_ano_modelo")//verificar se pode nulo
     private int anoModelo;
-    
+    @Max(12)
     @Column(name = "vei_renavam" , length = 12, nullable = false)
     private String renavam;
     

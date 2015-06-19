@@ -14,73 +14,73 @@
             <p:growl autoUpdate="true"/>
             
             <p:menubar id="menu-bar" >
-                <p:menuitem icon="icon-home" outcome="/index.xhtml" />
+                <p:menuitem icon="icon-home" outcome="#{beanNavigation.GO_INDEX}" />
 
 
                 <p:submenu label="Cadastro" icon="icon-plus">
                     <p:submenu label=" .: Veículos" icon="ui-icon-plus">
                         <p:submenu label="Veiculo">
-                            <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%" outcome="#{beanNavigation.GO_VEICULO}"/>
-                            <p:menuitem value=" .: Relatorio Veículos" icon="icon-report" style="width: 100%" outcome="#{beanNavigation.GO_VEICULO_LISTA}"/>
+                            <p:menuitem value=" .: Veículo" icon="icon-motorcycle" style="width: 100%" outcome="#{beanNavigation.GO_CADASTRO_VEICULO}"/>
+                            <p:menuitem value=" .: Relatorio Veículos" icon="icon-report" style="width: 100%" outcome="#{beanNavigation.GO_CADASTRO_VEICULO_LISTA}"/>
                         </p:submenu>
                         
-                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="/restrict/veiculomarca.xhtml"/>
-                        <p:menuitem value=" .: Modelo" icon="icon-motorcycle" outcome="/restrict/veiculomodelo.xhtml"/>
-                        <p:menuitem value=" .: Cor" icon="icon-motorcycle" outcome="/restrict/cores.xhtml"/>
+                        <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="#{beanNavigation.GO_VEICULO_MARCA}"/>
+                        <p:menuitem value=" .: Modelo" icon="icon-motorcycle" outcome="#{beanNavigation.GO_VEICULO_MODELO}"/>
+                        <p:menuitem value=" .: Cor" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CORES}"/>
                     </p:submenu>
                     
-                    <p:menuitem value=" .: Status Pedido" icon="icon-motorcycle" outcome="/restrict/statusPedidoOrcamento.xhtml"/>
+                    <p:menuitem value=" .: Status Pedido" icon="icon-motorcycle" outcome="#{beanNavigation.GO_STATUS_PEDIDO_ORCAMENTO}"/>
                     
                     <p:submenu label=".: Produto" icon="ui-icon-plus" >
-                        <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="/restrict/produto.xhtml"/>
+                        <p:menuitem value=" .: Produto" icon="icon-motorcycle" outcome="#{beanNavigation.GO_PRODUTO}"/>
                         <p:menuitem value=" .: Marca" icon="icon-motorcycle" outcome="#{beanNavigation.GO_PRODUTO_MARCA}"/>
-                        <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle" outcome="/restrict/anoaplicacao.xhtml"/>
-                        <p:menuitem value=" .: Unidade" icon="icon-motorcycle" outcome="/restrict/unidade.xhtml"/>
+                        <p:menuitem value=" .: Ano aplicação" icon="icon-motorcycle" outcome="#{beanNavigation.GO_ANO_APLICACAO}"/>
+                        <p:menuitem value=" .: Unidade" icon="icon-motorcycle" outcome="#{beanNavigation.GO_UNIDADE}"/>
                         <p:menuitem value=" .: Aplicação" icon="icon-motorcycle" outcome="#{beanNavigation.GO_APLICACAO}"/>
                     </p:submenu  >
                     
                     <p:submenu label=".: Pessoa" icon="ui-icon-plus">
-                        <p:menuitem value=" .: Cadastro" icon="icon-motorcycle" outcome="/restrict/cadastro_pessoa.xhtml"/>
-                         <p:menuitem value=" .: Relatório" icon="icon-report" outcome="/restrict/cadastro_pessoa_lista.xhtml"/>
+                        <p:menuitem value=" .: Cadastro" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CADASTRO_PESSOA}"/>
+                        <p:menuitem value=" .: Relatório" icon="icon-report" outcome="#{beanNavigation.GO_CADASTRO_PESSOA_LISTA}"/>
                     </p:submenu>
                     
-                    <p:menuitem value=".: Empresa" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Empresa" icon="icon-motorcycle" outcome="#{beanNavigation.GO_EMPRESA}"/>
                 </p:submenu>
 
                 <p:submenu label="Venda" icon="icon-venda">
                     <p:menuitem value=".: Venda" icon="icon-motorcycle" outcome="#{beanNavigation.GO_VENDA_PRODUTO_SERVICO}"/>
-                    <p:menuitem value=".: Orçamentos" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Orçamentos" icon="icon-motorcycle" outcome="#{beanNavigation.GO_ORCAMENTO}"/>
                     
                 </p:submenu>
 
                 <p:submenu label="Financeiro" icon="icon-chart">
-                    <p:menuitem value=".: Bancos" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Caixa" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Contas a Pagar" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Contas a Receber" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Bancos" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CADASTRO_BANCO}"/>
+                    <p:menuitem value=".: Caixa" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CAIXA}"/>
+                    <p:menuitem value=".: Contas a Pagar" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CONTAS_PAGAR}"/>
+                    <p:menuitem value=".: Contas a Receber" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CONSULTA_CONTAS_RECEBER}"/>
                    
                 </p:submenu>
 
                 <p:submenu label="Estoque" icon="icon-estoque">
-                    <p:menuitem value=".: Entrada" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Inventário" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Entrada" icon="icon-motorcycle" outcome="#{beanNavigation.GO_ENTRADAS}"/>
+                    <p:menuitem value=".: Inventário" icon="icon-motorcycle" outcome="#{beanNavigation.GO_INVENTARIO}"/>
                 </p:submenu>
 
                 <p:submenu label="Consulta" icon="icon-lupa">
-                    <p:menuitem value=".: Consulta Mapa" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Preço" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Produto" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Historico de Veículo" icon="icon-motorcycle"/>
-                    <p:menuitem value=".: Pedido" icon="icon-motorcycle"/>
+                    <p:menuitem value=".: Consulta Mapa" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CONSULTA_MAPA}"/>
+                    <p:menuitem value=".: Preço" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CONSULTA_PRECO}"/>
+                    <p:menuitem value=".: Produto" icon="icon-motorcycle" outcome="#{beanNavigation.GO_PRODUTO}"/>
+                    <p:menuitem value=".: Historico de Veículo" icon="icon-motorcycle" outcome="#{beanNavigation.GO_HISTORICO_VEICULO}"/>
+                    <p:menuitem value=".: Pedido" icon="icon-motorcycle" outcome="#{beanNavigation.GO_PEDIDO}"/>
                     
-                    <p:submenu label="Movimentações" icon="ui-icon-plus">
-                        <p:menuitem value=".: Estoque" icon="icon-motorcycle"/>
-                        <p:menuitem value=".: Caixa" icon="icon-motorcycle"/>
+                    <p:submenu label="Movimentações" icon="ui-icon-plus" >
+                        <p:menuitem value=".: Estoque" icon="icon-motorcycle" outcome="#{beanNavigation.GO_ESTOQUE}"/>
+                        <p:menuitem value=".: Caixa" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CAIXA}"/>
                     </p:submenu>
                 </p:submenu>
 
                 <p:submenu label="Utilitário" icon="icon-engrenagem">
-                    <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle" outcome="/restrict/consultacep.xhtml"/> 
+                    <p:menuitem value=".: Consulta CEP" icon="icon-motorcycle" outcome="#{beanNavigation.GO_CONSULTA_CEP}" /> 
                 </p:submenu>
 
 

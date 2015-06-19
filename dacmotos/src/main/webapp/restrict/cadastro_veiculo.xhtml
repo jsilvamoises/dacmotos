@@ -61,7 +61,7 @@
                                     <f:selectItems value="#{beanVeiculoCor.cores}" var="c" itemLabel="#{c.descricaoCor}" itemValue="#{c}"/>
                                 </p:selectOneMenu>
 
-                                <p:button icon="icon-plus" outcome="#{beanNavigation.GO_VEICULO_COR}" target="_BLANK"/>
+                                <p:button icon="icon-plus" outcome="#{beanNavigation.GO_CORES}" target="_BLANK"/>
                                 <p:commandButton icon="icon-refresh" process="@this" update=":form:cores" action="#{beanVeiculoCor.limparLista()}"/>
                             </h:panelGrid>
 
@@ -88,7 +88,7 @@
                         
                         
                         <f:facet name="right">
-                            <p:button value="Pesquisar" icon="icon-lupa" outcome="#{beanNavigation.GO_VEICULO_LISTA}"/>
+                            <p:button value="Pesquisar" icon="icon-lupa" outcome="#{beanNavigation.GO_CADASTRO_VEICULO_LISTA}"/>
                         </f:facet>
 
                         
