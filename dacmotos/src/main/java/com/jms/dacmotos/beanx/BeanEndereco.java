@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jms.dacmotos.bean;
+package com.jms.dacmotos.beanx;
 
 import com.jms.dacmotos.interfaces.InterfaceBean;
 import com.jms.dacmotos.interfaces.InterfaceDao;

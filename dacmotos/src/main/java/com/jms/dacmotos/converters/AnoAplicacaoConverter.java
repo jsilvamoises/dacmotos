@@ -5,7 +5,7 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanAnoAplicacao;
+import com.jms.dacmotos.beanx.BeanAnoAplicacao;
 import com.jms.dacmotos.model.AnoAplicacao;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

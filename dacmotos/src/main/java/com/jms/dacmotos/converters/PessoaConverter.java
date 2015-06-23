@@ -5,7 +5,7 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanPessoa;
+import com.jms.dacmotos.beanx.BeanPessoa;
 import com.jms.dacmotos.bean.pessoa.CadastroPessoaBean;
 
 import com.jms.dacmotos.model.Pessoa;

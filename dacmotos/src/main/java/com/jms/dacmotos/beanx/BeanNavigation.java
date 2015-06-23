@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jms.dacmotos.bean;
+package com.jms.dacmotos.beanx;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;

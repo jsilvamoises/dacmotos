@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jms.dacmotos.bean;
+package com.jms.dacmotos.beanx;
 
-
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -17,9 +15,11 @@ import org.primefaces.context.RequestContext;
  */
 @ManagedBean
 @ViewScoped
-public class DFView {
-    public void showProdutoMarca(){
-        System.out.println("ProdutoMarca");
-     //   RequestContext.getCurrentInstance().openDialog("/restrict/marcaproduto");
+public class BeanBanner implements Serializable{
+    private static final Long serialVersionUID=1L;
+    
+    public String getBanner(){
+        return "banner_04.jpg";
     }
+    
 }

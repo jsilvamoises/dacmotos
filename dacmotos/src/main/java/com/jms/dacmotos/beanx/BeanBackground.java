@@ -3,23 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jms.dacmotos.bean;
+package com.jms.dacmotos.beanx;
 
-import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author MOISES
+ * @author Moises
  */
 @ManagedBean
-@ViewScoped
-public class BeanCalendar {
-    private Calendar now;
-
-    public Calendar getNow() {
-        return Calendar.getInstance();
+@RequestScoped
+public class BeanBackground {
+    public String getBackground(){
+        return "ducati";
     }
-    
 }

@@ -5,8 +5,8 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanAnoAplicacao;
-import com.jms.dacmotos.bean.BeanVeiculoCor;
+import com.jms.dacmotos.beanx.BeanAnoAplicacao;
+import com.jms.dacmotos.beanx.BeanVeiculoCor;
 
 import com.jms.dacmotos.model.Aplicacao;
 import com.jms.dacmotos.model.VeiculoCor;

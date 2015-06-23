@@ -5,7 +5,7 @@
  */
 package com.jms.dacmotos.converters;
 
-import com.jms.dacmotos.bean.BeanModelo;
+import com.jms.dacmotos.beanx.BeanModelo;
 import com.jms.dacmotos.model.Modelo;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
